@@ -1,0 +1,199 @@
+@charset "UTF-8";
+
+/* 큰틀 잡기 */
+#wrap {
+	width: 1500px;
+	margin: 0px auto;
+}
+
+section {
+	width: 1500px;
+	height: 500px;
+}
+
+/* heaader */
+header {
+	height: 90px;
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header-box1 {
+	display: flex;
+	align-items: center;
+}
+
+.header-box1_logo {
+	width: 70px;
+	height: 70px;
+	margin-left: 30px;
+	margin-right: 10px;
+}
+
+.header-box1-text {
+	font-size: 50px;
+	font-weight: 900;
+	background-image: linear-gradient(to right, rgb(64, 0, 128), rgb(0, 128, 255));
+	background-clip: text;
+	-webkit-background-clip: text;
+	color : transparent;
+}
+
+.header-box2 {
+	margin-right: 30px;
+}
+
+.header-box2-login {
+	font-size: 20px;
+} 
+
+.header-box2-login-anchor {
+	color: black;
+}
+
+.header-box2-login-anchor:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.header-box2-logout {
+	font-size: 20px;
+}
+
+/* nav */
+nav {
+	display: flex;
+	align-items: center;
+}
+
+.nav-box {
+	width: 1500px;
+	height: 30px;
+}
+
+.nav-box-list {
+	list-style: none;
+	float: left;
+	margin-right: 100px;
+	margin-left: 55px;
+}
+
+.nav-box-anchor {
+	color: black;
+	font-size: 20px;
+	font-weight: 700;
+	height: 60px;
+}
+
+.nav-box-anchor:hover {
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	background-color:navy;
+}
+
+/* footer */
+.footer-box {
+	width: 1500px;
+	height: 60px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-box-nav {
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 20px;
+	margin-left: 15px;
+}
+
+.footer-box-nav-anchor {
+	color: black;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.footer-box-nav-anchor:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.footer-box-copyright {
+	font-size: 15px;
+	font-style: italic;
+	margin-top: 20px;
+	margin-right: 20px;
+}
+
+/* home.jsp */
+.home {
+	display: flex;
+	justify-content: center;
+}
+
+.home-box {
+	width: 600px;
+	height: 500px;
+	margin-right: 30px;
+	margin-left: 30px;
+}
+
+.home-box_smile-tooth {
+	width: 600px;
+	height: 400px;
+	margin-top: 50px;
+}
+
+.home-box-message {
+	width: 400px;
+	height: 200px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+
+}
+
+.home-box-message-detail {
+	font-size: 35px;
+	font-weight: 600;
+
+}
+
+.home-box-join {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 400px;
+	height: 200px;
+	margin-left: 200px;
+}
+
+.home-box-join-anchor:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.home-box-join-anchor {
+	color: black;
+}
+
+.home-box-join-image {
+	width: 200px;
+	height: 200px;
+}
+
+.home-box-join-messages {
+	width: 200px;
+	height: 100px;
+}
+
+.home-box-join__broken-tooth {
+	width: 200px;
+	height: 200px;
+}
+
+.home-box-join-message {
+	font-size: 25px;
+	font-weight: 800;
+}
