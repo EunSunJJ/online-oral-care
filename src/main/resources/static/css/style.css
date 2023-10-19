@@ -6,11 +6,6 @@
 	margin: 0px auto;
 }
 
-section {
-	width: 1500px;
-	height: 500px;
-}
-
 /* heaader */
 header {
 	height: 90px;
@@ -38,7 +33,7 @@ header {
 	background-image: linear-gradient(to right, rgb(64, 0, 128), rgb(0, 128, 255));
 	background-clip: text;
 	-webkit-background-clip: text;
-	color : transparent;
+	color: transparent;
 }
 
 .header-box2 {
@@ -47,7 +42,7 @@ header {
 
 .header-box2-login {
 	font-size: 20px;
-} 
+}
 
 .header-box2-login-anchor {
 	color: black;
@@ -90,7 +85,7 @@ nav {
 .nav-box-anchor:hover {
 	text-decoration: none;
 	color: rgb(255, 255, 255);
-	background-color:navy;
+	background-color: navy;
 }
 
 /* footer */
@@ -196,4 +191,109 @@ nav {
 .home-box-join-message {
 	font-size: 25px;
 	font-weight: 800;
+}
+
+/* join.jsp */
+.join-box-center {
+	display: flex;
+	justify-content: center;
+}
+
+.join-box {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	border: solid 3px black;
+	width: 500px;
+	padding-right: 50px;
+	padding-left: 50px;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+.join-box-kakao {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.kakao {
+	width: 60px;
+	height: 60px;
+}
+.join-box-logo {
+	font-weight: 900;
+	margin-bottom: 5px;
+}
+
+.join-box-text {
+	margin-bottom: 5px;
+	margin-top: 5px;
+	font-weight: bold;
+}
+
+.join-box-type {
+	width: 250px;
+	height: 30px;
+}
+
+#button-duplicate-id {
+	color: white;
+	background-color:navy;
+	border: 2px solid white;
+	width: 100px;
+	height: 35px;
+}
+#duplicate-id {
+	font-size: small;
+	font-weight: 900;
+	color: red;
+	display: none;
+}
+
+#non-duplicate-id {
+	font-size: small;
+	font-weight: 900;
+	color: rgb(0, 0, 255);
+	display: none;
+}
+.join-box-phone {
+	display: flex;
+}
+
+.join-box-phone-number {
+	width: 100px;
+	margin-right: 10px;
+}
+
+#button-personal-authentication {
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	background-color: navy;
+}
+
+.join-box-personal-authentication{
+	margin-top: 8px;
+	display: none;
+}
+
+#button-authentication-number {
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	background-color: navy;
+}
+
+#success-personal-authentication{
+	display:none;
+}
+
+#fail-personal-authentication {
+	display: none;
+}
+
+#button-join {
+	margin-top: 25px;
+	float: right;
+	text-decoration: none;
+	color: rgb(255, 255, 255);
+	background-color: navy;
+	
 }
