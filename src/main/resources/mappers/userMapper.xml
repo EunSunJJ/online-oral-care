@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.sunny.onlineoralcare.user.repository.UserRepository">
+  
+  <!-- 아이디 중복 확인 -->
+   <select id="selectLoginId" resultType="int" parameterType="String">
+   		SELECT
+   			count(1)
+   		FROM
+   			`user`
+   		WHERE
+   			`loginId` = #{loginId}
+   </select>
+   
+  <!-- 회원가입 - 가입정보 저장  -->
+  <insert id="insertUser" parameterType="map">
+  	INSERT INTO
+  		`user`
+  		(
+  			`loginId`
+			, `password`
+			, `name`
+			, `phoneNumber`
+			, `birthday`
+			, `email`
+  		)
+		VALUE
+		(
+			#{loginId}
+			, #{password}
+			, #{name}
+			, #{phoneNumber}
+			, #{birthday}
+			, #{email}
+		)  	
+  </insert>
+  </mapper>
+  

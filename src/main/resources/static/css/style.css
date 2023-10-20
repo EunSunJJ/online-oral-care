@@ -98,7 +98,7 @@ nav {
 }
 
 .footer-box-nav {
-	font-size: 18px;
+	font-size: 15px;
 	font-weight: 600;
 	margin-top: 20px;
 	margin-left: 15px;
@@ -193,7 +193,7 @@ nav {
 	font-weight: 800;
 }
 
-/* join.jsp */
+/* user - join.jsp */
 .join-box-center {
 	display: flex;
 	justify-content: center;
@@ -209,6 +209,7 @@ nav {
 	padding-top: 30px;
 	padding-bottom: 20px;
 }
+
 .join-box-kakao {
 	display: flex;
 	justify-content: space-between;
@@ -219,6 +220,7 @@ nav {
 	width: 60px;
 	height: 60px;
 }
+
 .join-box-logo {
 	font-weight: 900;
 	margin-bottom: 5px;
@@ -237,11 +239,12 @@ nav {
 
 #button-duplicate-id {
 	color: white;
-	background-color:navy;
+	background-color: navy;
 	border: 2px solid white;
 	width: 100px;
 	height: 35px;
 }
+
 #duplicate-id {
 	font-size: small;
 	font-weight: 900;
@@ -255,6 +258,7 @@ nav {
 	color: rgb(0, 0, 255);
 	display: none;
 }
+
 .join-box-phone {
 	display: flex;
 }
@@ -270,7 +274,7 @@ nav {
 	background-color: navy;
 }
 
-.join-box-personal-authentication{
+.join-box-personal-authentication {
 	margin-top: 8px;
 	display: none;
 }
@@ -281,8 +285,8 @@ nav {
 	background-color: navy;
 }
 
-#success-personal-authentication{
-	display:none;
+#success-personal-authentication {
+	display: none;
 }
 
 #fail-personal-authentication {
@@ -291,9 +295,11 @@ nav {
 
 #button-join {
 	margin-top: 25px;
-	float: right;
+	float: left;
 	text-decoration: none;
 	color: rgb(255, 255, 255);
 	background-color: navy;
-	
 }
+
+/* manager - join.jsp */
+

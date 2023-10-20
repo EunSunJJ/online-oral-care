@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <!-- 내가 설정한 CSS -->
-<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="/static/css/style.css" type="text/css">
 </head>
 <body>
 	<div id="wrap">
@@ -20,7 +20,7 @@
 		<section>
 			<div class="home">
 				<div class="home-box">
-					<img class="home-box_smile-tooth" src="/images/home-image.jpg" alt="홈 화면 이미지">
+					<img class="home-box_smile-tooth" src="/static/images/home-image.jpg" alt="홈 화면 이미지">
 				</div>
 				<div class="home-box">
 					<div class="home-box-message">
@@ -31,7 +31,7 @@
 					<div class="home-box-join">
 						<div class="home-box-join-image">
 							<a class="home-box-join-anchor" href="/user/join-view" target="_self">
-							<img class="home-box-join__broken-tooth" src="/images/broken-tooth.png" alt="아픈치아">
+							<img class="home-box-join__broken-tooth" src="/static/images/broken-tooth.png" alt="아픈치아">
 							</a>						
 						</div>
 						<div class="home-box-join-messages">

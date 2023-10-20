@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>가입하기</title>
+<title>관리자용 가입하기</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -39,35 +39,6 @@
 					<div class="join-box-text">이름</div>
 					<input class="join-box-type" type="text" placeholder="이름을 입력해주세요" id="nameInput">
 					
-					<div class="join-box-text">핸드폰번호</div>
-					<div class="join-box-phone">
-						<input class="join-box-phone-number" type="text" maxlength=3 placeholder="010" name="phoneNumber" value="">
-						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="1234" name="phoneNumber" value="">
-						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="5678" name="phoneNumber" value="">
-					</div>
-					
-					<div class="join-box-text">생년월일</div>
-					<select class="select-year" name="year">
-						<c:forEach var="year" begin="1920" end="2023">
-							<option value="년" selected disabled hidden>년</option>
-							<option value="${year}">${year}년</option>
-						</c:forEach>
-					</select>
-					
-					<select class="select-month" name="month">
-						<c:forEach var="month" begin="01" end="12">
-							<option value="월" selected disabled hidden>월</option>
-							<option value="${month}">${month}월</option>
-						</c:forEach>
-					</select>
-					
-					<select class="select-day" name="day">
-						<c:forEach var="day" begin="1" end="31">
-							<option value="일" selected disabled hidden>일</option>
-							<option value="${day}">${day}일</option>
-						</c:forEach>
-					</select>
-					
 					<div class="join-box-text">본인확인 이메일</div>
 					<div class="join-box-email">
 						<input class="join-box-type" type="text" placeholder="abcd @ gmail.net" id="emailInput">
@@ -86,17 +57,17 @@
 					<button id="button-join" type="submit">회원가입</button>
 				</div>
 			</div>
-		</section>	
-		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
+		</section>
+		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />		
 	</div>
 
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
+
 <script>
-$(document).ready(function() {
-	
+$(document).ready(function(){
 	// 로그인 아이디 중복확인
 	$("#button-duplicate-id").on("click", function(){
 		let loginId = $("#loginIdInput").val();
@@ -108,7 +79,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type:"get"
-				, url:"/user/duplicate-id"
+				, url:"/manager/duplicate-id"
 				, data:{"loginId" : loginId}
 				, success:function(data) {
 					if(data.isDuplicate) {
@@ -133,29 +104,13 @@ $(document).ready(function() {
 		$(".join-box-personal-authentication").show(); // display 속성을 block 으로 바꾼다.
 	});
 	
-	// 회원가입 정보 저장 
+	// 회원가입 정보 저장
 	$("#button-join").on("click", function(){
 		
 		let loginId = $("#loginIdInput").val();
 		let password = $("#passwordInput").val();
 		let passwordCheck = $("#passwordCheckInput").val();
 		let name = $("#nameInput").val();
-		
-		// phone number input값이 여러개
-		// 값 들의 갯수 -> 배열 길이를 지정
-		var phoneNumberSize = $("input[name=phoneNumber]").length;
-		// 배열 생성
-		var phoneNumberArray = new Array(phoneNumberSize);
-		// 배열에 값 넣기
-		 for(var i = 0; i < phoneNumberSize; i++){
-			 phoneNumberArray[i] = $("input[name=phoneNumber]").eq(i).val();
-			 // alert(phoneNumberArray[i]);
-		 }
-			
-		let phoneNumber = phoneNumberArray;
-		 
-		//let birthday = $("#").val();
-		
 		let email = $("#emailInput").val();
 		let authenticationNumber = $("#authenticationInput").val();
 		
@@ -181,11 +136,6 @@ $(document).ready(function() {
 			return;
 		}
 		
-		if(phoneNumber.length == 0) {
-			alert("핸드폰번호를 입력하세요.");
-			return;
-		}
-		
 		if(email == "") {
 			alert("이메일 주소를 입력하세요.");
 			return;
@@ -198,19 +148,18 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type:"post"
-			, url:"/user/join"
+			, url:"/manager/join"
 			, data:{
 				"loginId":loginId
 				, "password":password
 				, "name":name
-				, "phoneNumber":phoneNumber
 				, "email":email
 				, "authenticationNumber":authenticationNumber
 				}
 			, success:function(data){
 				if(data.result == "success") {
 					alert("회원가입 성공");
-					location.href="/user/login-view"
+					//location.href="/manager/login-view"
 				} else {
 					alert("회원가입 실패");
 				}
@@ -222,13 +171,7 @@ $(document).ready(function() {
 		
 		
 	});
-	
-	// 핸드폰번호 입력 - 입력창에 정해진 자릿수를 입력하면 자동으로 다음으로 이동 
-    $(".join-box-phone-number").keyup(function(){
-        if (this.value.length == this.maxLength) {
-          $(this).next('.join-box-phone-number').focus();
-        }
-    });
+
 });
 </script>
 </body>
