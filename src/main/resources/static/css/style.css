@@ -301,5 +301,82 @@ nav {
 	background-color: navy;
 }
 
-/* manager - join.jsp */
+/* user - login.jsp */
 
+.login-box-center {
+	display: flex;
+	justify-content: center;
+}
+
+.login-box {
+	width: 800px;
+	height: 400px;
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-input-box {
+	width: 500px;
+	height: 370px;
+	border: solid black 3px;
+	padding-top: 30px;
+	padding-left: 60px;
+	padding-right: 30px;
+	margin-top: 20px;
+}
+
+.login-box-text {
+	font-size: 40px;
+	margin-bottom: 15px;
+}
+
+.login-box-loginId {
+	width: 350px;
+	height: 40px;
+	margin-bottom: 7px;
+}
+
+.login-box-password {
+	width: 350px;
+	height: 40px;
+}
+
+.botton-login {
+	width: 350px;
+	height: 40px;
+	margin-top: 20px;
+	color: white;
+	background-color: navy;
+	text-decoration: none;
+}
+
+.login-box-button-box {
+	padding-right: 55px;
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+
+}
+
+.link-join{
+	color: white;
+	background-color: navy;
+	text-decoration: none;
+	height: 35px;
+}
+
+.link-find-id {
+	color: white;
+	background-color: navy;
+	text-decoration: none;
+	height: 35px;
+}
+
+.link-find-password {
+	color: white;
+	background-color: navy;
+	text-decoration: none;
+	height: 35px;
+}

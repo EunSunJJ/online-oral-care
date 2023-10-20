@@ -10,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class UserController {
 	
+	// 사용자 로그인 화면
+	@GetMapping("/login-view")
+	public String userLogin() {
+		return "user/login";
+	}
+	
 	// 사용자 회원가입 화면
 	@GetMapping("/join-view")
 	public String userJoin() {

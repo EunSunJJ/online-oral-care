@@ -147,26 +147,28 @@ $(document).ready(function(){
 		}
 		
 		$.ajax({
-			type:"post"
-			, url:"/manager/join"
-			, data:{
-				"loginId":loginId
-				, "password":password
-				, "name":name
-				, "email":email
-				, "authenticationNumber":authenticationNumber
-				}
-			, success:function(data){
-				if(data.result == "success") {
-					alert("회원가입 성공");
-					//location.href="/manager/login-view"
+			type : "post",
+			url : "/manager/join",
+			data : {
+				"loginId" : loginId,
+				"password" : password,
+				"name" : name,
+				"email" : email,
+				"authenticationNumber" : authenticationNumber
+			},
+			success : function(data) {
+
+				if (data.result == "success") {
+					alert("회원가입 완료");
+					location.href = "/user/login-view"
 				} else {
 					alert("회원가입 실패");
 				}
-			}
-			,error:function(){
+			},
+			error : function() {
 				alert("회원가입 에러");
 			}
+
 		});
 		
 		
