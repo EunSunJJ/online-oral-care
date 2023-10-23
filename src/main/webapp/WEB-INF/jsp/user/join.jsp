@@ -26,9 +26,9 @@
 					
 					<div class="join-box-text">아이디</div>
 					<input class="join-box-type" type="text" placeholder="아이디입력 (6~20자)" id="loginIdInput">
-					<button id="button-duplicate-id" type="submit">중복확인</button>
-					<div id="duplicate-id">중복된 아이디 입니다</div>
-					<div id="non-duplicate-id">사용가능한 아이디 입니다</div>
+					<button id="duplicateBtn" type="submit">중복확인</button>
+					<div id="duplicateId">중복된 아이디 입니다</div>
+					<div id="nonDuplicateId">사용가능한 아이디 입니다</div>
 					
 					<div class="join-box-text">비밀번호</div>
 					<input class="join-box-type" type="password" placeholder="문자,숫자,특수문자 포함 8~20자" id="passwordInput">
@@ -41,29 +41,29 @@
 					
 					<div class="join-box-text">핸드폰번호</div>
 					<div class="join-box-phone">
-						<input class="join-box-phone-number" type="text" maxlength=3 placeholder="010" name="phoneNumber" value="">
-						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="1234" name="phoneNumber" value="">
-						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="5678" name="phoneNumber" value="">
+						<input class="join-box-phone-number" type="text" maxlength=3 placeholder="010" name="phoneNumber">
+						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="1234" name="phoneNumber">
+						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="5678" name="phoneNumber">
 					</div>
 					
 					<div class="join-box-text">생년월일</div>
-					<select class="select-year" name="year">
+					<select class="select-year" name="birth">
+							<option value="year" selected disabled hidden>년</option>
 						<c:forEach var="year" begin="1920" end="2023">
-							<option value="년" selected disabled hidden>년</option>
 							<option value="${year}">${year}년</option>
 						</c:forEach>
 					</select>
 					
-					<select class="select-month" name="month">
+					<select class="select-month" name="birth">
+							<option value="month" selected disabled hidden>월</option>
 						<c:forEach var="month" begin="01" end="12">
-							<option value="월" selected disabled hidden>월</option>
 							<option value="${month}">${month}월</option>
 						</c:forEach>
 					</select>
 					
-					<select class="select-day" name="day">
+					<select class="select-day" name="birth">
+							<option value="day" selected disabled hidden>일</option>
 						<c:forEach var="day" begin="1" end="31">
-							<option value="일" selected disabled hidden>일</option>
 							<option value="${day}">${day}일</option>
 						</c:forEach>
 					</select>
@@ -71,7 +71,7 @@
 					<div class="join-box-text">본인확인 이메일</div>
 					<div class="join-box-email">
 						<input class="join-box-type" type="text" placeholder="abcd @ gmail.net" id="emailInput">
-						<button id="button-personal-authentication" type="submit">본인인증하기</button>
+						<button id="personalAuthenticationBtn" type="submit">본인인증하기</button>
 					</div>
 					
 					<%--- 본인확인 번호인증 --%>
@@ -83,7 +83,7 @@
 					<div id="success-personal-authentication">본인인증이 완료되었습니다.</div>
 					<div id="fail-personal-authentication">인증에 실패하였습니다. 다시인증하세요.</div>
 					
-					<button id="button-join" type="submit">회원가입</button>
+					<button id="joinBtn" type="submit">회원가입</button>
 				</div>
 			</div>
 		</section>	
@@ -113,13 +113,13 @@ $(document).ready(function() {
 				, success:function(data) {
 					if(data.isDuplicate) {
 					   // 중복 되었다.
-						$("#duplicate-id").show();
-						$("#non-duplicate-id").hide();
+						$("#duplicateId").show();
+						$("#nonDuplicateId").hide();
 				
 					} else {
 					   // 중복되지 않았다.
-						$("#non-duplicate-id").show();
-						$("#duplicate-id").hide();
+						$("#nonDuplicateId").show();
+						$("#duplicateId").hide();
 					}
 			}
 				, error:function() {
@@ -129,19 +129,19 @@ $(document).ready(function() {
 	});
 	
 	// 본인인증 input 보여주기
-	$("#button-personal-authentication").on("click", function(){
+	$("#personalAuthenticationBtn").on("click", function(){
 		$(".join-box-personal-authentication").show(); // display 속성을 block 으로 바꾼다.
 	});
 	
 	// 회원가입 정보 저장 
-	$("#button-join").on("click", function(){
+	$("#joinBtn").on("click", function(){
 		
 		let loginId = $("#loginIdInput").val();
 		let password = $("#passwordInput").val();
 		let passwordCheck = $("#passwordCheckInput").val();
 		let name = $("#nameInput").val();
 		
-		// phone number input값이 여러개
+		// phone number input 값이 여러개
 		// 값 들의 갯수 -> 배열 길이를 지정
 		var phoneNumberSize = $("input[name=phoneNumber]").length;
 		// 배열 생성
@@ -149,12 +149,13 @@ $(document).ready(function() {
 		// 배열에 값 넣기
 		 for(var i = 0; i < phoneNumberSize; i++){
 			 phoneNumberArray[i] = $("input[name=phoneNumber]").eq(i).val();
-			 // alert(phoneNumberArray[i]);
+			  //alert(phoneNumberArray[i]);
 		 }
-			
-		let phoneNumber = phoneNumberArray;
-		 
-		//let birthday = $("#").val();
+		
+		const strPhoneNumber = phoneNumberArray.join("");
+		let phoneNumber = strPhoneNumber;
+
+		// birthday select 값이 여러개
 		
 		let email = $("#emailInput").val();
 		let authenticationNumber = $("#authenticationInput").val();
@@ -181,7 +182,7 @@ $(document).ready(function() {
 			return;
 		}
 		
-		if(phoneNumber.length == 0) {
+		if(phoneNumber == "") {
 			alert("핸드폰번호를 입력하세요.");
 			return;
 		}

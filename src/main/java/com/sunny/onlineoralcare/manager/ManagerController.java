@@ -9,10 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/manager")
 @Controller
 public class ManagerController {
-
+	
+	// 사용자 로그인 화면
+	@GetMapping("/login-view")
+	public String userLogin() {
+		return "manager/login";
+	}
+	
 	// 관리자 회원가입 화면
 	@GetMapping("/join-view")
 	public String managerJoin() {
 		return "manager/join";
 	}
+
 }

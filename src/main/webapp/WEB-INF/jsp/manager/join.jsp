@@ -16,6 +16,7 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
+		
 		<section>
 			<div class="join-box-center">
 				<div class="join-box">
@@ -26,9 +27,9 @@
 					
 					<div class="join-box-text">아이디</div>
 					<input class="join-box-type" type="text" placeholder="아이디입력 (6~20자)" id="loginIdInput">
-					<button id="button-duplicate-id" type="submit">중복확인</button>
-					<div id="duplicate-id">중복된 아이디 입니다</div>
-					<div id="non-duplicate-id">사용가능한 아이디 입니다</div>
+					<button id="duplicateBtn" type="submit">중복확인</button>
+					<div id="duplicateId">중복된 아이디 입니다</div>
+					<div id="nonDuplicateId">사용가능한 아이디 입니다</div>
 					
 					<div class="join-box-text">비밀번호</div>
 					<input class="join-box-type" type="password" placeholder="문자,숫자,특수문자 포함 8~20자" id="passwordInput">
@@ -42,7 +43,7 @@
 					<div class="join-box-text">본인확인 이메일</div>
 					<div class="join-box-email">
 						<input class="join-box-type" type="text" placeholder="abcd @ gmail.net" id="emailInput">
-						<button id="button-personal-authentication" type="submit">본인인증하기</button>
+						<button id="personalAuthenticationBtn" type="submit">본인인증하기</button>
 					</div>
 					
 					<%--- 본인확인 번호인증 --%>
@@ -54,10 +55,11 @@
 					<div id="success-personal-authentication">본인인증이 완료되었습니다.</div>
 					<div id="fail-personal-authentication">인증에 실패하였습니다. 다시인증하세요.</div>
 					
-					<button id="button-join" type="submit">회원가입</button>
+					<button id="joinBtn" type="submit">회원가입</button>
 				</div>
 			</div>
-		</section>
+		</section>	
+		
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />		
 	</div>
 
@@ -68,8 +70,27 @@
 
 <script>
 $(document).ready(function(){
+	
+	
+	// 아이디 중복 확인 체크 여부
+	var isCheckDuplicate = false;
+	
+	// 중복된 아이디는 가입 불가능
+	var isDuplicate = true;
+	
+	// loginIdInput에 변화가 생기면 다시 중복확인체크
+	$("#loginIdInput").on("input", function(){
+		isCheckDuplicate = false;
+		isDuplicate = true;
+		
+		// 안내 문구 초기화
+		$("#nonDuplicateId").hide();
+		$("#duplicateId").hide();
+		
+	});
+	
 	// 로그인 아이디 중복확인
-	$("#button-duplicate-id").on("click", function(){
+	$("#duplicateBtn").on("click", function(){
 		let loginId = $("#loginIdInput").val();
 		
 		if(loginId == "") {
@@ -82,30 +103,36 @@ $(document).ready(function(){
 				, url:"/manager/duplicate-id"
 				, data:{"loginId" : loginId}
 				, success:function(data) {
+					
+					// 아이디 중복 확인 체크 여부 = true
+					isCheckDuplicate = true;
+					
 					if(data.isDuplicate) {
 					   // 중복 되었다.
-						$("#duplicate-id").show();
-						$("#non-duplicate-id").hide();
+						$("#duplicateId").show();
+						$("#nonDuplicateId").hide();
 				
 					} else {
 					   // 중복되지 않았다.
-						$("#non-duplicate-id").show();
-						$("#duplicate-id").hide();
+						$("#nonDuplicateId").show();
+						$("#duplicateId").hide();
+						
+						isDuplicate = false;
 					}
 			}
 				, error:function() {
 					alert("중복확인 에러");
 				}
 		});
-	});
+	}); 
 	
 	// 본인인증 input 보여주기
-	$("#button-personal-authentication").on("click", function(){
-		$(".join-box-personal-authentication").show(); // display 속성을 block 으로 바꾼다.
+	$("#personalAuthenticationBtn").on("click", function(){
+		$(".join-box-personal-authentication").show();
 	});
 	
 	// 회원가입 정보 저장
-	$("#button-join").on("click", function(){
+	$("#joinBtn").on("click", function(){
 		
 		let loginId = $("#loginIdInput").val();
 		let password = $("#passwordInput").val();
@@ -114,10 +141,24 @@ $(document).ready(function(){
 		let email = $("#emailInput").val();
 		let authenticationNumber = $("#authenticationInput").val();
 		
-
 		// validation
 		if(loginId == "") {
 			alert("로그인 아이디를 입력하세요.");
+			return;
+		}
+		
+		// 아이디 중복 체크가 안된 경우
+		if(!isCheckDuplicate) {
+			alert("아이디 중복체크를 해주세요.");
+			return;
+		}
+		
+		// 중복 된 아이디인 경우 가입 불가
+		if(isDuplicate) {
+			$("#loginIdInput").val("");
+			$("#duplicateId").hide();
+			alert("중복된 아이디 입니다.");
+			
 			return;
 		}
 		
@@ -147,33 +188,28 @@ $(document).ready(function(){
 		}
 		
 		$.ajax({
-			type : "post",
-			url : "/manager/join",
-			data : {
-				"loginId" : loginId,
-				"password" : password,
-				"name" : name,
-				"email" : email,
-				"authenticationNumber" : authenticationNumber
-			},
-			success : function(data) {
-
-				if (data.result == "success") {
-					alert("회원가입 완료");
-					location.href = "/user/login-view"
+			type:"post"
+			, url:"/manager/join"
+			, data:{
+				"loginId":loginId
+				, "password":password
+				, "name":name
+				, "email":email
+				, "authenticationNumber":authenticationNumber
+			}
+			, success:function(data){
+				if(data.result == "success"){
+					alert("회원가입 성공");
 				} else {
 					alert("회원가입 실패");
 				}
-			},
-			error : function() {
+			}
+			, error:function(){
 				alert("회원가입 에러");
 			}
-
 		});
 		
-		
 	});
-
 });
 </script>
 </body>

@@ -237,7 +237,7 @@ nav {
 	height: 30px;
 }
 
-#button-duplicate-id {
+#duplicateBtn {
 	color: white;
 	background-color: navy;
 	border: 2px solid white;
@@ -245,14 +245,14 @@ nav {
 	height: 35px;
 }
 
-#duplicate-id {
+#duplicateId {
 	font-size: small;
 	font-weight: 900;
 	color: red;
 	display: none;
 }
 
-#non-duplicate-id {
+#nonDuplicateId {
 	font-size: small;
 	font-weight: 900;
 	color: rgb(0, 0, 255);
@@ -268,7 +268,7 @@ nav {
 	margin-right: 10px;
 }
 
-#button-personal-authentication {
+#personalAuthenticationBtn {
 	text-decoration: none;
 	color: rgb(255, 255, 255);
 	background-color: navy;
@@ -293,7 +293,7 @@ nav {
 	display: none;
 }
 
-#button-join {
+#joinBtn {
 	margin-top: 25px;
 	float: left;
 	text-decoration: none;
@@ -379,4 +379,13 @@ nav {
 	background-color: navy;
 	text-decoration: none;
 	height: 35px;
+}
+
+/* manager - login.jsp */
+.link-join-manager {
+	width: 350px;
+	height: 40px;
+	color: white;
+	background-color: navy;
+	text-decoration: none;
 }
