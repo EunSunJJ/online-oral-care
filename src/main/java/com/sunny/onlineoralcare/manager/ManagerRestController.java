@@ -3,6 +3,8 @@ package com.sunny.onlineoralcare.manager;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,13 +26,19 @@ public class ManagerRestController {
 	@PostMapping("/login")
 	public Map<String, String>login(
 			@RequestParam("loginId") String loginId
-			,@RequestParam("password") String password){
+			,@RequestParam("password") String password
+			, HttpSession session){
 		
 		Manager manager = managerService.getManagerByloginIdAndPassword(loginId, password);
 		
 		// response
 		Map<String, String> resultMap = new HashMap<>();
 		if(manager != null) {
+			
+			// session에 id, loginId 담아두기
+			session.setAttribute("managerId", manager.getId());
+			session.setAttribute("managerLoginId", manager.getLoginId());
+			
 			resultMap.put("result", "success");
 		} else {
 			resultMap.put("result", "fail");			
