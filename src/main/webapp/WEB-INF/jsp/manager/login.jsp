@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인 화면</title>
+<title>관리자 로그인 화면</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -24,8 +24,8 @@
 					<input id="passwordInput" type="password" placeholder="비밀번호를 입력하세요" class="login-box-password">
 					<button id="loginBtn" type="submit" class="botton-login">로그인</button>
 					
-					<div class="login-box-button-box">
-						<a href="/user/join-view"><button type="button" class="link-join-manager">회원가입</button></a>
+					<div class="manager-login-box-button-box">
+						<a href="/manager/join-view"><button type="button" class="link-join-manager">회원가입</button></a>
 					</div>
 				</div>
 			</div>
@@ -38,5 +38,44 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 
+<script>
+$(document).ready(function(){
+	$("#loginBtn").on("click", function(){
+		let loginId = $("#loginIdInput").val();
+		let password = $("#passwordInput").val();
+		
+		// validation
+		if(loginId == "") {
+			alert("아이디를 입력하세요");
+			return;
+		}
+		
+		if(password == "") {
+			alert("비밀번호를 입력하세요");
+			return;
+		}
+		$.ajax({
+			type:"post"
+			, url:"/manager/login"
+			, data:{
+				"loginId":loginId
+				, "password":password
+			}
+			, success:function(data){
+				if(data.result == "success"){
+					alert("환영합니다 ㅁㅁㅁ 관리자님");
+					location.href = "/home-view"
+				} else {
+					alert("아이디, 비밀번호를 확인해주세요");
+				}
+			}
+			, error:function(){
+				alert("로그인 에러");
+			}
+		});
+		
+	});
+});
+</script>
 </body>
 </html>

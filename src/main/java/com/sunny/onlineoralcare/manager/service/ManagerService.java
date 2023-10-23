@@ -14,9 +14,12 @@ public class ManagerService {
 	private ManagerRepository managerRepository;
 
 	// 로그인 - Id Password조회 일치하는 정보 찾기
-//	public Manager getManagerByloginIdAndPassword(String loginId, String password) {
-//		return managerRepository.selectManagerByloginIdAndPassword(loginId, password);
-//	}
+	public Manager getManagerByloginIdAndPassword(String loginId, String password) {
+		
+		// 암호화 된 password
+		String hashingPassword = EncryptUtil.md5(password);
+		return managerRepository.selectManagerByloginIdAndPassword(loginId, hashingPassword);
+	}
 
 	// 로그인 아이디 중복확인
 	public boolean isDuplicate(String loginId) {

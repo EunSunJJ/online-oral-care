@@ -382,6 +382,9 @@ nav {
 }
 
 /* manager - login.jsp */
+.manager-login-box-button-box {
+	margin-top: 10px;
+}
 .link-join-manager {
 	width: 350px;
 	height: 40px;

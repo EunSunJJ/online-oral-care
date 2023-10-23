@@ -10,9 +10,9 @@ import com.sunny.onlineoralcare.manager.domain.Manager;
 public interface ManagerRepository {
 
 	// 로그인 - Id Password조회 일치하는 정보 찾기
-//	public Manager selectManagerByloginIdAndPassword(
-//			@Param("loginId") String loginId
-//			, @Param("password") String password);
+	public Manager selectManagerByloginIdAndPassword(
+			@Param("loginId") String loginId
+			, @Param("password") String password);
 	
 	// 로그인 아이디 중복확인
 	public int countDuplicateId(

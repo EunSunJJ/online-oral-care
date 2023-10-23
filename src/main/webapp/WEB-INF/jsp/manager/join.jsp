@@ -71,7 +71,6 @@
 <script>
 $(document).ready(function(){
 	
-	
 	// 아이디 중복 확인 체크 여부
 	var isCheckDuplicate = false;
 	
@@ -200,6 +199,7 @@ $(document).ready(function(){
 			, success:function(data){
 				if(data.result == "success"){
 					alert("회원가입 성공");
+					location.href = "/manager/login-view"
 				} else {
 					alert("회원가입 실패");
 				}

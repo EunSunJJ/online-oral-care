@@ -97,8 +97,25 @@
 <script>
 $(document).ready(function() {
 	
+	// 아이디 중복 확인 체크 여부
+	var isCheckDuplicate = false;
+	
+	// 중복된 아이디는 가입 불가능
+	var isDuplicate = true;
+	
+	// loginIdInput에 변화가 생기면 다시 중복확인체크
+	$("#loginIdInput").on("input", function(){
+		isCheckDuplicate = false;
+		isDuplicate = true;
+		
+		// 안내 문구 초기화
+		$("#nonDuplicateId").hide();
+		$("#duplicateId").hide();
+		
+	});
+	
 	// 로그인 아이디 중복확인
-	$("#button-duplicate-id").on("click", function(){
+	$("#duplicateBtn").on("click", function(){
 		let loginId = $("#loginIdInput").val();
 		
 		if(loginId == "") {
@@ -111,6 +128,10 @@ $(document).ready(function() {
 				, url:"/user/duplicate-id"
 				, data:{"loginId" : loginId}
 				, success:function(data) {
+					
+					// 아이디 중복 확인 체크 여부 = true
+					isCheckDuplicate = true;
+					
 					if(data.isDuplicate) {
 					   // 중복 되었다.
 						$("#duplicateId").show();
@@ -120,6 +141,8 @@ $(document).ready(function() {
 					   // 중복되지 않았다.
 						$("#nonDuplicateId").show();
 						$("#duplicateId").hide();
+						
+						isDuplicate = false;
 					}
 			}
 				, error:function() {
@@ -147,15 +170,25 @@ $(document).ready(function() {
 		// 배열 생성
 		var phoneNumberArray = new Array(phoneNumberSize);
 		// 배열에 값 넣기
-		 for(var i = 0; i < phoneNumberSize; i++){
+		 for(let i = 0; i < phoneNumberSize; i++){
 			 phoneNumberArray[i] = $("input[name=phoneNumber]").eq(i).val();
-			  //alert(phoneNumberArray[i]);
+			  // alert(phoneNumberArray[i]);
 		 }
 		
 		const strPhoneNumber = phoneNumberArray.join("");
 		let phoneNumber = strPhoneNumber;
 
+		
 		// birthday select 값이 여러개
+		var birthdaySize = $("select[name=birth]").length;
+		var birthdayArray = new Array(birthdaySize);
+		for(let j = 0; j < birthdaySize; j++) {
+			birthdayArray[j] = $("select[name=birth]").eq(j).val();
+			// alert(birthdayArray[j]);
+		}
+		
+		const strBirthday = birthdayArray.join("");
+		let birthday = strBirthday;
 		
 		let email = $("#emailInput").val();
 		let authenticationNumber = $("#authenticationInput").val();
@@ -164,6 +197,21 @@ $(document).ready(function() {
 		// validation
 		if(loginId == "") {
 			alert("로그인 아이디를 입력하세요.");
+			return;
+		}
+		
+		// 아이디 중복 체크가 안된 경우
+		if(!isCheckDuplicate) {
+			alert("아이디 중복체크를 해주세요.");
+			return;
+		}
+		
+		// 중복 된 아이디인 경우 가입 불가
+		if(isDuplicate) {
+			$("#loginIdInput").val("");
+			$("#duplicateId").hide();
+			alert("중복된 아이디 입니다.");
+			
 			return;
 		}
 		
@@ -187,6 +235,11 @@ $(document).ready(function() {
 			return;
 		}
 		
+		if(birthday == "") {
+			alert("생년월일을 입력하세요.");
+			return;
+		}
+		
 		if(email == "") {
 			alert("이메일 주소를 입력하세요.");
 			return;
@@ -205,6 +258,7 @@ $(document).ready(function() {
 				, "password":password
 				, "name":name
 				, "phoneNumber":phoneNumber
+				, "birthday":birthday
 				, "email":email
 				, "authenticationNumber":authenticationNumber
 				}

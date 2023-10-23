@@ -21,23 +21,23 @@ public class ManagerRestController {
 	private ManagerService managerService;
 	
 	// 로그인 기능
-//	@PostMapping("/login")
-//	public Map<String, String>login(
-//			@RequestParam("loginId") String loginId
-//			,@RequestParam("password") String password){
-//		
-//		Manager manager = managerService.getManagerByloginIdAndPassword(loginId, password);
-//		
-//		// response
-//		Map<String, String> resultMap = new HashMap<>();
-//		if(manager != null) {
-//			resultMap.put("result", "success");
-//		} else {
-//			resultMap.put("result", "fail");			
-//		}
-//		
-//		return resultMap;
-//	}
+	@PostMapping("/login")
+	public Map<String, String>login(
+			@RequestParam("loginId") String loginId
+			,@RequestParam("password") String password){
+		
+		Manager manager = managerService.getManagerByloginIdAndPassword(loginId, password);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if(manager != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");			
+		}
+		
+		return resultMap;
+	}
 	
 	// 회원가입 아이디 중복확인 기능
 	@GetMapping("/duplicate-id")

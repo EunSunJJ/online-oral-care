@@ -22,12 +22,32 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
+	// 로그인 기능
+	@PostMapping("/login")
+	public Map<String, String>login(
+			@RequestParam("loginId") String loginId
+			,@RequestParam("password") String password){
+		
+		User user = userService.getUserByloginIdAndPassword(loginId, password);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if(user
+				!= null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");			
+		}
+		
+		return resultMap;
+	}
+	
 	// 회원가입 아이디 중복확인 기능
-	@GetMapping("/duplicated-id")
+	@GetMapping("/duplicate-id")
 	public Map<String, Boolean> duplicateUserId(
 			@RequestParam("loginId") String loginId){
 		
-		boolean isDuplicate = userService.getloginId(loginId);
+		boolean isDuplicate = userService.isDuplicate(loginId);
 		
 		// response
 		Map<String, Boolean> resultMap = new HashMap<>();
@@ -50,11 +70,11 @@ public class UserRestController {
 			, @RequestParam("birthday") String birthday
 			, @RequestParam("email") String email){
 		
-		User user = userService.addUser(loginId, password, name, phoneNumber, birthday, email);
+		int count = userService.addUser(loginId, password, name, phoneNumber, birthday, email);
 		
 		// response
 		Map<String, String> resultMap = new HashMap<>();
-		if(user != null) {
+		if(count != 0) {
 			resultMap.put("result", "success");
 		}else {
 			resultMap.put("result", "fail");
