@@ -13,6 +13,7 @@ public interface QpostRepository {
 			, @Param("writer") String writer
 			, @Param("title") String title
 			, @Param("content") String content
+			, @Param("imagePath") String imagePath
 			, @Param("password") String password);
 
 }

@@ -73,6 +73,8 @@ $(document).ready(function(){
 		let content = $("#qpostContentInput").val(); 
 		let password = $("#qpostPasswordInput").val();
 		
+		let imageFile = $("#qpostFileInput")[0];
+		
 		// validation
 		if (title == "") {
 			alert("질문 제목을 입력하세요.");
@@ -84,15 +86,23 @@ $(document).ready(function(){
 			return;
 		}
 		
+		// formData
+		let formData = new FormData();
+		formData.append("title", title);
+		formData.append("content", content);
+		formData.append("password", password);
+		formData.append("imageFile", imageFile.files[0]);
+		
 		$.ajax({
 			type:"post"
 			, url:"/qpost/create"
-			, data:{
-				"title":title,
-				"content":content,
-				"password":password
-				
-			}
+			, data:formData
+			
+			// 파일 업로드 필수 옵션
+			, enctype:"multipart/form-data" 
+			, processData:false  
+			, contentType:false  	
+			
 			, success:function(data){
 				if(data.result == "success"){
 					alert("질문 글 작성 성공");
