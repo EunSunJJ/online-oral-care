@@ -6,6 +6,7 @@
 	margin: 0px auto;
 }
 
+
 /* heaader */
 header {
 	height: 90px;
@@ -57,6 +58,7 @@ header {
 	font-size: 20px;
 }
 
+
 /* nav */
 nav {
 	display: flex;
@@ -87,6 +89,7 @@ nav {
 	color: rgb(255, 255, 255);
 	background-color: navy;
 }
+
 
 /* footer */
 .footer-box {
@@ -121,6 +124,7 @@ nav {
 	margin-top: 20px;
 	margin-right: 20px;
 }
+
 
 /* home.jsp */
 .home {
@@ -192,6 +196,7 @@ nav {
 	font-size: 25px;
 	font-weight: 800;
 }
+
 
 /* user - join.jsp */
 .join-box-center {
@@ -301,8 +306,8 @@ nav {
 	background-color: navy;
 }
 
-/* user - login.jsp */
 
+/* user - login.jsp */
 .login-box-center {
 	display: flex;
 	justify-content: center;
@@ -360,7 +365,7 @@ nav {
 
 }
 
-.link-join{
+.link-join {
 	color: white;
 	background-color: navy;
 	text-decoration: none;
@@ -381,14 +386,232 @@ nav {
 	height: 35px;
 }
 
+
 /* manager - login.jsp */
 .manager-login-box-button-box {
 	margin-top: 10px;
 }
+
 .link-join-manager {
 	width: 350px;
 	height: 40px;
 	color: white;
 	background-color: navy;
 	text-decoration: none;
+}
+
+
+/* qpost-create.jsp */
+.qpost-box-center {
+	display: flex;
+	justify-content: center;
+}
+
+.qpost-box {
+	width: 1000px;
+	height: 610px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	padding: 50px;
+	border: solid 3px black;
+}
+
+.qpost-logo {
+	font-size: 35px;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.qpost-text-box {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.qpost-text {
+	width: 87px;
+	height: 35px;
+	font-size: 20px;
+	font-weight: 700;
+	margin-right: 7px;
+}
+
+.writer {
+	margin-top: 5px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.qpost-title {
+	width: 750px;
+	height: 35px;
+}
+
+.qpost-content {
+	width: 750px;
+}
+
+.qpost-file {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.qpost-password {
+	width: 350px;
+	height: 35px;
+}
+
+.qpost-button-box {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+
+.button-qpost-list {
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	width: 100px;
+	height: 40px;
+}
+
+.button-qpost-complete {
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	width: 100px;
+	height: 40px;
+}
+
+
+/* qpost-list jsp */
+.qpost-list-box {
+	height: 800px;
+	margin-top: 40px;
+	margin-bottom: 20px;
+	padding: 50px;
+}
+
+.qpost-list-logo {
+	font-size: 35px;
+	font-weight: 700;
+}
+
+.qpost-search {
+	display: flex;
+	justify-content: right;
+	margin-right: 40px;
+	margin-bottom: 30px;
+}
+
+.select-qpost-search {
+	margin-right: 10px;
+}
+
+.input-qpost-search {
+	width: 200px;
+	height: 30px;
+}
+
+.button-qpost-search {
+	width: 60px;
+	height: 30px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+}
+
+.qpost-list-number {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.qpost-list-button {
+	display: flex;
+	justify-content: end;
+	margin-right: 50px;
+	margin-bottom: 20px;
+}
+
+.button-qpost-list {
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	width: 100px;
+	height: 40px;	
+}
+/* qpost-detail jsp */
+.qpost-detail-box-center {
+	display: flex;
+	justify-content: center;
+}
+
+.qpost-detail-box {
+	width: 1000px;
+	height: 500px;
+	padding: 50px;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+
+.qpost-detail-side {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.qpost-detail-text {
+	width: 70px;
+	height: 35px;
+	font-size: 20px;
+	font-weight: 700;
+	margin-right: 7px;
+}
+
+.qpost-detail-title {
+	width: 750px;
+	height: 35px;
+}
+
+.qpost-detail-content{
+	width: 750px;
+}
+
+.qpost-detail-file {
+	width: 100%;
+}
+
+.qpost-detail-button-box {
+	display: flex;
+	justify-content: end;
+}
+
+.qpost-detail-button1{
+	margin-right: 450px;
+	
+}
+
+.qpost-detail-button2 {
+	margin-right: 70px;
+}
+
+.button-qpost-delete{
+	color: white;
+	font-size: 17px;
+	background-color: indianred;
+	text-decoration: none;
+	width: 100px;
+	height: 40px;	
+}
+
+.button-qpost-modify {
+	color: white;
+	font-size: 17px;
+	background-color: seagreen;
+	text-decoration: none;
+	width: 100px;
+	height: 40px;	
 }
