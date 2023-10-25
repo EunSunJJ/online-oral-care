@@ -2,6 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sunny.onlineoralcare.qpost.repository.QpostRepository">
+	
+	<!-- 전체 질문글 개수 -->
+	<select id="selectQpostListCnt" resultType="int">
+
+		SELECT
+
+			count(*) as cnt
+
+		FROM
+			`question_post`
+
+	</select>
+
+	<!-- 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기 -->
+	<select id="selectQpostListLimit" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" >
+		SELECT
+			`id`
+			, `userId`
+			, `writer`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `password`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`question_post`
+		LIMIT
+			0 , 10
+		
+	</select>
+	
+	<!--  질문 리스트에서 필요한 정보 select -->
+	<select id="selectQpostList" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" >
+		SELECT
+			`id`
+			, `userId`
+			, `writer`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `password`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`question_post`
+		ORDER BY
+			`createdAt` DESC
+		
+	</select>
+
+	<!--  질문 글 작성 정보 insert -->
 	<insert id="insertQpost" parameterType="map">
 		INSERT INTO
 			`question_post`

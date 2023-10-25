@@ -8,9 +8,10 @@
 <title>가입하기</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
 <!-- 내가 설정한 CSS -->
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+<!-- bootstrap icon -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 </head>
 <body>
 	<div id="wrap">
@@ -24,7 +25,7 @@
 						<a href="#"><img class="kakao" src="/static/images/kakao-logo.png" alt="카카오톡 로고"></a>
 					</div>
 					
-					<div class="join-box-text">아이디</div>
+					<div class="join-box-text">아이디 <i class="bi bi-check-circle"></i></div>
 					<input class="join-box-type" type="text" placeholder="아이디입력 (6~20자)" id="loginIdInput">
 					<button id="duplicateBtn" type="submit">중복확인</button>
 					<div id="duplicateId">중복된 아이디 입니다</div>
@@ -46,7 +47,7 @@
 						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="5678" name="phoneNumber">
 					</div>
 					
-					<div class="join-box-text">생년월일</div>
+					<div class="join-box-text">생년월일<i class="bi bi-cake"></i></div>
 					<select class="select-year" name="birth">
 							<option value="year" selected disabled hidden>년</option>
 						<c:forEach var="year" begin="1920" end="2023">
