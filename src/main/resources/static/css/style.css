@@ -529,6 +529,29 @@ nav {
 	margin-top: 50px;
 }
 
+.pageInfo {
+	list-style: none;
+	display: inline-block;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+
+.paging:link {
+	color: black;
+	text-decoration: none;
+}
+
+.paging:visited {
+	color: black;
+	text-decoration: none;
+}
+
+.paging:hover {
+	color: black;
+	text-decoration: underline;
+}
+
+
 .qpost-list-button {
 	display: flex;
 	justify-content: end;

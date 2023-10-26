@@ -70,9 +70,27 @@
 				</table>
 
 				<div class="qpost-list-number">
-					<c:forEach var="num" begin="${pagination.startPage}" end="${pagination.endPage}">
-						<div><a href="/qpost/list-view?page=${num}"> ${num}</a></div>
-					</c:forEach>
+									<!-- pagination{s} -->
+					<div id="paginationBox">
+						<ul>	
+						
+			                <!-- 이전페이지 버튼 -->
+			                <c:if test="${pagination.prev}">
+			                    <li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${pagination.startPage - 1}">이전</a></li>
+			                </c:if>
+
+							<c:forEach var="num" begin="${pagination.startPage}" end="${pagination.endPage}">
+								<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${num}"> ${num}</a></li>
+							</c:forEach>
+							
+               				<!-- 다음페이지 버튼 -->
+               				 <c:if test="${pagination.next}">
+               				 	<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${pagination.endPage + 1}">다음</a></li>
+                			</c:if>    
+							
+						</ul>	
+					</div>
+			
 				</div>
 			</div>
 
