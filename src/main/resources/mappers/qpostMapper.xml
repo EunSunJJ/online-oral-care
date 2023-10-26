@@ -3,20 +3,8 @@
 
 <mapper namespace="com.sunny.onlineoralcare.qpost.repository.QpostRepository">
 	
-	<!-- 전체 질문글 개수 -->
-	<select id="selectQpostListCnt" resultType="int">
-
-		SELECT
-
-			count(*) as cnt
-
-		FROM
-			`question_post`
-
-	</select>
-
-	<!-- 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기 -->
-	<select id="selectQpostListLimit" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" >
+	<!-- 질문 글 상세보기 - id 기반으로 정보가져오기 -->
+	<select id="selectQpostById" parameterType="int" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost">
 		SELECT
 			`id`
 			, `userId`
@@ -29,13 +17,20 @@
 			, `updatedAt`
 		FROM
 			`question_post`
-		LIMIT
-			0 , 10
-		
+		WHERE
+			`id` = #{id}
 	</select>
 	
-	<!--  질문 리스트에서 필요한 정보 select -->
-	<select id="selectQpostList" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" >
+	<!-- 전체 질문글 개수 -->
+	<select id="countQpost" resultType="int">
+		SELECT
+			count(id) as totalCountPost
+		FROM
+			`question_post`
+	</select>
+
+	<!-- 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기 -->
+	<select id="selectQpostListLimit" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" parameterType="com.sunny.onlineoralcare.common.Pagination">
 		SELECT
 			`id`
 			, `userId`
@@ -49,7 +44,9 @@
 		FROM
 			`question_post`
 		ORDER BY
-			`createdAt` DESC
+			`id` DESC
+		LIMIT
+			#{start}, #{postSize}
 		
 	</select>
 

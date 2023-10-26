@@ -542,8 +542,9 @@ nav {
 	background-color: navy;
 	text-decoration: none;
 	width: 100px;
-	height: 40px;	
+	height: 40px;
 }
+
 /* qpost-detail jsp */
 .qpost-detail-box-center {
 	display: flex;
@@ -552,10 +553,10 @@ nav {
 
 .qpost-detail-box {
 	width: 1000px;
-	height: 500px;
 	padding: 50px;
 	margin-top: 40px;
 	margin-bottom: 30px;
+
 }
 
 .qpost-detail-side {
@@ -565,7 +566,6 @@ nav {
 
 .qpost-detail-text {
 	width: 70px;
-	height: 35px;
 	font-size: 20px;
 	font-weight: 700;
 	margin-right: 7px;
@@ -576,35 +576,40 @@ nav {
 	height: 35px;
 }
 
-.qpost-detail-content{
-	width: 750px;
+.qpost-detail-file {
+	margin-left: 240px;
+	margin-bottom: 10px;
+	width: 40%;
+	height: 50%;
 }
 
-.qpost-detail-file {
-	width: 100%;
+.qpost-detail-content {
+	width: 750px;
+
 }
+
 
 .qpost-detail-button-box {
 	display: flex;
 	justify-content: end;
 }
 
-.qpost-detail-button1{
+.qpost-detail-button1 {
 	margin-right: 450px;
-	
+
 }
 
 .qpost-detail-button2 {
 	margin-right: 70px;
 }
 
-.button-qpost-delete{
+.button-qpost-delete {
 	color: white;
 	font-size: 17px;
 	background-color: indianred;
 	text-decoration: none;
 	width: 100px;
-	height: 40px;	
+	height: 40px;
 }
 
 .button-qpost-modify {
@@ -613,5 +618,5 @@ nav {
 	background-color: seagreen;
 	text-decoration: none;
 	width: 100px;
-	height: 40px;	
+	height: 40px;
 }

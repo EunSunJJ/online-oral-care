@@ -17,19 +17,19 @@ public class QpostService {
 	@Autowired
 	private QpostRepository qpostRepository;
 	
-	// 전체 질문글 개수
-	public int getQpostListCnt() {
-		return qpostRepository.selectQpostListCnt();
+	// 질문 글 상세보기 - id 기반으로 정보가져오기
+	public Qpost getQpostById(int id) {
+		return qpostRepository.selectQpostById(id);
+	}
+	
+	// 전체 질문글 개수 조회
+	public int countQpost() {
+		return qpostRepository.countQpost();
 	}
 	
 	// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
 	public List<Qpost> getQpostListLimit(Pagination pagination) {
 		return qpostRepository.selectQpostListLimit(pagination);
-	}
-	
-	// 질문 리스트에서 필요한 정보 가져오기
-	public List<Qpost> getQpostList() {
-		return qpostRepository.selectQpostList();
 	}
 	
 	// 질문 글 작성하기

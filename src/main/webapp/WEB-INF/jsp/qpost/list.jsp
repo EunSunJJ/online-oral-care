@@ -49,14 +49,17 @@
 					</thead>
 
 					<tbody>
-						<c:forEach var="qpost" items="${qpostList}" varStatus="status">
+						<c:forEach var="qpost" items="${qpostList}">
 							<tr>
-								<td><c:if test="${not empty qpost.password}">
+								<td>
+									<c:if test="${not empty qpost.password}">
 										<i class="bi bi-lock"></i>
 									</c:if>
 								</td>
-								<td>${status.count}</td>
-								<td><a href="#">${qpost.title}</a></td>
+								<td>${qpost.id}</td>
+								
+								<td><a href="/qpost/detail-view?id=${qpost.id}">${qpost.title}</a></td>
+								
 								<td>${qpost.writer}</td>
 								<td><fmt:formatDate value="${qpost.createdAt}" pattern="yyyy-MM-dd" /></td>
 								<td>답변 미완료</td>
@@ -67,31 +70,9 @@
 				</table>
 
 				<div class="qpost-list-number">
-					<!-- pagination{s} -->
-					<div id="paginationBox">
-						<ul class="pagination">
-						
-							<c:if test="${pagination.prev}">
-								<li class="page-item">
-									<a id="prevBtn" class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">이전</a>
-								</li>
-							</c:if>
-
-							<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-								<li class="page-item"> 
-									<!--<c:out value="${pagination.page == idx ? 'active' : ''}"/> -->
-									<a id="paginationBtn" class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> ${idx} </a>
-								</li>
-							</c:forEach>
-
-							<c:if test="${pagination.next}">
-								<li class="page-item">
-									<a id="nextBtn" class="page-link" href="#" onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">다음</a>
-								</li>
-							</c:if>
-							
-						</ul>
-					</div>
+					<c:forEach var="num" begin="${pagination.startPage}" end="${pagination.endPage}">
+						<div><a href="/qpost/list-view?page=${num}"> ${num}</a></div>
+					</c:forEach>
 				</div>
 			</div>
 
@@ -107,51 +88,5 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-	<script>
-	$(document).ready(function(){
-	
-		// 이전 버튼 이벤트
-		$("#prevBtn").on("click", function(){
-			
-			
-		});
-		
-	//이전 버튼 이벤트
-	function fn_prev(page, range, rangeSize) {
-			var page = ((range - 2) * rangeSize) + 1;
-			var range = range - 1;
-			
-			var url = "${pageContext.request.contextPath}/board/getQpostListLimit";
-			url = url + "?page=" + page;
-			url = url + "&range=" + range;
-			
-			location.href = url;
-
-		}
-
-	  //페이지 번호 클릭
-		function fn_pagination(page, range, rangeSize, searchType, keyword) {
-			var url = "${pageContext.request.contextPath}/board/getQpostListLimit";
-			url = url + "?page=" + page;
-			url = url + "&range=" + range;
-
-			location.href = url;	
-
-		}
-
-		//다음 버튼 이벤트
-		function fn_next(page, range, rangeSize) {
-			var page = parseInt((range * rangeSize)) + 1;
-			var range = parseInt(range) + 1;
-
-			var url = "${pageContext.request.contextPath}/board/getQpostListLimit";
-			url = url + "?page=" + page;
-			url = url + "&range=" + range;
-
-			location.href = url;
-
-		}
-});
-	</script>
 </body>
 </html>

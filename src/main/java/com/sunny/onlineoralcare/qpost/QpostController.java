@@ -21,32 +21,34 @@ public class QpostController {
 	private QpostService qpostService;
 	
 	// 질문 글 상세보기
-	@GetMapping("detail-view")
-	public String qpostDetail() {
+	@GetMapping("/detail-view")
+	public String qpostDetail(
+			@RequestParam("id") int id
+			, Model modle) {
+		
+		Qpost qpost= qpostService.getQpostById(id);
+		modle.addAttribute("qpost", qpost);
+		
 		return "qpost/detail";
 	}
 	
-	// 질문 글 리스트
+	// 질문 글 리스트 + 페이징 추가
 	@GetMapping("/list-view")
-	public String qpostList(Model model
-			,@RequestParam(required = false, defaultValue = "1") int page
-			, @RequestParam(required = false, defaultValue = "1") int range) {
+	public String qpostList(Model model,
+			@RequestParam(value="page", required = false, defaultValue = "1") int page) {
 		
-		// 페이징을 위해 qpost 가져오기 = List<Qpost> qpostListLimit
+		// 전체 게시물 개수 
+		int totalPost = qpostService.countQpost();
 		
-		// 전체 질문글 개수
-		int qpostCnt = qpostService.getQpostListCnt();
-		
-		 // Pagination 객체생성 + paging 정보 세팅
+		 //Pagination 객체생성
 		Pagination pagination = new Pagination();
-		pagination.pageInfo(page, range, qpostCnt);	
-		   
-		model.addAttribute("pagination", pagination);
-		model.addAttribute("qpostListLimit",qpostService.getQpostListLimit(pagination));
-				
-		// 질문 리스트에서 필요한 정보 가져오기
-		List<Qpost> qpostList = qpostService.getQpostList();
-		model.addAttribute("qpostList",qpostList);
+		 pagination.pageMaker(page, totalPost);
+		 
+		 model.addAttribute("pagination", pagination);
+		
+		// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
+		List<Qpost> qpostListLimit = qpostService.getQpostListLimit(pagination);
+		model.addAttribute("qpostList" , qpostListLimit);
 		
 		return "qpost/list";
 	}

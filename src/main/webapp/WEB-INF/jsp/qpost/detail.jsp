@@ -28,15 +28,18 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">제목</div>
-						<input id="qpostTitle" class="qpost-detail-title" type="text" value="">
+						<input id="qpostTitle" class="qpost-detail-title" type="text" value="${qpost.title}">
 					</div>
 					
+					<c:if test="${not empty qpost.imagePath}">
+						<img id="qpostFile" class="qpost-detail-file" src="${qpost.imagePath}">
+					</c:if>
+						
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">내용</div>
-						<textarea id="qpostContent" class="qpost-detail-content" rows="8"></textarea>
+						<textarea id="qpostContent" class="qpost-detail-content">${qpost.content}</textarea>
 					</div>
 					
-					<img id="qpostFile" class="qpost-detail-file" src="">
 					
 					<div class="qpost-detail-button-box">
 							<div class="qpost-detail-button1">
