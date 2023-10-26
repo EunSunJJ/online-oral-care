@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sunny.onlineoralcare.common.EncryptUtil;
 import com.sunny.onlineoralcare.common.Pagination;
 import com.sunny.onlineoralcare.config.FileManager;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
@@ -16,6 +17,15 @@ public class QpostService {
 	
 	@Autowired
 	private QpostRepository qpostRepository;
+	
+	// 비밀 글 비밀번호 확인하기 - password 일치 여부 체크
+	public Qpost getQpostByPassword(String password) {
+		
+		// password hashing
+		String hashingPassword = EncryptUtil.md5(password);
+		
+		return qpostRepository.selectQpostByPassword(hashingPassword);
+	}
 	
 	// 질문 글 상세보기 - id 기반으로 정보가져오기
 	public Qpost getQpostById(int id) {
@@ -37,7 +47,11 @@ public class QpostService {
 		
 		// imageFile -> imagePath로 
 		String imagePath = FileManager.saveImageFile(userId, imageFile);
-		return qpostRepository.insertQpost(userId, writer, title, content, imagePath, password);
+		
+		// password hashing
+		String hashingPassword = EncryptUtil.md5(password);
+		
+		return qpostRepository.insertQpost(userId, writer, title, content, imagePath, hashingPassword);
 				
 		
 	}

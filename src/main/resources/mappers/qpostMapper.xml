@@ -3,6 +3,24 @@
 
 <mapper namespace="com.sunny.onlineoralcare.qpost.repository.QpostRepository">
 	
+	<!-- 비밀 글 비밀번호 확인하기 - password 일치 여부 체크 -->
+	<select id="selectQpostByPassword" parameterType="String" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost"> 
+		SELECT
+			`id`
+			, `userId`
+			, `writer`
+			, `title`
+			, `content`
+			, `imagePath`
+			, `password`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`question_post`
+		WHERE
+			`password` = #{password}		
+	</select>
+	
 	<!-- 질문 글 상세보기 - id 기반으로 정보가져오기 -->
 	<select id="selectQpostById" parameterType="int" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost">
 		SELECT

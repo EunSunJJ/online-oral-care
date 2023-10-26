@@ -41,8 +41,9 @@
 						
 						<input id="qpostFileInput" class="qpost-file" type="file">
 						
+						
 						<div class="qpost-text-box">
-							<div class="qpost-text">비밀번호</div>
+							<label><input id="qpostSecret" class="qpost-secret" type="checkbox"> 비밀글 설정</label>
 							<input id="qpostPasswordInput" class="qpost-password" type="password" placeholder="비밀번호를 입력하세요.">
 						</div>
 						
@@ -65,6 +66,11 @@
 
 <script>
 $(document).ready(function(){
+	
+	// 비밀번호 input toggle
+	$("#qpostSecret").on("click", function(){
+		$(".qpost-password").toggle();
+	});
 	
 	// 질문 글 저장
 	$("#completeBtn").on("click", function(){

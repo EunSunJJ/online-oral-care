@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.service.QpostService;
 
 @RequestMapping("/qpost")
@@ -20,6 +21,24 @@ public class QpostRestController {
 
 	@Autowired
 	private QpostService qpostService;
+	
+	// 비밀 글 비밀번호 확인하기
+	@PostMapping("/password-check")
+	public Map<String, String> passwordChect(
+			@RequestParam("password") String password) {
+		
+		Qpost qpost = qpostService.getQpostByPassword(password);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (qpost != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
 	
 	// 질문 글 작성하기
 	@PostMapping("/create")
