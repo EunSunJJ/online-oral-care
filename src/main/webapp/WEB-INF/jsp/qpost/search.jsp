@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>질문 글 목록</title>
+<title>검색 결과</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -62,7 +62,7 @@
 								<td>
 									<c:choose>
 										<c:when test="${empty qpost.password}"><a href="/qpost/detail-view?id=${qpost.id}">${qpost.title}</a></c:when>
-										<c:otherwise><a class="before-qpostPasswordBtn" href="#" data-toggle="modal" data-target="#exampleModal" data-post-id="${qpost.id}" >${qpost.title}</a></c:otherwise>
+										<c:otherwise><a href="#" data-toggle="modal" data-target="#exampleModal">${qpost.title}</a></c:otherwise>
 									</c:choose>
 
 								</td>
@@ -104,7 +104,7 @@
 			</div>
 
 			<div class="qpost-list-button">
-				<a href="/qpost/create-view"><button class="button-qpost-list" type="button">글쓰기</button></a>
+				<a href="/qpost/list-view"><button class="button-qpost-list" type="button">목록으로</button></a>
 			</div>
 		</section>
 
@@ -118,15 +118,15 @@
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <div for="recipient-name" class="col-form-label">비밀번호를 입력하세요</div>
-            <input type="password" class="form-control" id="qpostPasswordInput">
+            <label for="recipient-name" class="col-form-label">비밀번호를 입력하세요</label>
+            <input type="password" class="form-control" id="recipient-name">
           </div>
         </form>
       </div>
       
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-        <button id="qpostPasswordBtn" type="button" class="btn btn-primary">확인</button>
+        <button id="qpostPasswordBtn" type="button" class="btn btn-primary" data-whatever="">확인</button>
       </div>
       
     </div>
@@ -142,52 +142,6 @@
 	
 	<script>
 	$(document).ready(function(){
-		
-		// postId 가져오기
-		$(".before-qpostPasswordBtn").on("click", function(){
-			
-			let postId = $(this).data("post-id");
-			$("#qpostPasswordBtn").data("post-id", postId);
-		});
-		
-		
-		// 확인 버튼 누르면 password 일치하는지 확인
-		$("#qpostPasswordBtn").on("click", function(){
-			
-			let password = $("#qpostPasswordInput").val();
-			let postId = $(this).data("post-id");
-			
-			// validation
-			if(password == "") {
-				alert("비밀번호를 입력해주세요");
-				return;
-			}
-			
-			$.ajax({
-				type:"post",
-				url:"/qpost/password-check",
-				data:{
-					"password":password,
-					"postId":postId
-				},
-				success:function(data){
-					if(data.result == "success") {
-						alert("패스워드가 일치합니다");
-						// 상세페이지 보여주기
-						location.href="/qpost/detail-view?id=" + postId
-					} else {
-						alert("패스워드가 일치하지 않습니다");
-						// input값 초기화
-					}
-				},
-				error:function(){
-					alert("");
-				}
-			
-				
-			});
-		});
-		
 		
 		// password 넣을 modal
 		$('#exampleModal').on('show.bs.modal', function (event) {

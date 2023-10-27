@@ -24,10 +24,11 @@ public class QpostRestController {
 	
 	// 비밀 글 비밀번호 확인하기
 	@PostMapping("/password-check")
-	public Map<String, String> passwordChect(
-			@RequestParam("password") String password) {
+	public Map<String, String> passwordChecK (
+			@RequestParam("postId") int id,
+			@RequestParam("password") String password){
 		
-		Qpost qpost = qpostService.getQpostByPassword(password);
+		Qpost qpost = qpostService.getQpostByPassword(id, password);
 		
 		// response
 		Map<String, String> resultMap = new HashMap<>();

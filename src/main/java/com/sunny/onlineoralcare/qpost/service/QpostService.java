@@ -18,13 +18,23 @@ public class QpostService {
 	@Autowired
 	private QpostRepository qpostRepository;
 	
+	// 질문 글 리스트 페이지 검색기능 - 작성자 검색
+	public Qpost getQpostByWriter(String writer) {
+		return qpostRepository.selectQpostByWriter(writer);
+	}
+	
+	// 질문 글 리스트 페이지 검색기능 - 제목 검색
+	public Qpost getQpostByTitel(String title) {
+		return qpostRepository.selectQpostByTitel(title);
+	}
+
 	// 비밀 글 비밀번호 확인하기 - password 일치 여부 체크
-	public Qpost getQpostByPassword(String password) {
+	public Qpost getQpostByPassword(int id, String password) {
 		
 		// password hashing
 		String hashingPassword = EncryptUtil.md5(password);
 		
-		return qpostRepository.selectQpostByPassword(hashingPassword);
+		return qpostRepository.selectQpostByPassword(id, hashingPassword);
 	}
 	
 	// 질문 글 상세보기 - id 기반으로 정보가져오기

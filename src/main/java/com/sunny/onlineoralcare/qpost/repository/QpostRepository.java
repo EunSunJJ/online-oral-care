@@ -7,13 +7,20 @@ import org.springframework.stereotype.Repository;
 
 import com.sunny.onlineoralcare.common.Pagination;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
-import com.sunny.onlineoralcare.user.domain.User;
 
 @Repository
 public interface QpostRepository {
 	
+	// 질문 글 리스트 페이지 검색기능 - 조회해서 일치하는게 있는지 확인 (작성자)
+	public Qpost selectQpostByWriter(@Param("writer") String writer);
+	
+	// 질문 글 리스트 페이지 검색기능 - 조회해서 일치하는게 있는지 확인 (제목)
+	public Qpost selectQpostByTitel(@Param("title") String title);
+	
 	// 비밀 글 비밀번호 확인하기 - password 일치 여부 체크
-	public Qpost selectQpostByPassword(@Param("password") String password);
+	public Qpost selectQpostByPassword(
+			@Param("id") int id,
+			@Param("password") String password);
 	
 	// 질문 글 상세보기 - id 기반으로 정보가져오기
 	public Qpost selectQpostById(@Param("id") int id);

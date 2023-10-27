@@ -20,6 +20,13 @@ public class QpostController {
 	@Autowired
 	private QpostService qpostService;
 	
+	
+	// 검색 결과 보기
+	@GetMapping("/search-view")
+	public String qpostSearch() {
+		return "qpost/search";
+	}
+	
 	// 질문 글 상세보기
 	@GetMapping("/detail-view")
 	public String qpostDetail(
