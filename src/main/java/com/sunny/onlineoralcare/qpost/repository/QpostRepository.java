@@ -11,6 +11,9 @@ import com.sunny.onlineoralcare.qpost.domain.Qpost;
 @Repository
 public interface QpostRepository {
 	
+	// 질문 글 삭제하기
+	public int deleteQpost(@Param("id") int id);
+	
 	// 질문 글 수정하기
 	public int updateQpost(
 			@Param("id") int id,

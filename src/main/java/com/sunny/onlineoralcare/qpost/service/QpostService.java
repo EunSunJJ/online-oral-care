@@ -18,6 +18,14 @@ public class QpostService {
 	@Autowired
 	private QpostRepository qpostRepository;
 	
+	// 질문 글 삭제하기
+	public int deleteQpost(int id) {
+		
+		// 첨부된 파일 삭제하기
+		
+		return qpostRepository.deleteQpost(id);
+	}
+	
 	// 질문 글 수정하기
 	public int updateQpost(int id, String title, String content) {
 		return qpostRepository.updateQpost(id, title, content);

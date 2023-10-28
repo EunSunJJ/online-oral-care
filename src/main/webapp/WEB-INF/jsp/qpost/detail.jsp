@@ -47,7 +47,7 @@
 							</div>
 							
 							<div class="qpost-detail-button2">
-								<button id="qpostDeleteBtn" class="button-qpost-delete" type="button">삭제하기</button>
+								<button id="qpostDeleteBtn" class="button-qpost-delete" type="button" data-post-id="${qpost.id}">삭제하기</button>
 								<button id="qpostModifyBtn" class="button-qpost-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
 							</div>
 					</div>	
@@ -65,6 +65,35 @@
 
 <script>
 $(document).ready(function(){
+	
+	// 질문 글 삭제하기
+	$("#qpostDeleteBtn").on("click", function(){
+		
+		// id얻어오기 , data속성
+		let postId = $(this).data("post-id");
+		
+		$.ajax({
+			type:"delete"
+			, url:"/qpost/delete"
+			, data:{
+					"id":postId
+				}
+			, success:function(data){
+				if(data.result == "success") {
+					alert("게시물 삭제 성공");
+					location.href="/qpost/list-view"
+				} else {
+					alert("게시물 삭제 실패");
+				}
+			}
+			, error:function(){
+				alert("게시물 삭제 에러");
+			}
+			
+		});
+	});
+	
+	// 질문 글 수정하기
 	$("#qpostModifyBtn").on("click", function(){
 		
 		let title = $("#qpostTitle").val();

@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,22 @@ public class QpostRestController {
 	private QpostService qpostService;
 	
 	// 질문 글 삭제하기
+	@DeleteMapping("/delete")
+	public Map<String, String> deleteQpost(
+			@RequestParam() int id) {
+		
+		int count = qpostService.deleteQpost(id);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
 	
 	// 질문 글 수정하기
 	@PutMapping("/modify")
