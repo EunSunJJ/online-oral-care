@@ -18,12 +18,17 @@ public class QpostService {
 	@Autowired
 	private QpostRepository qpostRepository;
 	
-	// 질문 글 리스트 페이지 검색기능 - 작성자 검색
+	// 질문 글 수정하기
+	public int updateQpost(int id, String title, String content) {
+		return qpostRepository.updateQpost(id, title, content);
+	}
+	
+	// 질문 글 리스트 페이지 검색 기능 - 작성자 검색
 	public Qpost getQpostByWriter(String writer) {
 		return qpostRepository.selectQpostByWriter(writer);
 	}
 	
-	// 질문 글 리스트 페이지 검색기능 - 제목 검색
+	// 질문 글 리스트 페이지 검색 기능 - 제목 검색
 	public Qpost getQpostByTitel(String title) {
 		return qpostRepository.selectQpostByTitel(title);
 	}

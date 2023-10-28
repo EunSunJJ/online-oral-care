@@ -11,10 +11,16 @@ import com.sunny.onlineoralcare.qpost.domain.Qpost;
 @Repository
 public interface QpostRepository {
 	
-	// 질문 글 리스트 페이지 검색기능 - 조회해서 일치하는게 있는지 확인 (작성자)
+	// 질문 글 수정하기
+	public int updateQpost(
+			@Param("id") int id,
+			@Param("title") String title,
+			@Param("content") String content);
+	
+	// 질문 글 리스트 페이지 검색 기능 - 조회해서 일치하는게 있는지 확인 (작성자)
 	public Qpost selectQpostByWriter(@Param("writer") String writer);
 	
-	// 질문 글 리스트 페이지 검색기능 - 조회해서 일치하는게 있는지 확인 (제목)
+	// 질문 글 리스트 페이지 검색 기능 - 조회해서 일치하는게 있는지 확인 (제목)
 	public Qpost selectQpostByTitel(@Param("title") String title);
 	
 	// 비밀 글 비밀번호 확인하기 - password 일치 여부 체크

@@ -48,7 +48,7 @@
 							
 							<div class="qpost-detail-button2">
 								<button id="qpostDeleteBtn" class="button-qpost-delete" type="button">삭제하기</button>
-								<button id="qpostModifyBtn" class="button-qpost-modify" type="button">수정하기</button>
+								<button id="qpostModifyBtn" class="button-qpost-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
 							</div>
 					</div>	
 				
@@ -64,7 +64,39 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 
 <script>
-
+$(document).ready(function(){
+	$("#qpostModifyBtn").on("click", function(){
+		
+		let title = $("#qpostTitle").val();
+		let content = $("#qpostContent").val();
+		
+		// id얻어오기 , data속성
+		let postId = $(this).data("post-id");
+		
+		$.ajax({
+			type:"put"
+			, url:"/qpost/modify"
+			, data:{
+					"title":title,
+					"content":content,
+					"id":postId
+				}
+			, success:function(data){
+				if(data.result == "success") {
+					alert("게시물 수정 성공");
+					location.href="/qpost/list-view"
+				} else {
+					alert("게시물 수정 실패");
+				}
+			}
+			, error:function(){
+				alert("게시물 수정 에러");
+			}
+			
+		});
+		
+	});
+});
 </script>
 </body>
 </html>

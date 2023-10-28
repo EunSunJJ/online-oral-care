@@ -3,6 +3,18 @@
 
 <mapper namespace="com.sunny.onlineoralcare.qpost.repository.QpostRepository">
 
+	<!-- 질문 글 수정하기 -->
+	<update id="updateQpost" parameterType="map">
+		UPDATE
+			`question_post`
+		SET
+			`title` = #{title}
+			, `content` = #{content}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{id}
+	</update>
+	
 	<!-- 질문 글 리스트 페이지 검색기능 - 작성자로 조회 -->
 	<select id="selectQpostByWriter" parameterType="String" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost"> 
 		SELECT
