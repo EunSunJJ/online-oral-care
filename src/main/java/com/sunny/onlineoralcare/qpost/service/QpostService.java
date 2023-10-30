@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sunny.onlineoralcare.common.EncryptUtil;
-import com.sunny.onlineoralcare.common.Pagination;
+import com.sunny.onlineoralcare.common.SearchPagination;
 import com.sunny.onlineoralcare.config.FileManager;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.repository.QpostRepository;
@@ -33,16 +33,6 @@ public class QpostService {
 		return qpostRepository.updateQpost(id, title, content);
 	}
 	
-	// 질문 글 리스트 페이지 검색 기능 - 작성자 검색
-	public Qpost getQpostByWriter(String writer) {
-		return qpostRepository.selectQpostByWriter(writer);
-	}
-	
-	// 질문 글 리스트 페이지 검색 기능 - 제목 검색
-	public Qpost getQpostByTitel(String title) {
-		return qpostRepository.selectQpostByTitel(title);
-	}
-
 	// 비밀 글 비밀번호 확인하기 - password 일치 여부 체크
 	public Qpost getQpostByPassword(int id, String password) {
 		
@@ -63,8 +53,8 @@ public class QpostService {
 	}
 	
 	// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
-	public List<Qpost> getQpostListLimit(Pagination pagination) {
-		return qpostRepository.selectQpostListLimit(pagination);
+	public List<Qpost> getQpostListLimit(SearchPagination searchPagination) {
+		return qpostRepository.selectQpostListLimit(searchPagination);
 	}
 	
 	// 질문 글 작성하기

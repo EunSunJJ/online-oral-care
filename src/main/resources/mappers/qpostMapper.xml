@@ -22,43 +22,7 @@
 			, `updatedAt` = now()
 		WHERE
 			`id` = #{id}
-	</update>
-	
-	<!-- 질문 글 리스트 페이지 검색기능 - 작성자로 조회 -->
-	<select id="selectQpostByWriter" parameterType="String" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost"> 
-		SELECT
-			`id`
-			, `userId`
-			, `writer`
-			, `title`
-			, `content`
-			, `imagePath`
-			, `password`
-			, `createdAt`
-			, `updatedAt`
-		FROM
-			`question_post`
-		WHERE
-			`writer` = #{writer}		
-	</select>
-		
-	<!-- 질문 글 리스트 페이지 검색기능 - 제목으로 조회 -->
-	<select id="selectQpostByTitel" parameterType="String" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost"> 
-		SELECT
-			`id`
-			, `userId`
-			, `writer`
-			, `title`
-			, `content`
-			, `imagePath`
-			, `password`
-			, `createdAt`
-			, `updatedAt`
-		FROM
-			`question_post`
-		WHERE
-			`title` = #{title}		
-	</select>	
+	</update>	
 	
 	<!-- 비밀 글 비밀번호 확인하기 - password 일치 여부 체크 -->
 	<select id="selectQpostByPassword" parameterType="map" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost"> 
@@ -106,7 +70,7 @@
 	</select>
 
 	<!-- 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기 -->
-	<select id="selectQpostListLimit" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" parameterType="com.sunny.onlineoralcare.common.Pagination">
+	<select id="selectQpostListLimit" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" parameterType="com.sunny.onlineoralcare.common.SearchPagination">
 		SELECT
 			`id`
 			, `userId`
@@ -119,6 +83,17 @@
 			, `updatedAt`
 		FROM
 			`question_post`
+		<choose>
+			<when test="keyword != null and searchType.equals('title')">
+			WHERE 
+				`title` LIKE CONCAT('%',#{keyword},'%')
+			</when>
+			
+			<when test="keyword != null and searchType.equals('writer')">
+			WHERE 
+				`writer`  LIKE CONCAT('%',#{keyword},'%')
+			</when>		
+		</choose>
 		ORDER BY
 			`id` DESC
 		LIMIT

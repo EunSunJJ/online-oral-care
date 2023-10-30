@@ -39,12 +39,13 @@ public class Pagination {
 	
 	//게시판 시작 번호 - limit 조건 걸 때 사용
 	private int start;
-
+	
+	// paging
 	public void pageMaker(int page, int totalPost) {
 
 		this.page = page;
 		this.totalPost = totalPost;
-
+		
 		// 전체 페이지수
 		this.totalPage = (int) Math.ceil((double)totalPost / postSize);
 		

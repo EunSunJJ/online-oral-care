@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.sunny.onlineoralcare.common.Pagination;
+import com.sunny.onlineoralcare.common.SearchPagination;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 
 @Repository
@@ -20,12 +20,6 @@ public interface QpostRepository {
 			@Param("title") String title,
 			@Param("content") String content);
 	
-	// 질문 글 리스트 페이지 검색 기능 - 조회해서 일치하는게 있는지 확인 (작성자)
-	public Qpost selectQpostByWriter(@Param("writer") String writer);
-	
-	// 질문 글 리스트 페이지 검색 기능 - 조회해서 일치하는게 있는지 확인 (제목)
-	public Qpost selectQpostByTitel(@Param("title") String title);
-	
 	// 비밀 글 비밀번호 확인하기 - password 일치 여부 체크
 	public Qpost selectQpostByPassword(
 			@Param("id") int id,
@@ -38,7 +32,7 @@ public interface QpostRepository {
 	public int countQpost();
 	
 	// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
-	public List<Qpost> selectQpostListLimit(Pagination pagination);
+	public List<Qpost> selectQpostListLimit(SearchPagination searchPagination);
 	
 	// 질문 글 작성하기
 	public int insertQpost(

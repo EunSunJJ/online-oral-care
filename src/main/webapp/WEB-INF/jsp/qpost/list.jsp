@@ -29,12 +29,12 @@
 
 				<div class="qpost-search">
 				
-					<select class="select-qpost-search" name="search">
+					<select class="select-qpost-search" id="searchType">
 						<option value="title">제목</option>
 						<option value="writer">작성자</option>
 					</select> 
 					<input id="searchInput" class="input-qpost-search" type="text">
-					<button id="searchBtn" class="button-qpost-search" type="submit">검색</button>
+					<button id="searchBtn" name="searchInput" class="button-qpost-search" type="button">검색</button>
 				</div>
 
 				<table class="table text-center">
@@ -142,12 +142,28 @@
 	
 	<script>
 	$(document).ready(function(){
+	
+		// search 버튼
+		$("#searchBtn").on("click", function(){
+			// option값 가져오기
+			let searchType = $("#searchType :selected").val();
+			let keyword = $("#searchInput").val();
+			
+			// validation
+			if (keyword == "") {
+				alert("검색어를 입력해주세요");
+				return;
+			}
+			
+			
+		});
 		
 		// postId 가져오기
 		$(".before-qpostPasswordBtn").on("click", function(){
 			
 			let postId = $(this).data("post-id");
 			$("#qpostPasswordBtn").data("post-id", postId);
+			
 		});
 		
 		
