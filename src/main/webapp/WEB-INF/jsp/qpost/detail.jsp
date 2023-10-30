@@ -47,8 +47,10 @@
 							</div>
 							
 							<div class="qpost-detail-button2">
+							<c:if test="${qpost.userId == userId}">
 								<button id="qpostDeleteBtn" class="button-qpost-delete" type="button" data-post-id="${qpost.id}">삭제하기</button>
 								<button id="qpostModifyBtn" class="button-qpost-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
+							</c:if>
 							</div>
 					</div>	
 				

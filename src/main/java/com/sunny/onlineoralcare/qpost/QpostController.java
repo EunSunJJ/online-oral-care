@@ -2,6 +2,8 @@ package com.sunny.onlineoralcare.qpost;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +33,13 @@ public class QpostController {
 	@GetMapping("/detail-view")
 	public String qpostDetail(
 			@RequestParam("id") int id
+			, HttpSession session
 			, Model modle) {
 		
+		int userId = (Integer)session.getAttribute("userId");
 		Qpost qpost= qpostService.getQpostById(id);
 		modle.addAttribute("qpost", qpost);
+		modle.addAttribute("userId", userId);
 		
 		return "qpost/detail";
 	}

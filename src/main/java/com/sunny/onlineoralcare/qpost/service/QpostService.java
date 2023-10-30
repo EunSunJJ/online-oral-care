@@ -21,8 +21,10 @@ public class QpostService {
 	// 질문 글 삭제하기
 	public int deleteQpost(int id) {
 		
-		// 첨부된 파일 삭제하기
+		Qpost qpost = qpostRepository.selectQpostById(id);
 		
+		// 첨부된 파일 삭제하기
+		FileManager.removeImageFile(qpost.getImagePath());
 		return qpostRepository.deleteQpost(id);
 	}
 	

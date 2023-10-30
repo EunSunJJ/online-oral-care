@@ -27,7 +27,7 @@ public class QpostRestController {
 	// 질문 글 삭제하기
 	@DeleteMapping("/delete")
 	public Map<String, String> deleteQpost(
-			@RequestParam() int id) {
+			@RequestParam("id") int id) {
 		
 		int count = qpostService.deleteQpost(id);
 		

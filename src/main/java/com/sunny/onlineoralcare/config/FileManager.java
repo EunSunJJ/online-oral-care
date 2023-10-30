@@ -17,6 +17,7 @@ public class FileManager {
 	
 	public static String saveImageFile(int userId, MultipartFile imageFile) {
 		
+		// 필수가 아니라 null값 처리
 		if (imageFile == null) {
 			return null;
 		}
@@ -49,5 +50,45 @@ public class FileManager {
 		}
 	
 		return "/images" + directoryName + "/" + imageFile.getOriginalFilename();
+	}
+	
+	
+	// 파일 삭제하기
+	
+	public static boolean removeImageFile(String imagePath) {
+		
+		if (imagePath == null) {
+			return false;
+		}
+		
+		String fullImagePath= FILE_UPLOAD_PATH + imagePath.replace("/images", "");
+		Path path = Paths.get(fullImagePath);
+		
+		// 바로 삭제하지 말고, 삭제할 대상파일 존재 유무 확인
+		if(Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+				
+				return false;
+			}
+		}
+		
+		// 디렉토리도 삭제하기
+		Path directoryPath = path.getParent(); // 상위경로를 리턴
+		
+		// 디렉토리 존재하는지 확인
+		if (Files.exists(path)) {
+			try {
+				Files.delete(path);
+			} catch (IOException e) {
+				e.printStackTrace();
+				
+				return false;
+			}
+		}
+		
+		return true;
 	}
 }
