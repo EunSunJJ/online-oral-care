@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sunny.onlineoralcare.common.SearchPagination;
+import com.sunny.onlineoralcare.common.Pagination;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.service.QpostService;
 
@@ -53,28 +53,20 @@ public class QpostController {
 			, @RequestParam(value="keyword", required=false) String keyword
 			, @RequestParam(value="searchType", required=false) String searchType) {
 		
-		if(searchType != null  && keyword !=null) {
-			
-		} else {
-			
 			// 전체 게시물 개수 
 			int totalPost = qpostService.countQpost();
 			
 			//Pagination 객체생성
-			SearchPagination searchPagination = new SearchPagination();
-			searchPagination.pageMaker(page, totalPost);
-			searchPagination.searchMaker(keyword, searchType);
+			Pagination pagination = new Pagination();
+			pagination.pageMaker(page, totalPost);
+			pagination.searchMaker(keyword, searchType);
 			
-			model.addAttribute("pagination", searchPagination);
+			model.addAttribute("pagination", pagination);
 			
 			// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
-			List<Qpost> qpostListLimit = qpostService.getQpostListLimit(searchPagination);
+			List<Qpost> qpostListLimit = qpostService.getQpostListLimit(pagination);
 			model.addAttribute("qpostList" , qpostListLimit);
 			
-		}
-		
-		
-		
 		return "qpost/list";
 	}
 	

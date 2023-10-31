@@ -70,7 +70,7 @@
 	</select>
 
 	<!-- 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기 -->
-	<select id="selectQpostListLimit" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" parameterType="com.sunny.onlineoralcare.common.SearchPagination">
+	<select id="selectQpostListLimit" resultType="com.sunny.onlineoralcare.qpost.domain.Qpost" parameterType="com.sunny.onlineoralcare.common.Pagination">
 		SELECT
 			`id`
 			, `userId`
@@ -83,17 +83,11 @@
 			, `updatedAt`
 		FROM
 			`question_post`
-		<choose>
-			<when test="keyword != null and searchType.equals('title')">
-			WHERE 
-				`title` LIKE CONCAT('%',#{keyword},'%')
-			</when>
+		
+			<if test="searchType == #{searchType}">
+			WHERE #{searchType} LIKE CONCAT('%',#{keyword},'%')	
+			</if>
 			
-			<when test="keyword != null and searchType.equals('writer')">
-			WHERE 
-				`writer`  LIKE CONCAT('%',#{keyword},'%')
-			</when>		
-		</choose>
 		ORDER BY
 			`id` DESC
 		LIMIT

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.sunny.onlineoralcare.common.EncryptUtil;
-import com.sunny.onlineoralcare.common.SearchPagination;
+import com.sunny.onlineoralcare.common.Pagination;
 import com.sunny.onlineoralcare.config.FileManager;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.repository.QpostRepository;
@@ -53,8 +53,8 @@ public class QpostService {
 	}
 	
 	// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
-	public List<Qpost> getQpostListLimit(SearchPagination searchPagination) {
-		return qpostRepository.selectQpostListLimit(searchPagination);
+	public List<Qpost> getQpostListLimit(Pagination pagination) {
+		return qpostRepository.selectQpostListLimit(pagination);
 	}
 	
 	// 질문 글 작성하기

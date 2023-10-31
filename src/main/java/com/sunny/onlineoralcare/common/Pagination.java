@@ -40,6 +40,16 @@ public class Pagination {
 	//게시판 시작 번호 - limit 조건 걸 때 사용
 	private int start;
 	
+	// 검색 기능 
+	private String keyword;
+	private String searchType;
+	
+	// search
+	public void searchMaker(String keyword, String searchType) {
+		this.keyword = keyword;
+		this.searchType = searchType;
+	}
+		
 	// paging
 	public void pageMaker(int page, int totalPost) {
 

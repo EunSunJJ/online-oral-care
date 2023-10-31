@@ -28,13 +28,14 @@
 				<div class="qpost-list-logo">질문 게시판 글 목록</div>
 
 				<div class="qpost-search">
-				
-					<select class="select-qpost-search" id="searchType">
-						<option value="title">제목</option>
-						<option value="writer">작성자</option>
-					</select> 
-					<input id="searchInput" class="input-qpost-search" type="text">
-					<button id="searchBtn" name="searchInput" class="button-qpost-search" type="button">검색</button>
+					<form name="searchFrm" method="get" action="/qpost/list-view">
+						<select class="select-qpost-search" name="searchType">
+							<option value="title">제목</option>
+							<option value="writer">작성자</option>
+						</select> 
+						<input id="searchInput" class="input-qpost-search" type="text" name="keyword" placeholder="검색어를 입력하세요">
+						<button id="searchBtn" class="button-qpost-search" type="submit">검색</button>
+						</form>
 				</div>
 
 				<table class="table text-center">
@@ -142,21 +143,6 @@
 	
 	<script>
 	$(document).ready(function(){
-	
-		// search 버튼
-		$("#searchBtn").on("click", function(){
-			// option값 가져오기
-			let searchType = $("#searchType :selected").val();
-			let keyword = $("#searchInput").val();
-			
-			// validation
-			if (keyword == "") {
-				alert("검색어를 입력해주세요");
-				return;
-			}
-			
-			
-		});
 		
 		// postId 가져오기
 		$(".before-qpostPasswordBtn").on("click", function(){
