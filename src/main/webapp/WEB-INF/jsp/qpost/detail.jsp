@@ -19,7 +19,9 @@
 		
 		<section>
 			<div class="qpost-detail-box-center">
+			
 				<div class="qpost-detail-box">
+					<div class="qpost-detail-logo">질문게시판</div>
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">작성자</div>
