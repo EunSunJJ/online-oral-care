@@ -183,7 +183,7 @@
 					}
 				},
 				error:function(){
-					alert("");
+					alert("패스워드 확인 에러");
 				}
 			
 				

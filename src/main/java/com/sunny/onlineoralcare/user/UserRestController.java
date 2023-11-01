@@ -25,6 +25,25 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 
+	// 내 정보 수정하기 - 비밀번호 일치여부 확인하고 비밀번호 변경화면으로 이동
+	@PostMapping("/password-check")
+	public Map<String, String> myInfoPasswordCheck(
+			@RequestParam("id") int id
+			,@RequestParam("password") String password) {
+		
+		User user = userService.getUserByPassword(id, password);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (user != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+ 	}
+	
 	// 내 정보 수정하기
 	@PutMapping("/modify/myInfo")
 	public Map<String, String> myInfoModify(

@@ -33,7 +33,7 @@
 						<div class="info-password-box">
 							<input type="password" id="passwordInfoInput"
 								class="input-info-password" placeholder="현재 비밀번호 확인 후 비밀번호 변경하기">
-							<button id="passwordInfoCheckBtn" class="button-info-password" type="button">확인</button>
+							<button id="passwordInfoCheckBtn" class="button-info-password" type="button" data-id="${user.id}">확인</button>
 						</div>
 						<input type="text" value="${user.name}" class="input-info" id="myInfoName">
 						<input type="text" value="${user.phoneNumber}" class="input-info" id="myInfoPhoneNumber">
@@ -64,8 +64,38 @@
 	<script>
 		$(document).ready(function() {
 
+			// 내 정보에서 비밃번호 일치여부 확인하기
+			$("#passwordInfoCheckBtn").on("click", function(){
+				
+				let password = $("#passwordInfoInput").val();
+				
+				// id얻어오기 , data속성
+				let id = $(this).data("id");
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/password-check"
+					, data:{
+						"password":password
+						, "id":id
+					}
+					, success:function(data){
+						if(data.result == "success") {
+							alert("비밀번호가 일치합니다");
+							location.href="/user/reset/password-view"
+						} else {
+							alert("비밀번호가 일치하지 않습니다");
+						}
+					}
+					, error:function(){
+						alert("비밀번호 확인 에러");
+					}
+				});
+			});
+			
 			// 내 정보 수정하기
 			$("#myInfoModifyBtn").on("click", function() {
+				
 				let name = $("#myInfoName").val();
 				let phoneNumber = $("#myInfoPhoneNumber").val();
 				let birthday = $("#myInfoBirthday").val();

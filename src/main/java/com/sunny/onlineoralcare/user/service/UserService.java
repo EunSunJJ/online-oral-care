@@ -13,6 +13,12 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	// 내 정보 수정하기 - 비밀번호 일치여부 확인하고 비밀번호 변경화면으로 이동
+	public User getUserByPassword(int id, String password) {
+		String hashingPassword = EncryptUtil.md5(password);
+		return userRepository.selectUserByPassword(id, hashingPassword);
+	}
+	
 	// 내 정보 수정하기
 	public int updateMyInfo (int id, String name, String phoneNumber, String birthday, String email) {
 		return userRepository.updateMyInfo(id, name, phoneNumber, birthday, email);

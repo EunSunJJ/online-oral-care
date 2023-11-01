@@ -84,8 +84,8 @@
 		FROM
 			`question_post`
 		
-			<if test="searchType == #{searchType}">
-			WHERE #{searchType} LIKE CONCAT('%',#{keyword},'%')	
+			<if test="searchType != null">
+			WHERE ${searchType} LIKE CONCAT('%',#{keyword},'%')	
 			</if>
 			
 		ORDER BY
