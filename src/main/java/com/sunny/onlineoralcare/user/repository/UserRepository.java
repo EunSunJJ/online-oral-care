@@ -9,6 +9,17 @@ import com.sunny.onlineoralcare.user.domain.User;
 @Repository
 public interface UserRepository {
 	
+	// 내 정보 수정하기
+	public int updateMyInfo (
+			@Param("id") int id
+			, @Param("name") String name
+			, @Param("phoneNumber") String phoneNumber
+			, @Param("birthday") String birthday
+			, @Param("email") String email);
+	
+	// 내 정보 불러오기
+	public User selectUserByloginId (@Param("loginId") String loginId);
+	
 	// 로그인 - Id Password조회 일치하는 정보 찾기
 	public User selectUserByloginIdAndPassword(
 			@Param("loginId") String loginId

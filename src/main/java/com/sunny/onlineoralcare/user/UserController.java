@@ -2,15 +2,23 @@ package com.sunny.onlineoralcare.user;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.sunny.onlineoralcare.user.domain.User;
+import com.sunny.onlineoralcare.user.service.UserService;
 
 // View 
 
 @RequestMapping("/user")
 @Controller
 public class UserController {
+	
+	@Autowired
+	private UserService userService;
 
 	// 문진표 기반 근처치과 list
 	@GetMapping("/private/dentalClinic-view") 
@@ -50,7 +58,16 @@ public class UserController {
 	
 	// 내 정보 화면
 	@GetMapping("/myInfo-view")
-	public String myInfo() {
+	public String myInfo(
+			HttpSession session
+			, Model model) {
+		
+		String loginId = (String)session.getAttribute("userLoginId");
+		model.addAttribute("userId" , loginId);
+		
+		User user = userService.getUserByloginId(loginId);
+		model.addAttribute("user", user);
+		
 		return "user/info";
 	}
 	

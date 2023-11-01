@@ -19,7 +19,10 @@
 			<c:choose>
 				<c:when test="${not empty userId}">
 					<span>${userLoginId}님 안녕하세요</span>
-					<a href="/user/logout"><span>로그아웃</span></a>
+					<div class="header-logout-myInfo">
+						<a href="/user/logout"><span>로그아웃</span></a>
+						<a href="/user/myInfo-view"><span class="header-myInfo">내정보</span></a>
+					</div>
 				</c:when>
 				
 				<c:when test="${not empty managerId}">

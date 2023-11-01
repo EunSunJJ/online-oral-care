@@ -13,6 +13,15 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
+	// 내 정보 수정하기
+	public int updateMyInfo (int id, String name, String phoneNumber, String birthday, String email) {
+		return userRepository.updateMyInfo(id, name, phoneNumber, birthday, email);
+	}
+	// 내 정보 불러오기
+	public User getUserByloginId (String loginId) {
+		return userRepository.selectUserByloginId(loginId);
+	}
+	
 	// 로그인 - Id Password조회 일치하는 정보 찾기
 	public User getUserByloginIdAndPassword(String loginId, String password) {
 		

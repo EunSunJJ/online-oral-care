@@ -58,6 +58,14 @@ header {
 	font-size: 20px;
 }
 
+.header-logout-myInfo {
+	display: flex;
+	justify-content: end;
+}
+
+.header-myInfo {
+	margin-left: 30px;
+}
 
 /* nav */
 nav {

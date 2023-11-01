@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +25,28 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 
+	// 내 정보 수정하기
+	@PutMapping("/modify/myInfo")
+	public Map<String, String> myInfoModify(
+			@RequestParam("id") int id
+			, @RequestParam("name") String name
+			, @RequestParam("phoneNumber") String phoneNumber
+			, @RequestParam("birthday") String birthday
+			, @RequestParam("email") String email) {
+		
+		int count = userService.updateMyInfo(id, name, phoneNumber, birthday, email);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
 	// 로그인 기능
 	@PostMapping("/login")
 	public Map<String, String> login(
