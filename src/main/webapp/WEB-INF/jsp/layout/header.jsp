@@ -4,7 +4,7 @@
 
 <header>
 	<div class="header-box1">
-		<img class="header-box1_logo" src="/static/images/smile-tooth.png" alt="로고">
+		<a href="/home-view"><img class="header-box1_logo" src="/static/images/smile-tooth.png" alt="로고"></a>
 		<h1 class="header-box1-text">구강관리의 모든 것</h1>
 	</div>
 	<div class="header-box2">

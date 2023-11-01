@@ -17,10 +17,22 @@ import com.sunny.onlineoralcare.qpost.domain.Qpost;
 @Controller
 public class ManagerController {
 	
+	// 꿀팁 모음집 상세보기 - 수정/삭제 
+	@GetMapping("/tpost/detail-view")
+	public String tpostDetail() {
+		return "manager/tpostDetail";
+	}
+	
+	// 꿀팁 모음집 작성
+	@GetMapping("/tpost/create-view")
+	public String tpostCreate() {
+		return "manager/tpostCreate";
+	}
+	
 	// 질문 게시물 상세페이지 - 답변달기 기능
 	@GetMapping("/qpost/answer-view")
 	public String qpostDetail() {
-		return "manager/detail";
+		return "manager/qpostDetail";
 	}
 	
 	// 질문 글 리스트 + 페이징 추가

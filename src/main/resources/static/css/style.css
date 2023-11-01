@@ -673,3 +673,99 @@ nav {
 	width: 100px;
 	height: 40px;
 }
+
+/* user info jsp */
+.info-box-center {
+	display: flex;
+	justify-content: center;
+}
+
+.info-box {
+	border: solid black 1px;
+	width: 500px;
+	height: 400px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	padding-left: 30px;
+	padding-right: 20px;
+	padding-top: 30px;
+}
+
+.info-box-logo-center {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	}
+
+.info-box-logo {
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 35px;
+}
+
+.info-user-loginId {
+	font-size: 15px;
+}
+
+.info-password-box {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.input-info-password {
+	width: 320px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.button-info-password {
+	width: 70px;
+	height: 30px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+}
+
+.input-info {
+	width: 400px;
+	height: 30px;
+	margin-bottom: 10px;
+}
+
+.button-info-modify {
+	width: 400px;
+	height: 30px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -11,6 +11,48 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 @Controller
 public class UserController {
+
+	// 문진표 기반 근처치과 list
+	@GetMapping("/private/dentalClinic-view") 
+	public String dentalClinic() {
+		return "user/dentalClinic";
+	}
+	
+	// 사적인 구강관리 문진표 
+	@GetMapping("/private/survey-view")
+		public String privateSurvey() {
+			return "user/survey";
+		}
+	
+	// 비밀번호 재설정하기
+	@GetMapping("/reset/password-view")
+	public String resetPassword() {
+		return "user/resetPassword";
+	}
+	
+	// 잃어버린 비밀번호 이메일로 전송해주기
+	@GetMapping("/lost/password-view")
+	public String lostPassword() {
+		return "user/lostPassword";
+	}
+	
+	// 찾은 아이디 알려주기
+	@GetMapping("/find/loginId-view")
+	public String findLoginId() {
+		return "user/findId";
+	}
+	
+	// 아이디 찾기
+	@GetMapping("/lost/loginId-view")
+	public String lostLoginId() {
+		return "user/lostId";
+	}
+	
+	// 내 정보 화면
+	@GetMapping("/myInfo-view")
+	public String myInfo() {
+		return "user/info";
+	}
 	
 	// 로그아웃 기능
 	@GetMapping("/logout")
