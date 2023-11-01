@@ -20,9 +20,19 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
+		
 		<section>
-			비밀번호 재설정하기
+			<div class="resetPassword-box-center">
+				<div class="resetPassword-box">
+					<div class="resetPassword-text">비밀번호 재설정하기</div>
+					<input type="password" class="input-resetPassword" id="newPasswordInput" placeholder="새로운 비밀번호 입력 (문자,숫자,특수문자포함 8~20자)">
+					<input type="password" class="input-resetPassword" id="newPasswordCkInput" placeholder="비밀번호를 한번 더 입력해주세요">
+					
+					<button type="button" class="button-newPassword" id="newPasswordSaveBtn">비밀번호 저장하기</button>
+				</div>
+			</div>
 		</section>
+		
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>
 	<!-- JavaScript -->

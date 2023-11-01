@@ -6,7 +6,6 @@
 	margin: 0px auto;
 }
 
-
 /* heaader */
 header {
 	height: 90px;
@@ -751,10 +750,44 @@ nav {
 	margin-top: 10px;
 }
 
+/* reset password jsp */
+.resetPassword-box-center {
+	display: flex;
+	justify-content: center;
+}
 
+.resetPassword-box {
+	border: 3px solid black;
+	width: 500px;
+	height: 300px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	padding-top: 40px;
+	padding-right: 75px;
+	padding-left: 50px;
+}
 
+.resetPassword-text {
+	font-size: 35px;
+	font-weight: 600;
+	margin-bottom: 25px;
+}
 
+.input-resetPassword {
+	width: 400px;
+	height: 30px;
+	margin-bottom: 12px;
+}
 
+.button-newPassword {
+	width: 400px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+}
 
 
 
