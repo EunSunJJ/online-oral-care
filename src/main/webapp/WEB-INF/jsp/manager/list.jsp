@@ -60,7 +60,7 @@
 								<td>${qpost.id}</td>
 								
 								<td>
-								<a href="/qpost/detail-view?id=${qpost.id}">${qpost.title}</a>
+								<a href="/manager/qpost/answer-view?id=${qpost.id}">${qpost.title}</a>
 								</td>
 								
 								<td>${qpost.writer}</td>
@@ -99,9 +99,6 @@
 				
 			</div>
 
-			<div class="qpost-list-button">
-				<a href="/qpost/create-view"><button class="button-qpost-list" type="button">글쓰기</button></a>
-			</div>
 		</section>
 		
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />

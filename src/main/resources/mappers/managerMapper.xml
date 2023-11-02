@@ -3,6 +3,23 @@
 
 <mapper namespace="com.sunny.onlineoralcare.manager.repository.ManagerRepository">
  
+ <!-- 질문 게시판에 답변 달기 -->
+ <insert id="insertAnswer" parameterType="map">
+ 	INSERT INTO
+ 		`answer_post`
+ 		(
+			`postId`
+			, `content`
+ 		)
+ 		
+ 		VALUE
+		(
+			#{postId}
+			, #{content}
+		) 
+ 
+ </insert>
+ 
  <!-- 로그인 -->
  <select id="selectManagerByloginIdAndPassword" parameterType="map" resultType="com.sunny.onlineoralcare.manager.domain.Manager">
  	SELECT
@@ -18,8 +35,8 @@
 	WHERE
 		`loginId` = #{loginId}
 		AND `password` = #{password}
- 	
  </select>
+ 
   <!-- 아이디 중복확인  -->  
   <select id="countDuplicateId" parameterType="String" resultType="int">
   	SELECT

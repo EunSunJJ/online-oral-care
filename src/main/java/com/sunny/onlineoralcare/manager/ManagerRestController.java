@@ -22,9 +22,27 @@ public class ManagerRestController {
 	@Autowired
 	private ManagerService managerService;
 	
+	// 질문 게시판에 답변달기
+	@PostMapping("/answer/qpost")
+	public Map<String, String> answer(
+			@RequestParam("postId") int postId
+			, @RequestParam("content") String content) {
+		
+		int count = managerService.addAnswer(postId, content);
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (count == 1 ) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
 	// 로그인 기능
 	@PostMapping("/login")
-	public Map<String, String>login(
+	public Map<String, String> login(
 			@RequestParam("loginId") String loginId
 			,@RequestParam("password") String password
 			, HttpSession session){

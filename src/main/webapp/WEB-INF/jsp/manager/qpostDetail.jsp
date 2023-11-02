@@ -48,7 +48,7 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">답변</div>
-						<textarea id="qpostContent" class="qpost-detail-content"></textarea>
+						<textarea id="qpostAnswer" class="qpost-detail-content"></textarea>
 					</div>
 					
 					<input id="qpostAnswerFileInput" class="qpost-file" type="file">	
@@ -77,5 +77,46 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script>
+	$(document).ready(function(){
+		
+			// 답변 수정하기
+		
+			// 답변 작성하기
+			$("#ManagerAnswerSaveBtn").on("click", function(){
+				
+				let answer = $("#qpostAnswer").val();
+				// id얻어오기 , data속성
+				let postId = $(this).data("post-id");
+				
+				// validation
+				if (answer == "") {
+					alert("답변을 입력하세요");
+					return;
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/manager/answer/qpost"
+					, data:{
+						"answer":answer
+						, "postId":postId
+						}
+					, success:function(data){
+						if(data.result == "success") {
+							alert("답변 저장 성공");
+							location.href="/manager/qpost/list-view"
+						} else {
+							alert("답변 저장 실패");
+						}
+					}
+					, error:function(){
+						alert("답변 저장 에러");
+					}
+				});
+			});
+		});
+	</script>
 </body>
 </html>

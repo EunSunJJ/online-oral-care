@@ -13,7 +13,10 @@ public class ManagerService {
 	@Autowired
 	private ManagerRepository managerRepository;
 
-	// 질문 글 리스트
+	// 질문 게시판에 답변달기
+	public int addAnswer(int postId, String content) {
+		return managerRepository.insertAnswer(postId, content);
+	}
 	
 	// 로그인 - Id Password조회 일치하는 정보 찾기
 	public Manager getManagerByloginIdAndPassword(String loginId, String password) {
