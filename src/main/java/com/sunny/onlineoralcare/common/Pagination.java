@@ -44,17 +44,13 @@ public class Pagination {
 	private String keyword;
 	private String searchType;
 	
-	// search
-	public void searchMaker(String keyword, String searchType) {
-		this.keyword = keyword;
-		this.searchType = searchType;
-	}
-		
 	// paging
-	public void pageMaker(int page, int totalPost) {
+	public void pageMaker(int page, int totalPost, String keyword, String searchType) {
 
 		this.page = page;
 		this.totalPost = totalPost;
+		this.keyword = keyword;
+		this.searchType = searchType;
 		
 		// 전체 페이지수
 		this.totalPage = (int) Math.ceil((double)totalPost / postSize);

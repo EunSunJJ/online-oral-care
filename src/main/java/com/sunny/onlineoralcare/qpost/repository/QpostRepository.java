@@ -29,7 +29,7 @@ public interface QpostRepository {
 	public Qpost selectQpostById(@Param("id") int id);
 	
 	// 전체 질문글 개수 조회
-	public int countQpost();
+	public int countQpost(Pagination pagination);
 	
 	// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
 	public List<Qpost> selectQpostListLimit(Pagination pagination);

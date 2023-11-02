@@ -62,7 +62,7 @@
 	</select>
 	
 	<!-- 전체 질문글 개수 -->
-	<select id="countQpost" resultType="int">
+	<select id="countQpost" resultType="int" parameterType="com.sunny.onlineoralcare.common.Pagination">
 		SELECT
 			count(id) as totalCountPost
 		FROM

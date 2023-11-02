@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
-
-//View 
-
+ 
 @RequestMapping("/manager")
 @Controller
 public class ManagerController {
-	
+
 	// 꿀팁 모음집 상세보기 - 수정/삭제 
 	@GetMapping("/tpost/detail-view")
 	public String tpostDetail() {

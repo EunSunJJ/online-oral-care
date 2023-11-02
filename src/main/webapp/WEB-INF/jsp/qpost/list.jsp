@@ -34,7 +34,7 @@
 							<option value="writer">작성자</option>
 						</select> 
 						<input id="searchInput" class="input-qpost-search" type="text" name="keyword" placeholder="검색어를 입력하세요">
-						<button id="searchBtn" class="button-qpost-search" type="submit">검색</button>
+						<button id="searchBtn" class="button-qpost-search" type="submit"  value="${pagination.keyword}">검색</button>
 						</form>
 				</div>
 
@@ -81,23 +81,49 @@
 					<!-- pagination -->
 					<div id="paginationBox">
 						<ul>
-							<!-- 맨 처음 페이지로 -->
-							<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=1">처음으로</a></li>
+							<!-- 검색어가 없을 때 paging -->
+							<c:if test="${pagination.keyword == null and pagination.searchType == null}">
 							
-			                <!-- 이전페이지 버튼 -->
-			                <c:if test="${pagination.prev}">
-			                    <li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${pagination.startPage - 1}">이전</a></li>
-			                </c:if>
+								<!-- 맨 처음 페이지로 -->
+								<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=1">처음으로</a></li>
+								
+				                <!-- 이전페이지 버튼 -->
+				                <c:if test="${pagination.prev}">
+				                    <li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${pagination.startPage - 1}">이전</a></li>
+				                </c:if>
+								
+								<!-- 페이지 리스트 -->
+								<c:forEach var="num" begin="${pagination.startPage}" end="${pagination.endPage}">
+									<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${num}"> ${num}</a></li>
+								</c:forEach>
+								
+	               				<!-- 다음페이지 버튼 -->
+	               				 <c:if test="${pagination.next}">
+	               				 	<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${pagination.endPage + 1}">다음</a></li>
+	                			</c:if>  
+                			</c:if>	
 							
-							<!-- 페이지 리스트 -->
-							<c:forEach var="num" begin="${pagination.startPage}" end="${pagination.endPage}">
-								<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${num}"> ${num}</a></li>
-							</c:forEach>
+							<!-- 검색어가 있을 때 paging -->
+							<c:if test="${pagination.keyword != null and pagination.searchType != null}">
 							
-               				<!-- 다음페이지 버튼 -->
-               				 <c:if test="${pagination.next}">
-               				 	<li class="pageInfo"><a class="paging" href="/qpost/list-view?page=${pagination.endPage + 1}">다음</a></li>
-                			</c:if>    
+				                <!-- 이전페이지 버튼 -->
+				                <c:if test="${pagination.prev}">
+				                    <li class="pageInfo"><a class="paging" 
+				                    href="/qpost/list-view?searchType=${pagination.searchType}&keyword=${pagination.keyword}&page=${pagination.startPage - 1}">이전</a></li>
+				                </c:if>
+								
+								<!-- 페이지 리스트 -->
+								<c:forEach var="num" begin="${pagination.startPage}" end="${pagination.endPage}">
+									<li class="pageInfo"><a class="paging" 
+									href ="/qpost/list-view?searchType=${pagination.searchType}&keyword=${pagination.keyword}&page=${num}"> ${num}</a></li>
+								</c:forEach>
+								
+	               				<!-- 다음페이지 버튼 -->
+	               				 <c:if test="${pagination.next}">
+	               				 	<li class="pageInfo"><a class="paging" 
+	               				 	href="/qpost/list-view?searchType=${pagination.searchType}&keyword=${pagination.keyword}&page=${pagination.endPage + 1}">다음</a></li>
+	                			</c:if>  							
+							</c:if> 
 						</ul>	
 					</div>
 				</div>
