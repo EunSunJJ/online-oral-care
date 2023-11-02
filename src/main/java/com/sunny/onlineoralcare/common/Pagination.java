@@ -44,13 +44,17 @@ public class Pagination {
 	private String keyword;
 	private String searchType;
 	
-	// paging
-	public void pageMaker(int page, int totalPost, String keyword, String searchType) {
-
-		this.page = page;
-		this.totalPost = totalPost;
+	// search
+	public void searchMaker(String keyword, String searchType) {
 		this.keyword = keyword;
 		this.searchType = searchType;
+	}
+	
+	// paging
+	public void pageMaker (int page, int totalPost) {
+		this.page = page;
+		this.totalPost = totalPost;
+		
 		
 		// 전체 페이지수
 		this.totalPage = (int) Math.ceil((double)totalPost / postSize);
@@ -68,7 +72,11 @@ public class Pagination {
 
 		// 시작 페이지
 		this.startPage = endPage - pageSize + 1;
-
+		
+		if (this.startPage < 0) {
+			this.startPage = 1;
+		}
+		
 		// 시작 페이지(startPage)값이 1보다 큰 경우 true 
 		this.prev = this.startPage > 1;
 

@@ -32,9 +32,10 @@ public class ManagerRestController {
 			, @RequestParam(value="imageFile" , required=false) MultipartFile imageFile){
 		
 		int count = managerService.addAnswer(postId, managerId, content, imageFile);
+		
 		// response
 		Map<String, String> resultMap = new HashMap<>();
-		if (count == 1 ) {
+		if (count == 1) {
 			resultMap.put("result", "success");
 		} else {
 			resultMap.put("result", "fail");

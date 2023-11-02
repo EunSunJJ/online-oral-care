@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sunny.onlineoralcare.common.EncryptUtil;
 import com.sunny.onlineoralcare.config.FileManager;
+import com.sunny.onlineoralcare.manager.domain.Answer;
 import com.sunny.onlineoralcare.manager.domain.Manager;
 import com.sunny.onlineoralcare.manager.repository.ManagerRepository;
 
@@ -15,9 +16,15 @@ public class ManagerService {
 	@Autowired
 	private ManagerRepository managerRepository;
 
+	// 질문 게시판 정보 가져오기
+	public Answer getAnswerByPostId(int id) {
+		return managerRepository.selectAnswerByPostId(id);
+	}
+	
 	// 질문 게시판에 답변달기
 	public int addAnswer(int postId, int managerId, String content, MultipartFile imageFile) {
 		
+		//  imageFile을 imagePath로 변경
 		String imagePath = FileManager.saveImageFile(managerId, imageFile);
 		
 		return managerRepository.insertAnswer(postId, managerId, content, imagePath);

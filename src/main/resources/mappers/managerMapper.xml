@@ -2,8 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sunny.onlineoralcare.manager.repository.ManagerRepository">
+ <!-- 질문글에 대한 답변 수정하기  -->
  
- <!-- 질문 게시판에 답변 달기 -->
+  <!-- 답변한 정보 가져오기 -->
+ <select id="selectAnswerByPostId" parameterType="int" resultType="com.sunny.onlineoralcare.manager.domain.Answer">
+ 	SELECT
+ 		`id`
+		, `postId`
+		, `managerId`
+		, `content`
+		, `imagePath`
+		, `createdAt`
+		, `updatedAt`
+		FROM
+			`answer_post`
+		WHERE
+		 `postId` = #{id}
+ </select>
+ 
+ <!-- 질문 게시판에 답변 저장 -->
  <insert id="insertAnswer" parameterType="map">
  	INSERT INTO
  		`answer_post`

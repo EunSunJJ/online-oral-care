@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sunny.onlineoralcare.common.Pagination;
+import com.sunny.onlineoralcare.manager.domain.Answer;
+import com.sunny.onlineoralcare.manager.service.ManagerService;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.service.QpostService;
  
@@ -21,6 +23,9 @@ public class ManagerController {
 
 	@Autowired
 	private QpostService qpostService;
+	
+	@Autowired
+	private ManagerService managerService;
 	
 	// 꿀팁 모음집 상세보기 - 수정/삭제 
 	@GetMapping("/tpost/detail-view")
@@ -38,14 +43,20 @@ public class ManagerController {
 	@GetMapping("/qpost/answer-view")
 	public String managerQpostDetail(
 			@RequestParam("id") int id
-			, Model modle
+			, Model model
 			, HttpSession session) {
 
+		// managerId 정보 
 		int managerId = (Integer)session.getAttribute("managerId");
-		modle.addAttribute("managerId", managerId);
+		model.addAttribute("managerId", managerId);
+
+		// answer_post정보 가져오기
+		Answer answer = managerService.getAnswerByPostId(id);
+		model.addAttribute("answer", answer);
 		
+		// qpost정보 뿌려주기
 		Qpost qpost= qpostService.getQpostById(id);
-		modle.addAttribute("qpost", qpost);
+		model.addAttribute("qpost", qpost);
 		
 		return "manager/qpostDetail";
 	}

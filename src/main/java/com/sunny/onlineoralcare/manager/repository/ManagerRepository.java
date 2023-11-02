@@ -4,11 +4,15 @@ package com.sunny.onlineoralcare.manager.repository;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.sunny.onlineoralcare.manager.domain.Answer;
 import com.sunny.onlineoralcare.manager.domain.Manager;
 
 @Repository
 public interface ManagerRepository {
 
+	// 질문 게시판 정보 가져오기
+	public Answer selectAnswerByPostId (@Param("id") int id);
+	
 	// 질문 게시판에 답변달기
 	public int insertAnswer (
 			@Param("postId") int postId

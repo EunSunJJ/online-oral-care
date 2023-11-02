@@ -48,9 +48,14 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">답변</div>
-						<textarea id="qpostAnswer" class="qpost-detail-content"></textarea>
+						<textarea id="qpostAnswer" class="qpost-detail-content">${answer.content}</textarea>
 					</div>
-					
+
+					<div>
+						<c:if test="${not empty answer.imagePath}">
+							<img id="qpostAnswerFile" class="qpost-answer-file" src="${answer.imagePath}">
+						</c:if>					
+					</div>
 					<input id="qpostAnswerFileInput" class="qpost-file" type="file">	
 									
 					<div class="qpost-detail-button-box">
@@ -59,7 +64,7 @@
 							</div>
 							
 							<div class="qpost-detail-button2">
-								<button id="ManagerQpostModifyBtn" class="button-answer-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
+								<button id="ManagerAnswerModifyBtn" class="button-answer-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
 								<button id="ManagerAnswerSaveBtn" class="button-qpost-answer" type="button" data-post-id="${qpost.id}" data-manager-id="${managerId}">답변달기</button>
 							</div>
 							
@@ -81,6 +86,13 @@
 	$(document).ready(function(){
 		
 			// 답변 수정하기
+			$("#ManagerAnswerModifyBtn").on("click", function(){
+				
+				alert("확인");
+
+			});
+				
+		
 		
 			// 답변 작성하기
 			$("#ManagerAnswerSaveBtn").on("click", function(){
@@ -89,6 +101,7 @@
 				// id얻어오기 , data속성
 				let managerId = $(this).data("manager-id");
 				let postId = $(this).data("post-id");
+				
 				let imageFile = $("#qpostAnswerFileInput")[0];
 				
 				// validation

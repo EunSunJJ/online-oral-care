@@ -50,20 +50,20 @@ public class QpostController {
 	@GetMapping("/list-view")
 	public String qpostList(Model model
 			, @RequestParam(value="page", required = false, defaultValue = "1") int page
-			, @RequestParam(value="keyword", required=false) String keyword
-			, @RequestParam(value="searchType", required=false) String searchType) {
-		
+			, @RequestParam(value="searchType", required=false) String searchType
+			, @RequestParam(value="keyword", required=false) String keyword) {
+			
 			
 			//Pagination 객체생성
 			Pagination pagination = new Pagination();
 			
+			pagination.searchMaker(keyword, searchType);
+			
 			// 전체 게시물 개수 
 			int totalPost = qpostService.countQpost(pagination);
-			
-			pagination.pageMaker(page, totalPost, keyword, searchType);
+			pagination.pageMaker(page, totalPost);
 			
 			model.addAttribute("pagination", pagination);
-			
 			
 			// 페이징을 위해 질문 리스트에 리미트 조건걸어서 가져오기
 			List<Qpost> qpostListLimit = qpostService.getQpostListLimit(pagination);
