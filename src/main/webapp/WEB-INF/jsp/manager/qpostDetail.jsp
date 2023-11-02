@@ -59,11 +59,10 @@
 							</div>
 							
 							<div class="qpost-detail-button2">
-							<c:if test="${manager.userId == userId}">
 								<button id="ManagerQpostModifyBtn" class="button-answer-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
-								<button id="ManagerAnswerSaveBtn" class="button-qpost-answer" type="button" data-post-id="${qpost.id}">답변달기</button>
-							</c:if>
+								<button id="ManagerAnswerSaveBtn" class="button-qpost-answer" type="button" data-post-id="${qpost.id}" data-manager-id="${managerId}">답변달기</button>
 							</div>
+							
 					</div>	
 				
 				</div>
@@ -88,7 +87,9 @@
 				
 				let answer = $("#qpostAnswer").val();
 				// id얻어오기 , data속성
+				let managerId = $(this).data("manager-id");
 				let postId = $(this).data("post-id");
+				let imageFile = $("#qpostAnswerFileInput")[0];
 				
 				// validation
 				if (answer == "") {
@@ -96,13 +97,23 @@
 					return;
 				}
 				
+				// formData
+				let formData = new FormData();
+				formData.append("postId", postId);
+				formData.append("content", answer);
+				formData.append("managerId", managerId);
+				formData.append("imageFile", imageFile.files[0]);
+				
 				$.ajax({
 					type:"post"
 					, url:"/manager/answer/qpost"
-					, data:{
-						"answer":answer
-						, "postId":postId
-						}
+					, data:formData
+					
+					// 파일 업로드 필수 옵션
+					, enctype:"multipart/form-data" 
+					, processData:false  
+					, contentType:false  
+					
 					, success:function(data){
 						if(data.result == "success") {
 							alert("답변 저장 성공");

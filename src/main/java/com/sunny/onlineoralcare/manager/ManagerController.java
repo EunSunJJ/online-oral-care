@@ -36,19 +36,23 @@ public class ManagerController {
 	
 	// 질문 게시물 상세페이지 - 답변달기 기능
 	@GetMapping("/qpost/answer-view")
-	public String qpostDetail(
+	public String managerQpostDetail(
 			@RequestParam("id") int id
-			, Model modle) {
+			, Model modle
+			, HttpSession session) {
+
+		int managerId = (Integer)session.getAttribute("managerId");
+		modle.addAttribute("managerId", managerId);
 		
 		Qpost qpost= qpostService.getQpostById(id);
-		
 		modle.addAttribute("qpost", qpost);
+		
 		return "manager/qpostDetail";
 	}
 	
 	// 질문 글 리스트 + 페이징 추가
 	@GetMapping("/qpost/list-view")
-	public String qpostList(Model model
+	public String managerQpostList(Model model
 			, @RequestParam(value="page", required = false, defaultValue = "1") int page
 			, @RequestParam(value="keyword", required=false) String keyword
 			, @RequestParam(value="searchType", required=false) String searchType) {

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sunny.onlineoralcare.manager.domain.Manager;
 import com.sunny.onlineoralcare.manager.service.ManagerService;
@@ -26,9 +27,11 @@ public class ManagerRestController {
 	@PostMapping("/answer/qpost")
 	public Map<String, String> answer(
 			@RequestParam("postId") int postId
-			, @RequestParam("content") String content) {
+			, @RequestParam("managerId") int managerId
+			, @RequestParam("content") String content
+			, @RequestParam(value="imageFile" , required=false) MultipartFile imageFile){
 		
-		int count = managerService.addAnswer(postId, content);
+		int count = managerService.addAnswer(postId, managerId, content, imageFile);
 		// response
 		Map<String, String> resultMap = new HashMap<>();
 		if (count == 1 ) {

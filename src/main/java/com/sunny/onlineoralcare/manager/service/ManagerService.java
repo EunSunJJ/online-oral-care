@@ -2,8 +2,10 @@ package com.sunny.onlineoralcare.manager.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sunny.onlineoralcare.common.EncryptUtil;
+import com.sunny.onlineoralcare.config.FileManager;
 import com.sunny.onlineoralcare.manager.domain.Manager;
 import com.sunny.onlineoralcare.manager.repository.ManagerRepository;
 
@@ -14,8 +16,11 @@ public class ManagerService {
 	private ManagerRepository managerRepository;
 
 	// 질문 게시판에 답변달기
-	public int addAnswer(int postId, String content) {
-		return managerRepository.insertAnswer(postId, content);
+	public int addAnswer(int postId, int managerId, String content, MultipartFile imageFile) {
+		
+		String imagePath = FileManager.saveImageFile(managerId, imageFile);
+		
+		return managerRepository.insertAnswer(postId, managerId, content, imagePath);
 	}
 	
 	// 로그인 - Id Password조회 일치하는 정보 찾기

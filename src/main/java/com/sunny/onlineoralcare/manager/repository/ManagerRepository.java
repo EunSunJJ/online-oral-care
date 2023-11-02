@@ -11,8 +11,10 @@ public interface ManagerRepository {
 
 	// 질문 게시판에 답변달기
 	public int insertAnswer (
-			@Param("postId") int postId 
-			, @Param("content") String content);
+			@Param("postId") int postId
+			, @Param("managerId") int managerId
+			, @Param("content") String content
+			, @Param("imagePath") String imagePath);
 	
 	// 로그인 - Id Password조회 일치하는 정보 찾기
 	public Manager selectManagerByloginIdAndPassword(

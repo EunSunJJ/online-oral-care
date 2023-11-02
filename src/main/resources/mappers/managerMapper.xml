@@ -9,13 +9,17 @@
  		`answer_post`
  		(
 			`postId`
+			, `managerId`
 			, `content`
+			, `imagePath`
  		)
  		
  		VALUE
 		(
 			#{postId}
+			, #{managerId}
 			, #{content}
+			, #{imagePath}
 		) 
  
  </insert>
