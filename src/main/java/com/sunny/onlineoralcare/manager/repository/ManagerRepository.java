@@ -10,6 +10,11 @@ import com.sunny.onlineoralcare.manager.domain.Manager;
 @Repository
 public interface ManagerRepository {
 
+	// 답변 수정하기
+	public int updateAnswer(
+			@Param("postId") int postId
+			, @Param("content") String content);
+	
 	// 질문 게시판 정보 가져오기
 	public Answer selectAnswerByPostId (@Param("id") int id);
 	

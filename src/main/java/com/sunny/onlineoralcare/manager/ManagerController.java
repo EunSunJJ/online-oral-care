@@ -68,14 +68,14 @@ public class ManagerController {
 			, @RequestParam(value="keyword", required=false) String keyword
 			, @RequestParam(value="searchType", required=false) String searchType) {
 		
-			
 			//Pagination 객체생성
 			Pagination pagination = new Pagination();
+		
+			pagination.searchMaker(keyword, searchType);
 			
 			// 전체 게시물 개수 
 			int totalPost = qpostService.countQpost(pagination);
-			
-			pagination.pageMaker(page, totalPost, keyword, searchType);
+			pagination.pageMaker(page, totalPost);
 			
 			model.addAttribute("pagination", pagination);
 			

@@ -16,6 +16,11 @@ public class ManagerService {
 	@Autowired
 	private ManagerRepository managerRepository;
 
+	// 답변 수정하기
+	public int updateAnswer(int postId, String content) {
+		return managerRepository.updateAnswer(postId, content);
+	}
+	
 	// 질문 게시판 정보 가져오기
 	public Answer getAnswerByPostId(int id) {
 		return managerRepository.selectAnswerByPostId(id);

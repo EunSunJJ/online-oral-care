@@ -64,7 +64,9 @@
 							</div>
 							
 							<div class="qpost-detail-button2">
-								<button id="ManagerAnswerModifyBtn" class="button-answer-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
+								<c:if test="${answer.managerId == managerId}">
+									<button id="ManagerAnswerModifyBtn" class="button-answer-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
+								</c:if>
 								<button id="ManagerAnswerSaveBtn" class="button-qpost-answer" type="button" data-post-id="${qpost.id}" data-manager-id="${managerId}">답변달기</button>
 							</div>
 							
@@ -87,9 +89,31 @@
 		
 			// 답변 수정하기
 			$("#ManagerAnswerModifyBtn").on("click", function(){
+				let answer = $("#qpostAnswer").val();
+				// postId 얻어오기
+				let postId = $(this).data("post-id");
 				
-				alert("확인");
-
+				$.ajax({
+					type:"put"
+					, url:"/manager/answer/qpost-modify"
+					, data:{
+						"content":answer
+						, "postId":postId
+						}
+					, success:function(data){
+						if (data.result == "success") {
+							alert("답변 수정 성공");
+							location.reload();
+						} else {
+							alert("답변 수정 실패");
+						}
+					}
+					, error:function(){
+						alert("답변 수정 에러");
+					}
+				});
+				
+				
 			});
 				
 		
@@ -130,7 +154,7 @@
 					, success:function(data){
 						if(data.result == "success") {
 							alert("답변 저장 성공");
-							location.href="/manager/qpost/list-view"
+							location.reload();
 						} else {
 							alert("답변 저장 실패");
 						}

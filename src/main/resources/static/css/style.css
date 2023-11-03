@@ -663,6 +663,13 @@ nav {
 }
 
 /* manager-detail jsp */
+.qpost-answer-file {
+	margin-left: 240px;
+	margin-bottom: 10px;
+	width: 40%;
+	height: 50%;
+}
+
 .button-answer-modify {
 	color: white;
 	font-size: 17px;
@@ -789,13 +796,6 @@ nav {
 	margin-top: 10px;
 }
 
-/* manager - qpostDetail */
-.qpost-answer-file {
-	margin-left: 240px;
-	margin-bottom: 10px;
-	width: 40%;
-	height: 50%;
-}
 
 
 
