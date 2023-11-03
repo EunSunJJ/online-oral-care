@@ -18,6 +18,7 @@ public class Qpost {
 	private String content;
 	private String imagePath;
 	private String password;
+	private boolean answer;
 	private Date createdAt;
 	private Date updatedAt;
 }

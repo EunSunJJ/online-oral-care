@@ -29,7 +29,7 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">작성자</div>
-						<div class="writer">작성자 아이디 뿌려주기</div>
+						<div class="writer">${userLoginId}</div>
 					</div>
 					
 					<div class="qpost-detail-side">

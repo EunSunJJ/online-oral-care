@@ -11,6 +11,11 @@ import com.sunny.onlineoralcare.qpost.domain.Qpost;
 @Repository
 public interface QpostRepository {
 	
+	// 답변여부 변경해주기
+	public int updateQpostAnswer(
+			@Param("id") int id
+			, @Param("answer") boolean answer);
+	
 	// 질문 글 삭제하기
 	public int deleteQpost(@Param("id") int id);
 	

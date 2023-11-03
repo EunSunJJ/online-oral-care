@@ -25,7 +25,7 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">작성자</div>
-						<div class="writer">작성자 아이디</div>
+						<div class="writer">${userLoginId}</div>
 					</div>
 					
 					<div class="qpost-detail-side">
@@ -42,6 +42,19 @@
 						<textarea id="qpostContent" class="qpost-detail-content">${qpost.content}</textarea>
 					</div>
 					
+					<!-- 답변 -->
+					<c:if test="${not empty qpost.answer}">
+						<div class="qpost-detail-side">
+							<div class="qpost-detail-text">답변</div>
+							<textarea id="qpostAnswer" class="qpost-detail-content">${answer.content}</textarea>
+						</div>
+	
+						<div>
+							<c:if test="${not empty answer.imagePath}">
+								<img id="qpostAnswerFile" class="qpost-answer-file" src="${answer.imagePath}">
+							</c:if>					
+						</div>					
+					</c:if>
 					
 					<div class="qpost-detail-button-box">
 							<div class="qpost-detail-button1">

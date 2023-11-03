@@ -34,14 +34,19 @@ public class QpostController {
 	public String qpostDetail(
 			@RequestParam("id") int id
 			, HttpSession session
-			, Model modle) {
+			, Model model) {
 		
 		// 질문글 작성 userId와 로그인한 userId가 일치해야 수정/삭제 버튼보여주기
 		int userId = (Integer)session.getAttribute("userId");
+		
+		// session에 담겨있는 로그인 아이디 가져오기
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		
 		Qpost qpost= qpostService.getQpostById(id);
 		
-		modle.addAttribute("qpost", qpost);
-		modle.addAttribute("userId", userId);
+		model.addAttribute("userLoginId", userLoginId);
+		model.addAttribute("qpost", qpost);
+		model.addAttribute("userId", userId);
 		
 		return "qpost/detail";
 	}

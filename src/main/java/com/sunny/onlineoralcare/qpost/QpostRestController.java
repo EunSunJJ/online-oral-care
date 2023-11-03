@@ -24,6 +24,26 @@ public class QpostRestController {
 	@Autowired
 	private QpostService qpostService;
 	
+	// 답변여부 변경해주기
+	@PutMapping("/update/answer")
+	public Map<String, String> updateAnswer(
+			@RequestParam("id") int id
+			, @RequestParam("answer") boolean answer) {
+		
+		int count = qpostService.updateQpostAnswer(id, answer); 
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
+	
 	// 질문 글 삭제하기
 	@DeleteMapping("/delete")
 	public Map<String, String> deleteQpost(

@@ -18,6 +18,11 @@ public class QpostService {
 	@Autowired
 	private QpostRepository qpostRepository;
 	
+	// 답변여부 변경해주기
+	public int updateQpostAnswer(int id, boolean answer) {
+		return qpostRepository.updateQpostAnswer(id, answer);
+	}
+	
 	// 질문 글 삭제하기
 	public int deleteQpost(int id) {
 		

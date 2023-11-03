@@ -3,6 +3,17 @@
 
 <mapper namespace="com.sunny.onlineoralcare.qpost.repository.QpostRepository">
 	
+	<!-- 질문글에 대한 답변유무 변경 -->
+	<update id="updateQpostAnswer" parameterType="map">
+		UPDATE
+			`question_post`
+		SET
+			`answer` = #{answer}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{id}	
+	</update>	
+	
 	<!-- 질문 글 삭제하기 -->
 	<delete id="deleteQpost" parameterType="int">
 		DELETE FROM
@@ -34,6 +45,7 @@
 			, `content`
 			, `imagePath`
 			, `password`
+			, `answer`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -53,6 +65,7 @@
 			, `content`
 			, `imagePath`
 			, `password`
+			, `answer`
 			, `createdAt`
 			, `updatedAt`
 		FROM
@@ -82,6 +95,7 @@
 			, `content`
 			, `imagePath`
 			, `password`
+			, `answer`
 			, `createdAt`
 			, `updatedAt`
 		FROM

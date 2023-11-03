@@ -45,7 +45,11 @@ public class ManagerController {
 			@RequestParam("id") int id
 			, Model model
 			, HttpSession session) {
-
+		
+		// session에 담겨있는 user로그인 아이디 가져오기
+		String userLoginId = (String)session.getAttribute("userLoginId");
+		model.addAttribute("userLoginId", userLoginId);
+		
 		// managerId 정보 
 		int managerId = (Integer)session.getAttribute("managerId");
 		model.addAttribute("managerId", managerId);
