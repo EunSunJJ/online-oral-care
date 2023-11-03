@@ -65,7 +65,12 @@
 								
 								<td>${qpost.writer}</td>
 								<td><fmt:formatDate value="${qpost.createdAt}" pattern="yyyy-MM-dd" /></td>
-								<td>답변 미완료</td>
+								<td>
+									<c:choose>
+										<c:when test="${qpost.answer == false}">답변 미완료</c:when>
+										<c:otherwise>답변 완료</c:otherwise>
+									</c:choose>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

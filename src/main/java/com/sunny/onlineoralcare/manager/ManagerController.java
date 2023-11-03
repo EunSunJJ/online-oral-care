@@ -23,8 +23,6 @@ public class ManagerController {
 
 	@Autowired
 	private QpostService qpostService;
-	
-	@Autowired
 	private ManagerService managerService;
 	
 	// 꿀팁 모음집 상세보기 - 수정/삭제 
@@ -55,8 +53,8 @@ public class ManagerController {
 		model.addAttribute("managerId", managerId);
 
 		// answer_post정보 가져오기
-		Answer answer = managerService.getAnswerByPostId(id);
-		model.addAttribute("answer", answer);
+		Answer qpostAnswer = managerService.getAnswerByPostId(id);
+		model.addAttribute("qpostAnswer", qpostAnswer);
 		
 		// qpost정보 뿌려주기
 		Qpost qpost= qpostService.getQpostById(id);

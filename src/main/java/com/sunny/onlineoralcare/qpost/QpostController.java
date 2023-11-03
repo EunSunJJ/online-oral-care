@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sunny.onlineoralcare.common.Pagination;
+import com.sunny.onlineoralcare.manager.domain.Answer;
+import com.sunny.onlineoralcare.manager.service.ManagerService;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.service.QpostService;
 
@@ -21,6 +23,7 @@ public class QpostController {
 	
 	@Autowired
 	private QpostService qpostService;
+	private ManagerService managerService;
 	
 	
 	// 검색 결과 보기
@@ -35,6 +38,10 @@ public class QpostController {
 			@RequestParam("id") int id
 			, HttpSession session
 			, Model model) {
+		
+		// answer_post정보 가져오기
+		Answer answer = managerService.getAnswerByPostId(id);
+		model.addAttribute("answer", answer);
 		
 		// 질문글 작성 userId와 로그인한 userId가 일치해야 수정/삭제 버튼보여주기
 		int userId = (Integer)session.getAttribute("userId");

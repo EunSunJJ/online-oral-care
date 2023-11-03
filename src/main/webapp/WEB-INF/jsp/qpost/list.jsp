@@ -73,7 +73,7 @@
 								
 								<td>
 									<c:choose>
-										<c:when test="${empty qpost.answer}">답변 미완료</c:when>
+										<c:when test="${qpost.answer == false}">답변 미완료</c:when>
 										<c:otherwise>답변 완료</c:otherwise>
 									</c:choose>
 								</td>

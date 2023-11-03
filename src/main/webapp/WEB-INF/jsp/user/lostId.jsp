@@ -21,7 +21,19 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			잃어버린 아이디 찾기
+			<div class="lostId-box-center">
+				<div class="lostId-box">
+					<div class="lostId-text">아이디를 잊으셨나요?</div>
+					<input type="text" class="input-lostId" id="lostIdNameInput" placeholder="이름을 입력해주세요">
+					<input type="text" class="input-lostId" id="lostIdEmailInput" placeholder="이메일을 입력해주세요">
+					
+					<button type="button" class="button-lostId" id="findLostIdBtn">아이디 찾기</button>
+					<div class="button-lostId-center">
+						<a href="/user/join-view"><button class="button-lostId-join" type="button">회원가입</button></a>
+						<a href="/user/lost/password-view"><button class="button-lostId-password" type="button">비밀번호 찾기</button></a>
+					</div>
+				</div>
+			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>

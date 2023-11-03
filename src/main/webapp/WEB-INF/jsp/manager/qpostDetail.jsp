@@ -48,23 +48,23 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">답변</div>
-						<textarea id="qpostAnswer" class="qpost-detail-content">${answer.content}</textarea>
+						<textarea id="qpostAnswer" class="qpost-detail-content">${qpostAnswer.content}</textarea>
 					</div>
 
 					<div>
-						<c:if test="${not empty answer.imagePath}">
-							<img id="qpostAnswerFile" class="qpost-answer-file" src="${answer.imagePath}">
+						<c:if test="${not empty qpostAnswer.imagePath}">
+							<img id="qpostAnswerFile" class="qpost-answer-file" src="${qpostAnswer.imagePath}">
 						</c:if>					
 					</div>
 					<input id="qpostAnswerFileInput" class="qpost-file" type="file">	
 									
 					<div class="qpost-detail-button-box">
 							<div class="qpost-detail-button1">
-								<a href="/qpost/list-view"><button class="button-qpost-list" type="button">목록으로</button></a>
+								<a href="/manager/qpost/list-view"><button class="button-qpost-list" type="button">목록으로</button></a>
 							</div>
 							
 							<div class="qpost-detail-button2">
-								<c:if test="${answer.managerId == managerId}">
+								<c:if test="${qpostAnswer.managerId == managerId}">
 									<button id="ManagerAnswerModifyBtn" class="button-answer-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
 								</c:if>
 								<button id="ManagerAnswerSaveBtn" class="button-qpost-answer" type="button" data-post-id="${qpost.id}" data-manager-id="${managerId}">답변달기</button>

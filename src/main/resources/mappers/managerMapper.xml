@@ -27,7 +27,7 @@
 		FROM
 			`answer_post`
 		WHERE
-		 `postId` = #{id}
+			 `postId` = #{id}
  </select>
  
  <!-- 질문 게시판에 답변 저장 -->

@@ -796,15 +796,206 @@ nav {
 	margin-top: 10px;
 }
 
+/* lost id jsp */
+.lostId-box-center {
+	display: flex;
+	justify-content: center;
+}
 
+.lostId-box {
+	border: 3px solid black;
+	width: 500px;
+	height: 330px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	padding-top: 40px;
+	padding-right: 75px;
+	padding-left: 50px;
+}
 
+.lostId-text {
+	font-size: 35px;
+	font-weight: 600;
+	margin-bottom: 25px;
+}
 
+.input-lostId {
+	width: 400px;
+	height: 30px;
+	margin-bottom: 12px;
+}
 
+.button-lostId {
+	width: 400px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+}
 
+.button-lostId-center {
+	display: flex;
+	justify-content: space-between;
+	width: 400px;
+}
 
+.button-lostId-join {
+	width: 180px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+}
 
+.button-lostId-password {
+	width: 180px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;	
+}
 
+/* find id jsp */
+.findId-box-center {
+	display: flex;
+	justify-content: center;
+}
 
+.findId-box {
+	border: 3px solid black;
+	width: 500px;
+	height: 330px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	padding-top: 40px;
+	padding-right: 75px;
+	padding-left: 50px;
+}
+
+.findId-text {
+	font-size: 35px;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+
+.findId-result {
+	width: 400px;
+	height: 100px;
+	margin-bottom: 10px;
+}
+
+.findId-result-text {
+	font-size: 25px;
+	font-weight: 500;
+	padding: 5px;
+}
+
+.button-findId {
+	width: 400px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 5px;
+}
+
+.button-findId-center {
+	display: flex;
+	justify-content: space-between;
+	width: 400px;
+}
+
+.button-findId-join {
+	width: 180px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+.button-findId-password {
+	width: 180px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;	
+}
+
+/* lost password jsp */
+.lostPassword-box-center {
+	display: flex;
+	justify-content: center;
+}
+
+.lostPassword-box {
+	border: 3px solid black;
+	width: 500px;
+	height: 370px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	padding-top: 40px;
+	padding-right: 75px;
+	padding-left: 50px;
+}
+
+.lostPassword-text {
+	font-size: 34px;
+	font-weight: 600;
+	margin-bottom: 25px;
+}
+
+.input-lostPassword {
+	width: 400px;
+	height: 30px;
+	margin-bottom: 12px;
+}
+
+.button-lostPassword {
+	width: 400px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+.button-lostPassword-center {
+	display: flex;
+	justify-content: space-between;
+	width: 400px;
+}
+
+.button-lostPassword-join {
+	width: 180px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+.button-lostPassword-findId {
+	width: 180px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;	
+}
 
 
 

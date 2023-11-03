@@ -21,7 +21,20 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			새로운 비밀번호 메일로 발송
+			<div class="lostPassword-box-center">
+				<div class="lostPassword-box">
+					<div class="lostPassword-text">비밀번호를 잊으셨나요?</div>
+					<input type="text" class="input-lostPassword" id="lostPasswordNameInput" placeholder="이름을 입력해주세요">
+					<input type="text" class="input-lostPassword" id="lostPasswordIdInput" placeholder="로그인 아이디를 입력해주세요">
+					<input type="text" class="input-lostPassword" id="lostPasswordEmailInput" placeholder="이메일을 입력해주세요">
+					
+					<button type="button" class="button-lostPassword" id="findLostPasswordBtn">새로운 비밀번호 발급받기</button>
+					<div class="button-lostPassword-center">
+						<a href="/user/join-view"><button class="button-lostPassword-join" type="button">회원가입</button></a>
+						<a href="/user/lost/loginId-view"><button class="button-lostPassword-findId" type="button">아이디 찾기</button></a>
+					</div>
+				</div>
+			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>

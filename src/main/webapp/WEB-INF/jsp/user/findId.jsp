@@ -21,7 +21,22 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			아이디 찾아서 보여주기
+			<div class="findId-box-center">
+				<div class="findId-box">
+					<div class="findId-text">아이디 찾기</div>
+					
+					<div class="findId-result">
+						<div class="findId-result-text">ooo 님의 아이디는</div>
+						<div class="findId-result-text">ㅁㅁㅁㅁ 입니다.</div>
+					</div>
+					
+					<a href="/user/login-view"><button type="button" class="button-findId">로그인 하기</button></a>
+					<div class="button-findId-center">
+						<a href="/user/join-view"><button class="button-findId-join" type="button">회원가입</button></a>
+						<a href="/user/lost/password-view"><button class="button-findId-password" type="button">비밀번호 찾기</button></a>
+					</div>
+				</div>
+			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>
