@@ -26,8 +26,8 @@
 					<div class="findId-text">아이디 찾기</div>
 					
 					<div class="findId-result">
-						<div class="findId-result-text">ooo 님의 아이디는</div>
-						<div class="findId-result-text">ㅁㅁㅁㅁ 입니다.</div>
+						<div class="findId-result-text"><strong>${userInfo.name}</strong> 님의 아이디는</div>
+						<div class="findId-result-text"><strong>${userInfo.loginId}</strong> 입니다.</div>
 					</div>
 					
 					<a href="/user/login-view"><button type="button" class="button-findId">로그인 하기</button></a>

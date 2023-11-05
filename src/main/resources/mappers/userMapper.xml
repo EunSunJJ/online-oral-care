@@ -4,6 +4,25 @@
 <mapper
 	namespace="com.sunny.onlineoralcare.user.repository.UserRepository">
 
+	<!-- 아이디 찾기 -->
+	<select id="selectUserByNameAndEmail" parameterType="map" resultType="com.sunny.onlineoralcare.user.domain.User">
+		SELECT
+			`id`
+			, `loginId`
+			, `password`
+			, `name`
+			, `phoneNumber`
+			, `birthday`
+			, `email`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`user`
+		WHERE
+			`name` = #{name}
+			AND `email` = #{email}
+	</select>
+	
 	<!-- 내 정보 수정하기 - 비밀번호 일치여부 확인하고 비밀번호 변경화면으로 이동 -->
 	<select id="selectUserByPassword" parameterType="map" resultType="com.sunny.onlineoralcare.user.domain.User">
 		SELECT

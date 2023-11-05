@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sunny.onlineoralcare.user.domain.User;
 import com.sunny.onlineoralcare.user.service.UserService;
@@ -45,8 +47,14 @@ public class UserController {
 	}
 	
 	// 찾은 아이디 알려주기
-	@GetMapping("/find/loginId-view")
-	public String findLoginId() {
+	@PostMapping("/find/loginId-view")
+	public String findLoginId(
+			@RequestParam("name") String name
+			, @RequestParam("email") String email
+			, Model model) {
+		
+		User user = userService.getUserByNameAndEmail(name, email);
+		model.addAttribute("userInfo", user);
 		return "user/findId";
 	}
 	

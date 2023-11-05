@@ -24,10 +24,12 @@
 			<div class="lostId-box-center">
 				<div class="lostId-box">
 					<div class="lostId-text">아이디를 잊으셨나요?</div>
-					<input type="text" class="input-lostId" id="lostIdNameInput" placeholder="이름을 입력해주세요">
-					<input type="text" class="input-lostId" id="lostIdEmailInput" placeholder="이메일을 입력해주세요">
-					
-					<button type="button" class="button-lostId" id="findLostIdBtn">아이디 찾기</button>
+					<form method="post" action="/user/find/loginId-view">
+						<input type="text" class="input-lostId" id="lostIdNameInput" placeholder="이름을 입력해주세요" name="name">
+						<input type="text" class="input-lostId" id="lostIdEmailInput" placeholder="이메일을 입력해주세요" name="email">
+						
+						<button type="submit" class="button-lostId" id="findLostIdBtn">아이디 찾기</button>
+					</form>
 					<div class="button-lostId-center">
 						<a href="/user/join-view"><button class="button-lostId-join" type="button">회원가입</button></a>
 						<a href="/user/lost/password-view"><button class="button-lostId-password" type="button">비밀번호 찾기</button></a>
@@ -41,5 +43,48 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script>
+		$(document).ready(function(){
+			
+			$("#findLostIdBtn").on("click", function(){
+				
+				let name = $("#lostIdNameInput").val();
+				let email = $("#lostIdEmailInput").val();
+				
+				// validation
+				if(name == "") {
+					alert("이름을 입력하세요");
+					return;
+				}
+				
+				if(email == "") {
+					alert("이메일을 입력하세요");
+					return;
+				}
+				
+				$.ajax({
+					type:"post"
+					, url:"/user/find/id"
+					, data:{
+						"name":name
+						, "email":email
+						}
+					, success:function(data){
+						if (data.result == "success") {
+							alert("아이디 찾기 성공");
+							location.href="/user/find/loginId-view"
+						} else {
+							alert("아이디 찾기 실패");
+						}
+					}
+					, error:function(){
+						alert("아이디 찾기 에러");
+					}
+					
+				});
+			});
+		});
+	</script>
 </body>
 </html>

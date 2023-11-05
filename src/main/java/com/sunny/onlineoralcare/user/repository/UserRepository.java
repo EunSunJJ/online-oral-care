@@ -9,6 +9,11 @@ import com.sunny.onlineoralcare.user.domain.User;
 @Repository
 public interface UserRepository {
 	
+	// 아이디 찾기
+	public User selectUserByNameAndEmail(
+			@Param("name") String name
+			, @Param("email") String email);
+	
 	// 내 정보 수정하기 - 비밀번호 일치여부 확인하고 비밀번호 변경화면으로 이동
 	public User selectUserByPassword(
 			@Param("id") int id
