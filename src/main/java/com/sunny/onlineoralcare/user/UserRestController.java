@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sunny.onlineoralcare.common.MailDto;
+import com.sunny.onlineoralcare.common.MailService;
 import com.sunny.onlineoralcare.user.domain.User;
 import com.sunny.onlineoralcare.user.service.UserService;
 
@@ -22,13 +24,15 @@ public class UserRestController {
 
 	@Autowired
 	private UserService userService;
+	private MailService mailService;
 
 	// 정보확인 후 새로운 비밀번호 이메일 발송
 	@PostMapping("/send/password")
 	public  Map<String, String> lostPassword (
 			@RequestParam("name") String name
 			, @RequestParam("loginId") String loginId
-			, @RequestParam("email") String email) {
+			, @RequestParam("email") String email
+			, MailDto mailDto) {
 		
 		// 1. 회원정보 일치여부 확인
 		User user = userService.getUserByNameAndEmailAndLoginId(name, loginId, email);
@@ -36,7 +40,12 @@ public class UserRestController {
 		 // response
 		 Map<String, String> resultMap = new HashMap<>();
 		 if(user != null) {
+			 
+			 // 2. 메일 전송하기
+			 mailService.sendSimpleMessage(mailDto);
+			 
 			 resultMap.put("result", "success");
+			 
 		 } else {
 			 resultMap.put("result", "fail");
 		 }

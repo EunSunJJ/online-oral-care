@@ -80,7 +80,7 @@
 						alert("이메일 발송 성공");
 						location.href="/user/login-view"
 					} else {
-						alert("이메일 발송 실패");
+						alert("회원 정보를 다시 확인해주세요");
 					}
 				}
 				, error:function(){

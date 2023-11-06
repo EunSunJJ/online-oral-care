@@ -9,7 +9,7 @@
 		UPDATE
 			`user`
 		SET
-			`password` = #{password}
+			`password` = #{newPassword}
 			, `updatedAt` = now()
 		WHERE
 			`loginId` = #{loginId}

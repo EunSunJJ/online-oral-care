@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sunny.onlineoralcare.common.EncryptUtil;
-import com.sunny.onlineoralcare.common.Mail;
 import com.sunny.onlineoralcare.user.domain.User;
 import com.sunny.onlineoralcare.user.repository.UserRepository;
 
@@ -13,13 +12,18 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-
+	
+	// 비밀번호 변경하기
+	public int updateNewPassword(String newPassword, String loginId, String email) {
+		return userRepository.updateNewPassword(newPassword, loginId, email);
+	}
+	
 	// 메일 내용을 생성하고 임시 비밀번호로 회원 비밀번호를 변경 
 	public User getUserByNameAndEmailAndLoginId (String name, String loginId, String email) {
 		
 		// 회원정보 일치여부 확인
 		User user = userRepository.selectUserByNameAndEmailAndLoginId(name, loginId, email);
-//		
+		
 //        //임시 비번 생성
 //        String newPassword = "";
 //        
@@ -39,12 +43,9 @@ public class UserService {
 //	                + "aaaa" + " 입니다." + "로그인 후에 비밀번호를 변경을 해주세요");
 //		 
 //		 // 메일 보내기
-		 
+//		 
 		 return user;
 	}
-	
-	// 비밀번호 변경하기
-	
 	
 	// 아이디 찾기
 	public User getUserByNameAndEmail(String name, String email) {
