@@ -16,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sunny.onlineoralcare.user.domain.User;
 import com.sunny.onlineoralcare.user.service.UserService;
 
-// API 
-
 @RequestMapping("/user")
 @RestController
 public class UserRestController {
@@ -25,6 +23,29 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 
+	// 정보확인 후 새로운 비밀번호 이메일 발송
+	@PostMapping("/send/password")
+	public  Map<String, String> lostPassword (
+			@RequestParam("name") String name
+			, @RequestParam("loginId") String loginId
+			, @RequestParam("email") String email) {
+		
+		// 1. 회원정보 일치여부 확인
+		User user = userService.getUserByNameAndEmailAndLoginId(name, loginId, email);
+		
+		 // response
+		 Map<String, String> resultMap = new HashMap<>();
+		 if(user != null) {
+			 resultMap.put("result", "success");
+		 } else {
+			 resultMap.put("result", "fail");
+		 }
+		 
+		 return resultMap;
+	}
+	
+	// 비밀번호 변경하기
+	
 	// 아이디 찾기
 	@PostMapping("/find/id")
 	public Map<String, String> findId(

@@ -40,7 +40,7 @@ public class UserController {
 		return "user/resetPassword";
 	}
 	
-	// 잃어버린 비밀번호 이메일로 전송해주기
+	// 임시 비밀번호 발송하기
 	@GetMapping("/lost/password-view")
 	public String lostPassword() {
 		return "user/lostPassword";

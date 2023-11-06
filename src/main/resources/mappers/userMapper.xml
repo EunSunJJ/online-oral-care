@@ -4,6 +4,37 @@
 <mapper
 	namespace="com.sunny.onlineoralcare.user.repository.UserRepository">
 
+	<!-- 비밀번호 변경하기 -->
+	<update id="updateNewPassword" parameterType="map">
+		UPDATE
+			`user`
+		SET
+			`password` = #{password}
+			, `updatedAt` = now()
+		WHERE
+			`loginId` = #{loginId}
+			AND `email` = #{email}
+	</update>
+	
+	<!-- 임시 비밀번호 설정 전 정보확인하기 -->
+	<select id="selectUserByNameAndEmailAndLoginId" parameterType="map" resultType="com.sunny.onlineoralcare.user.domain.User">
+		SELECT
+			`id`
+			, `loginId`
+			, `password`
+			, `name`
+			, `phoneNumber`
+			, `birthday`
+			, `email`
+			, `createdAt`
+			, `updatedAt`			
+		FROM
+			`user`
+		WHERE
+			`name` = #{name}
+			AND `loginId` = #{loginId}
+			AND `email` = #{email}
+	</select> 
 	<!-- 아이디 찾기 -->
 	<select id="selectUserByNameAndEmail" parameterType="map" resultType="com.sunny.onlineoralcare.user.domain.User">
 		SELECT

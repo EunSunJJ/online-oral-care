@@ -8,8 +8,8 @@ spring:
   mail:
     host: smtp.naver.com
     port: 465
-    username: id@naver.com
-    password: password
+    username: developtest0122@naver.com
+    password: DEVELOPtest0724@
     properties:
       mail:
         smtp:

@@ -42,5 +42,53 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script>
+	$(document).ready(function(){
+		$("#findLostPasswordBtn").on("click", function(){
+			
+			let name = $("#lostPasswordNameInput").val();
+			let loginId = $("#lostPasswordIdInput").val();
+			let email = $("#lostPasswordEmailInput").val();
+			
+			// validation
+			if (name == "") {
+				alert("이름을 입력해주세요");
+				return;
+			}
+			
+			if (loginId == "") {
+				alert("로그인 아이디를 입력해주세요");
+				return;
+			}
+			
+			if (email == "") {
+				alert("이메일을 입력해주세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"post"
+				, url:"/user/send/password"
+				, data:{
+					"name":name
+					, "loginId":loginId
+					, "email":email
+					}
+				, success:function(data){
+					if (data.result == "success"){
+						alert("이메일 발송 성공");
+						location.href="/user/login-view"
+					} else {
+						alert("이메일 발송 실패");
+					}
+				}
+				, error:function(){
+					alert("이메일 발송 에러");
+				}
+			});
+		});
+	});
+	</script>
 </body>
 </html>
