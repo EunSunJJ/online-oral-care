@@ -1022,7 +1022,7 @@ nav {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
-	background-color:palevioletred;
+	background-color: palevioletred;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -1032,40 +1032,40 @@ nav {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
-	background-color:rgb(245, 181, 101);
+	background-color: rgb(245, 181, 101);
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .care-circle3 {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
-	background-color:rgb(243, 227, 137);
+	background-color: rgb(243, 227, 137);
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .care-circle4 {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
-	background-color:darkseagreen;
+	background-color: darkseagreen;
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .care-circle5 {
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;
-	background-color:cornflowerblue;
+	background-color: cornflowerblue;
 	display: flex;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
 }
 
 .care-circle-text3 {
@@ -1082,7 +1082,7 @@ nav {
 	font-weight: 600;
 }
 
-.a-careDetail{
+.a-careDetail {
 	color: black;
 	display: block;
 }
@@ -1098,3 +1098,56 @@ nav {
 	font-weight: 500;
 	margin-bottom: 15px;
 }
+
+/* private survey */
+.online-survey-box-center {
+	display: flex;
+	justify-content: center;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.online-survey-box {
+	border: 1px solid black;
+	width: 600px;
+	height: 700px;
+	padding: 3%;
+}
+
+.online-survey-text {
+	font-size: 40px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

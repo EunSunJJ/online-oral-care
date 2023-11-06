@@ -21,7 +21,42 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			사용자 문진표 작성 화면
+			<div class="online-survey-box-center">
+				<div class="online-survey-box">
+					<div class="online-survey-text">온라인 문진표</div>
+
+					<form method="get" action="form-action.html">
+						<h5>1. 전신질환 유무</h5>
+					   	<label><input type="checkbox" name="color" value="blue"> Blue</label>
+					    <label><input type="checkbox" name="color" value="red"> Red</label>
+					    <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+					</form>
+					
+					<form method="get" action="form-action.html">
+						<h5>2. 먹는 약 유무</h5>
+					   	<label><input type="checkbox" name="color" value="blue"> Blue</label>
+					    <label><input type="checkbox" name="color" value="red"> Red</label>
+					    <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+					</form>
+					
+					<form>
+						<h5>3. 마지막 치과 방문일</h5>
+						<p><input type="text"></p>
+					</form>	
+					
+					<form>
+						<h5>4. 현재 불편한 곳</h5>
+						<p><input type="text"></p>
+					</form>	
+										
+					<form method="get" action="form-action.html">
+						<h5>5. 치과 추천을 원하신다면 거주지를 선택해주세요</h5>
+					   	<label><input type="checkbox" name="color" value="blue"> Blue</label>
+					    <label><input type="checkbox" name="color" value="red"> Red</label>
+					    <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+					</form>
+				</div>
+			</div>	
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>
