@@ -9,10 +9,13 @@ spring:
     host: smtp.naver.com
     port: 465
     username: developtest0122@naver.com
-    password: DEVELOPtest0724@
+    password: MMPV366Q32BC
     properties:
       mail:
         smtp:
+          ssl:
+            enable: true
+            trust: smtp.naver.com
           auth: true
           timeout: 5000
           starttls:

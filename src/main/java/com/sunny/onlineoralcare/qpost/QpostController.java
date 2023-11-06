@@ -23,6 +23,8 @@ public class QpostController {
 	
 	@Autowired
 	private QpostService qpostService;
+	
+	@Autowired
 	private ManagerService managerService;
 	
 	

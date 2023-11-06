@@ -24,6 +24,8 @@ public class UserRestController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
 	private MailService mailService;
 
 	// 비밀번호 변경하기
@@ -43,7 +45,6 @@ public class UserRestController {
 		 if(user != null) {
 			 
 			 // 2. 메일 전송하기
-			 
 			 MailDto mailDto = MailDto.builder()
 					 .receiver("email")
 					 .title("임시비밀번호 안내 이메일 입니다.")
