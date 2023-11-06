@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>생애 주기별 구강관리 비법</title>
+<title>노년기</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -20,19 +20,38 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
-		<section>
-			<div class="care-box-center">
-				<div class="care-box">
-					<div class="care-box-text">생애 주기별 구강관리 비법</div>
-					<div class="care-box-main">
-						<div class="care-circle1"><a href="/info/careDetail-view1" class="a-careDetail"><span class="care-circle-text4">영유아기</span></a></div>
-						<div class="care-circle2"><a href="/info/careDetail-view2" class="a-careDetail"><span class="care-circle-text3">소아기</span></a></div>
-						<div class="care-circle3"><a href="/info/careDetail-view3" class="a-careDetail"><span class="care-circle-text4">청소년기</span></a></div>
-						<div class="care-circle4"><a href="/info/careDetail-view4" class="a-careDetail"><span class="care-circle-text3">성인기</span></a></div>
-						<div class="care-circle5"><a href="/info/careDetail-view5" class="a-careDetail"><span class="care-circle-text3">노년기</span></a></div>
-					</div>
-				</div>
-			</div>
+		<section class="mt-5">
+		
+			<div class="caerDetail-text">노년기 구강관리 비법</div>
+			
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<td>정보</td>
+						<td>많이하는 질문</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>11</td>
+						<td>11</td>
+					</tr>
+				</tbody>
+
+				<tbody>
+					<tr>
+						<td>22</td>
+						<td>22</td>
+					</tr>
+				</tbody>
+				
+				<tbody>
+					<tr>
+						<td>33</td>
+						<td>33</td>
+					</tr>
+				</tbody>								
+			</table>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>

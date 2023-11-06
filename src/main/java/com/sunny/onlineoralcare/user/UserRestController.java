@@ -26,13 +26,14 @@ public class UserRestController {
 	private UserService userService;
 	private MailService mailService;
 
+	// 비밀번호 변경하기
+
 	// 정보확인 후 새로운 비밀번호 이메일 발송
 	@PostMapping("/send/password")
 	public  Map<String, String> lostPassword (
 			@RequestParam("name") String name
 			, @RequestParam("loginId") String loginId
-			, @RequestParam("email") String email
-			, MailDto mailDto) {
+			, @RequestParam("email") String email) {
 		
 		// 1. 회원정보 일치여부 확인
 		User user = userService.getUserByNameAndEmailAndLoginId(name, loginId, email);
@@ -42,8 +43,15 @@ public class UserRestController {
 		 if(user != null) {
 			 
 			 // 2. 메일 전송하기
-			 mailService.sendSimpleMessage(mailDto);
 			 
+			 MailDto mailDto = MailDto.builder()
+					 .receiver("email")
+					 .title("임시비밀번호 안내 이메일 입니다.")
+					 .message("안녕하세요. 임시비밀번호 안내 관련 이메일 입니다." + " 회원님의 임시 비밀번호는 "
+					           + "aaaa" + " 입니다." + "로그인 후에 비밀번호를 변경을 해주세요")
+					 .build();
+			 mailService.sendSimpleMessage(mailDto);
+					 
 			 resultMap.put("result", "success");
 			 
 		 } else {
@@ -52,8 +60,6 @@ public class UserRestController {
 		 
 		 return resultMap;
 	}
-	
-	// 비밀번호 변경하기
 	
 	// 아이디 찾기
 	@PostMapping("/find/id")

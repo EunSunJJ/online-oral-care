@@ -1,8 +1,10 @@
 package com.sunny.onlineoralcare.common;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
+@Builder
 @Setter
 @Getter
 public class MailDto {
@@ -13,3 +15,4 @@ public class MailDto {
 	private String message; // 메일 내용
 	
 }
+

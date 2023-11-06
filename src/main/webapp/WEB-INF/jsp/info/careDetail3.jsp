@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>구강관리 정보들 보여주는 화면</title>
+<title>청소년기</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -20,8 +20,38 @@
 	<div id="wrap">
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
-		<section>
-			구강관리 정보 표로 나타내기
+		<section class="mt-5">
+		
+			<div class="caerDetail-text">청소년기 구강관리 비법</div>
+			
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<td>정보</td>
+						<td>많이하는 질문</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>11</td>
+						<td>11</td>
+					</tr>
+				</tbody>
+
+				<tbody>
+					<tr>
+						<td>22</td>
+						<td>22</td>
+					</tr>
+				</tbody>
+				
+				<tbody>
+					<tr>
+						<td>33</td>
+						<td>33</td>
+					</tr>
+				</tbody>								
+			</table>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>

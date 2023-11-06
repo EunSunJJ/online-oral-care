@@ -709,7 +709,7 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
-	}
+}
 
 .info-box-logo {
 	font-size: 30px;
@@ -858,7 +858,7 @@ nav {
 	font-size: 17px;
 	background-color: navy;
 	text-decoration: none;
-	margin-top: 10px;	
+	margin-top: 10px;
 }
 
 /* find id jsp */
@@ -929,7 +929,7 @@ nav {
 	font-size: 17px;
 	background-color: navy;
 	text-decoration: none;
-	margin-top: 10px;	
+	margin-top: 10px;
 }
 
 /* lost password jsp */
@@ -994,15 +994,107 @@ nav {
 	font-size: 17px;
 	background-color: navy;
 	text-decoration: none;
-	margin-top: 10px;	
+	margin-top: 10px;
 }
 
+/* care jsp */
+.care-box-center {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+	margin-bottom: 20px;
+}
 
+.care-box-text {
+	font-size: 40px;
+	font-weight: 600;
+}
 
+.care-box-main {
+	width: 1100px;
+	height: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
 
+.care-circle1 {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color:palevioletred;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
+.care-circle2 {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color:rgb(245, 181, 101);
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
 
+.care-circle3 {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color:rgb(243, 227, 137);
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
 
+.care-circle4 {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color:darkseagreen;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
 
+.care-circle5 {
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	background-color:cornflowerblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
 
+.care-circle-text3 {
+	width: 90px;
+	height: 40px;
+	font-size: 30px;
+	font-weight: 600;
+}
 
+.care-circle-text4 {
+	width: 130px;
+	height: 40px;
+	font-size: 30px;
+	font-weight: 600;
+}
+
+.a-careDetail{
+	color: black;
+	display: block;
+}
+
+.a-careDetail:hover {
+	text-decoration: none;
+	color: black;
+}
+
+/* care Detail jsp */
+.caerDetail-text {
+	font-size: 30px;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
