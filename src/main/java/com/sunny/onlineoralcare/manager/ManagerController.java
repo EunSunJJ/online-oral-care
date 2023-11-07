@@ -23,6 +23,8 @@ public class ManagerController {
 
 	@Autowired
 	private QpostService qpostService;
+	
+	@Autowired
 	private ManagerService managerService;
 	
 	// 꿀팁 모음집 상세보기 - 수정/삭제 
@@ -44,14 +46,6 @@ public class ManagerController {
 			, Model model
 			, HttpSession session) {
 		
-		// session에 담겨있는 user로그인 아이디 가져오기
-		String userLoginId = (String)session.getAttribute("userLoginId");
-		model.addAttribute("userLoginId", userLoginId);
-		
-		// managerId 정보 
-		int managerId = (Integer)session.getAttribute("managerId");
-		model.addAttribute("managerId", managerId);
-
 		// answer_post정보 가져오기
 		Answer qpostAnswer = managerService.getAnswerByPostId(id);
 		model.addAttribute("qpostAnswer", qpostAnswer);

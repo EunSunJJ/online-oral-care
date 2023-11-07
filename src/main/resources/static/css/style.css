@@ -1110,7 +1110,7 @@ nav {
 .online-survey-box {
 	border: 1px solid black;
 	width: 600px;
-	height: 700px;
+	height: 750px;
 	padding: 3%;
 }
 
@@ -1120,7 +1120,16 @@ nav {
 	margin-bottom: 20px;
 }
 
-
+.button-private-survey {
+	width: 180px;
+	height: 35px;
+	color: white;
+	font-size: 17px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 10px;
+	margin-left: 350px;
+}
 
 
 

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sunny.onlineoralcare.common.EncryptUtil;
+import com.sunny.onlineoralcare.common.mail.MailDto;
+import com.sunny.onlineoralcare.common.mail.MailService;
 import com.sunny.onlineoralcare.user.domain.User;
 import com.sunny.onlineoralcare.user.repository.UserRepository;
 
@@ -12,6 +14,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private MailService mailService;
 	
 	// 비밀번호 변경하기
 	public int updateNewPassword(String newPassword, String loginId, String email) {
@@ -24,18 +29,35 @@ public class UserService {
 		// 회원정보 일치여부 확인
 		User user = userRepository.selectUserByNameAndEmailAndLoginId(name, loginId, email);
 		
-//        //임시 비번 생성
-//        String newPassword = "";
-//        
-//        // 임시비밀번호 random함수로 생성
-//        
-//        //임시 비번 encoding
-//        String hashingPassword = EncryptUtil.md5(newPassword);
-//        
-//        //User의 정보를 업데이트함.
-//        user.updatePassword(user.getEmail(), hashingPassword);
-	 
-		 return user;
+		// 랜덤함수로 새로운 비밀번호 만들기
+        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+        String newPassword = "";
+        
+        int idx = 0;
+        for (int i = 0; i < 10; i++) {
+            idx = (int) (charSet.length * Math.random());
+            newPassword += charSet[idx];
+        }
+		
+		// 새로운 비밀번호 encoding
+        String hashingPassword = EncryptUtil.md5(newPassword);
+        
+        // newPassword로 비밀번호 update
+        updateNewPassword(hashingPassword, loginId, email);
+        
+		// 메일 전송하기
+		MailDto mailDto = MailDto.builder()
+				.receiver(email)
+				.title( name + "님의 비밀번호 변경 안내 이메일 입니다.")
+				.message("안녕하세요. 비밀번호 변경 안내 이메일 입니다." + "[" + name + "]" + " 님의 새로운 비밀번호는"
+						+ "[" + newPassword + "]" + " 입니다. 로그인 후에 비밀번호를 변경을 해주세요")
+				.build();
+		
+		mailService.sendSimpleMessage(mailDto);
+		
+		return user;
 	}
 	
 	// 아이디 찾기

@@ -33,7 +33,7 @@
 							<option value="title">제목</option>
 							<option value="writer">작성자</option>
 						</select> 
-						<input id="searchInput" class="input-qpost-search" type="text" name="keyword" placeholder="검색어를 입력하세요">
+						<input id="searchInput" class="input-qpost-search" type="search" name="keyword" placeholder="검색어를 입력하세요">
 						<button id="searchBtn" class="button-qpost-search" type="submit"  value="${pagination.keyword}">검색</button>
 					</form>
 				</div>

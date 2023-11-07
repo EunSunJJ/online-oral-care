@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">작성자</div>
-						<div class="writer">${userLoginId}</div>
+						<div class="writer">${qpost.userId}</div>
 					</div>
 					
 					<div class="qpost-detail-side">

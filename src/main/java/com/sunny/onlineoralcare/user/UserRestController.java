@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sunny.onlineoralcare.common.MailDto;
-import com.sunny.onlineoralcare.common.MailService;
 import com.sunny.onlineoralcare.user.domain.User;
 import com.sunny.onlineoralcare.user.service.UserService;
 
@@ -25,11 +23,12 @@ public class UserRestController {
 	@Autowired
 	private UserService userService;
 	
-	@Autowired
-	private MailService mailService;
-
-	// 비밀번호 변경하기
-
+	// 문진표 저장하기 
+//	@PostMapping("/private-survey")
+//	public Map<String, String> privateSurvey() {
+//		
+//	}
+	
 	// 정보확인 후 새로운 비밀번호 이메일 발송
 	@PostMapping("/send/password")
 	public  Map<String, String> lostPassword (
@@ -37,22 +36,11 @@ public class UserRestController {
 			, @RequestParam("loginId") String loginId
 			, @RequestParam("email") String email) {
 		
-		// 1. 회원정보 일치여부 확인
 		User user = userService.getUserByNameAndEmailAndLoginId(name, loginId, email);
 		
 		 // response
 		 Map<String, String> resultMap = new HashMap<>();
 		 if(user != null) {
-			 
-			 // 2. 메일 전송하기
-			 MailDto mailDto = MailDto.builder()
-					 .receiver("email")
-					 .title("임시비밀번호 안내 이메일 입니다.")
-					 .message("안녕하세요. 임시비밀번호 안내 관련 이메일 입니다." + " 회원님의 임시 비밀번호는 "
-					           + "aaaa" + " 입니다." + "로그인 후에 비밀번호를 변경을 해주세요")
-					 .build();
-			 mailService.sendSimpleMessage(mailDto);
-					 
 			 resultMap.put("result", "success");
 			 
 		 } else {
