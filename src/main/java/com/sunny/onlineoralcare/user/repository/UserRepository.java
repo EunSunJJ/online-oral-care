@@ -11,9 +11,8 @@ public interface UserRepository {
 	
 	// 비밀번호 변경하기
 	public int updateNewPassword(
-			@Param("newPassword") String newPassword
-			, @Param("loginId") String loginId
-			, @Param("email") String email);
+			@Param("loginId") String loginId
+			, @Param("newPassword") String newPassword);
 	
 	// 임시 비밀번호 설정 전 정보확인하기
 	public User selectUserByNameAndEmailAndLoginId(

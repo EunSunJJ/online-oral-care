@@ -29,6 +29,26 @@ public class UserRestController {
 //		
 //	}
 	
+	// 비밀번호 변경하기
+	@PutMapping("/modify/password")
+	public Map<String, String> updatePassword(
+			@RequestParam("newPassword") String newPassword
+			, HttpSession session) {
+		
+		String longinId = (String) session.getAttribute("userLoginId");
+		int count = userService.updateNewPassword(newPassword, longinId);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
+	
 	// 정보확인 후 새로운 비밀번호 이메일 발송
 	@PostMapping("/send/password")
 	public  Map<String, String> lostPassword (
@@ -40,7 +60,7 @@ public class UserRestController {
 		
 		 // response
 		 Map<String, String> resultMap = new HashMap<>();
-		 if(user != null) {
+		 if (user != null) {
 			 resultMap.put("result", "success");
 			 
 		 } else {

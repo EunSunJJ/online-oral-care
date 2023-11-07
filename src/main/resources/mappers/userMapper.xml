@@ -13,7 +13,6 @@
 			, `updatedAt` = now()
 		WHERE
 			`loginId` = #{loginId}
-			AND `email` = #{email}
 	</update>
 	
 	<!-- 임시 비밀번호 설정 전 정보확인하기 -->

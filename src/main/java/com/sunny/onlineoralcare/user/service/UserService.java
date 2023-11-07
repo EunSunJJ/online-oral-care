@@ -19,8 +19,9 @@ public class UserService {
 	private MailService mailService;
 	
 	// 비밀번호 변경하기
-	public int updateNewPassword(String newPassword, String loginId, String email) {
-		return userRepository.updateNewPassword(newPassword, loginId, email);
+	public int updateNewPassword(String newPassword, String loginId) {
+		String hashingPassword = EncryptUtil.md5(newPassword);
+		return userRepository.updateNewPassword(loginId, hashingPassword);
 	}
 	
 	// 메일 내용을 생성하고 임시 비밀번호로 회원 비밀번호를 변경 
@@ -40,12 +41,9 @@ public class UserService {
             idx = (int) (charSet.length * Math.random());
             newPassword += charSet[idx];
         }
-		
-		// 새로운 비밀번호 encoding
-        String hashingPassword = EncryptUtil.md5(newPassword);
         
         // newPassword로 비밀번호 update
-        updateNewPassword(hashingPassword, loginId, email);
+        updateNewPassword(newPassword, loginId);
         
 		// 메일 전송하기
 		MailDto mailDto = MailDto.builder()
