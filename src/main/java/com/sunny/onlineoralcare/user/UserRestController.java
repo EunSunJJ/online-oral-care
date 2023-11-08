@@ -24,10 +24,28 @@ public class UserRestController {
 	private UserService userService;
 	
 	// 문진표 저장하기 
-//	@PostMapping("/private-survey")
-//	public Map<String, String> privateSurvey() {
-//		
-//	}
+	@PostMapping("/private-survey")
+	public Map<String, String> privateSurvey(
+			@RequestParam("userId") int userId
+			, @RequestParam("disease") String disease
+			, @RequestParam("medicine") String medicine
+			, @RequestParam("drugAllergy") String drugAllergy
+			, @RequestParam("lastDentalClinic") String lastDentalClinic
+			, @RequestParam("discomfort") String discomfort
+			, @RequestParam("address") String address) {
+		
+		int count = userService.addPrivateSurvey(userId, disease, medicine, drugAllergy, lastDentalClinic, discomfort, address);
+				
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (count == 1) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+		
+		return resultMap;
+	}
 	
 	// 비밀번호 변경하기
 	@PutMapping("/modify/password")

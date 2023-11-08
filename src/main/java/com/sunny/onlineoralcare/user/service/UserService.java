@@ -18,6 +18,13 @@ public class UserService {
 	@Autowired
 	private MailService mailService;
 	
+	// 문진표 저장하기 
+	public int addPrivateSurvey(
+			int userId, String disease, String medicine, String drugAllergy
+			, String lastDentalClinic, String discomfort, String address) {
+		return userRepository.insertPrivateSurvey(userId, disease, medicine, drugAllergy, lastDentalClinic, discomfort, address);
+	}
+	
 	// 비밀번호 변경하기
 	public int updateNewPassword(String newPassword, String loginId) {
 		String hashingPassword = EncryptUtil.md5(newPassword);

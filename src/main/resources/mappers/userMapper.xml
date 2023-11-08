@@ -3,7 +3,33 @@
 
 <mapper
 	namespace="com.sunny.onlineoralcare.user.repository.UserRepository">
-
+	
+	<!-- 문진표 저장하기 -->
+	<insert id="insertPrivateSurvey" parameterType="map">
+		INSERT INTO
+		`private_survey`
+		(
+			`userId`
+			, `disease`
+			, `medicine`
+			, `drugAllergy`
+			, `lastDentalClinic`
+			, `discomfort`
+			, `address`
+		)
+		
+		VALUE
+		(
+			#{userId}
+			, #{disease}
+			, #{medicine}
+			, #{drugAllergy}
+			, #{lastDentalClinic}
+			, #{discomfort}
+			, #{address}
+		)	
+	</insert>
+	
 	<!-- 비밀번호 변경하기 -->
 	<update id="updateNewPassword" parameterType="map">
 		UPDATE
@@ -144,22 +170,22 @@
 		INSERT INTO
 		`user`
 		(
-		`loginId`
-		, `password`
-		, `name`
-		, `phoneNumber`
-		, `birthday`
-		, `email`
+			`loginId`
+			, `password`
+			, `name`
+			, `phoneNumber`
+			, `birthday`
+			, `email`
 		)
 		
 		VALUE
 		(
-		#{loginId}
-		, #{password}
-		, #{name}
-		, #{phoneNumber}
-		, #{birthday}
-		, #{email}
+			#{loginId}
+			, #{password}
+			, #{name}
+			, #{phoneNumber}
+			, #{birthday}
+			, #{email}
 		)
 	</insert>
 </mapper>

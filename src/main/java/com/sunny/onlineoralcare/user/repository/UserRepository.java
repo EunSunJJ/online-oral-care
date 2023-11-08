@@ -9,6 +9,16 @@ import com.sunny.onlineoralcare.user.domain.User;
 @Repository
 public interface UserRepository {
 	
+	// 문진표 저장하기 
+	public int insertPrivateSurvey(
+			@Param("userId") int userId
+			, @Param("disease") String disease
+			, @Param("medicine") String medicine
+			, @Param("drugAllergy") String drugAllergy
+			, @Param("lastDentalClinic") String lastDentalClinic
+			, @Param("discomfort") String discomfort
+			, @Param("address") String address);
+	
 	// 비밀번호 변경하기
 	public int updateNewPassword(
 			@Param("loginId") String loginId

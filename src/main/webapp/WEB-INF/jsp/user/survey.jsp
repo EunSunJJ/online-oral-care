@@ -21,12 +21,14 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
+			<div class="print-icon"><i class="bi bi-printer" id="printIcon"></i></div>
+			
 			<div class="online-survey-box-center">
 				<div class="online-survey-box">
 					<div class="online-survey-text">온라인 문진표</div>
 
-					<form method="post" action="/user/private-survey">
-						<h5>1. 전신질환 유무</h5>
+					<div class="disease-input-box">
+						<h5>1. 전신질환 유무 <i class="bi bi-heart-pulse"></i></h5>
 					   	<label><input type="checkbox" name="disease" value="bloodPressure"> 고(저)혈압 </label>
 					    <label><input type="checkbox" name="disease" value="diabetes"> 당뇨 </label>
 					    <label><input type="checkbox" name="disease" value="osteoporosis"> 골다공증 </label>
@@ -37,33 +39,33 @@
 					    <label><input type="checkbox" name="disease" value="mental"> 정신질환 </label>
 					    <label><input type="checkbox" name="disease" value="etc"> 기타 </label>
 					    <label><input type="checkbox" name="disease" value="none"> 해당사항 없음 </label>
-					</form>
+					</div>
 
 					<br>						
-					<form method="post" action="/user/private-survey">
-						<h5>2. 먹는 약 유무</h5>
+					<div class="medicine-input-box">
+						<h5>2. 먹는 약 유무 <i class="bi bi-capsule"></i></h5>
 					   	<label><input type="checkbox" name="medicine" value="yes"> 있다 </label>
 					    <label><input type="checkbox" name="medicine" value="no"> 없다 </label>
-					</form>
+					</div>
 					
 					<br>
-					<form method="post" action="/user/private-survey">
-						<h5>3. 약물 알러지 유무</h5>
+					<div class="drugAllergy-input-box">
+						<h5>3. 약물 알러지 유무 <i class="bi bi-capsule"></i></h5>
 					   	<label><input type="checkbox" name="drugAllergy" value="yes"> 있다 </label>
 					    <label><input type="checkbox" name="drugAllergy" value="no"> 없다 </label>
-					</form>
+					</div>
 					
 					<br>
-					<form method="post" action="/user/private-survey">
+					<div class="lastDentalClinic-input-box">
 						<h5>4. 마지막 치과 방문일</h5>
 					    <label><input type="checkbox" name="lastDentalClinic" value="1yearOver"> 1년 이상 </label>
 					    <label><input type="checkbox" name="lastDentalClinic" value="1year"> 1년 이내 </label>
 					    <label><input type="checkbox" name="lastDentalClinic" value="6month"> 6개월이내 </label>
 					    <label><input type="checkbox" name="lastDentalClinic" value="none"> 기억나지 않는다 </label>
-					</form>	
+					</div>	
 					
 					<br>
-					<form method="post" action="/user/private-survey">
+					<div class="discomfort-input-box">
 						<h5>4. 현재 불편한 점</h5>
 					    <label><input type="checkbox" name="discomfort" value="teeth"> 치아 </label>
 					    <label><input type="checkbox" name="discomfort" value="gum"> 잇몸 </label>
@@ -71,37 +73,23 @@
 					    <label><input type="checkbox" name="discomfort" value="externalInjury"> 외상 </label>
 					    <label><input type="checkbox" name="discomfort" value="etc"> 기타 </label>
 					    <label><input type="checkbox" name="discomfort" value="none"> 불편한 점 없음 </label>
-					</form>	
+					</div>	
 					
 					<br>					
-					<form method="post" action="/user/private-survey">
+					<div class="address-input-box">
 						<h5>5. 치과 추천을 원하신다면 거주지를 선택해주세요</h5>
-					   	<label><input type="checkbox" name="address" value=""> 안성 </label>
-					    <label><input type="checkbox" name="address" value=""> 평택 </label>
-					    <label><input type="checkbox" name="address" value=""> 화성 </label>
-					    <label><input type="checkbox" name="address" value=""> 오산 </label>
-					    <label><input type="checkbox" name="address" value=""> 수원 </label>
-					    <label><input type="checkbox" name="address" value=""> 용인 </label>
-					    <label><input type="checkbox" name="address" value=""> 이천 </label>
-					    <label><input type="checkbox" name="address" value=""> 여주 </label>
-					    <label><input type="checkbox" name="address" value=""> 광주 </label>
-					    <label><input type="checkbox" name="address" value=""> 성남 </label>
-					    <label><input type="checkbox" name="address" value=""> 의왕 </label>
-					    <label><input type="checkbox" name="address" value=""> 군포 </label>
-					    <label><input type="checkbox" name="address" value=""> 안산 </label>
-					    <label><input type="checkbox" name="address" value=""> 군포 </label>
-					    <label><input type="checkbox" name="address" value=""> 안양 </label>
-					    <label><input type="checkbox" name="address" value=""> 시흥 </label>
-					    <label><input type="checkbox" name="address" value=""> 광명 </label>
-					    <label><input type="checkbox" name="address" value=""> 과천 </label>
-					    <label><input type="checkbox" name="address" value=""> 시흥 </label>
-					    <label><input type="checkbox" name="address" value=""> 부천 </label>
-					    <label><input type="checkbox" name="address" value=""> 하남 </label>
+					    <label><input type="checkbox" name="address" value="Hwaseong"> 화성 </label>
+					    <label><input type="checkbox" name="address" value="Osan"> 오산 </label>
+					    <label><input type="checkbox" name="address" value="Suwon"> 수원 </label>
+					    <label><input type="checkbox" name="address" value="Yongin"> 용인 </label>
+					    <label><input type="checkbox" name="address" value="Icheon"> 이천 </label>
+					    <label><input type="checkbox" name="address" value="Ansan"> 안산 </label>
+					    <label><input type="checkbox" name="address" value="Gwacheon"> 과천 </label>
 					    <label><input type="checkbox" name="address" value="none"> 추천을 원하지 않는다 </label>
-					</form>
+					</div>
 					
 					<br>
-					<input type="submit" value="제출하기" class="button-private-survey"> 
+					<button type="button" class="button-private-survey" id="privateSurveySubmitBtn" data-user-id="${userId}">제출하기</button>
 				</div>
 			</div>	
 		</section>
@@ -115,41 +103,130 @@
 	<script>
 	$(document).ready(function(){
 		
+		// 설문지 제출하기
+		$("#privateSurveySubmitBtn").on("click", function(){
+			
+			// session으로 얻은 값
+			let userId = $(this).data("user-id");
+			// 단일선택
+			let medicine = $("input[type=checkbox][name=medicine]:checked").val();
+			let drugAllergy = $("input[type=checkbox][name=drugAllergy]:checked").val();
+			let lastDentalClinic = $("input[type=checkbox][name=lastDentalClinic]:checked").val();
+			let address = $("input[type=checkbox][name=address]:checked").val();
+			
+			// 다중선택 체크박스 값 가져오기
+			let diseaseArr = new Array();
+			$("input[name=disease]:checked").each(function(){
+				let disease = $(this).val();
+				diseaseArr.push(disease);
+			});	
+			let diseaseStr = diseaseArr.join(",");
+			
+			let discomfortArr = new Array();
+			$("input[name=discomfort]:checked").each(function(){
+				let discomfort = $(this).val();
+				discomfortArr.push(discomfort);
+			});	
+			let discomfortStr = discomfortArr.join(",");
+			
+			
+			// validation - 선택 여부 확인 true/false
+			if($("input[name=disease]").is(":checked") == false) {
+				alert("전신질환을 체크해주세요");
+				return;
+			}
+			
+			if($("input[name=medicine]").is(":checked") == false) {
+				alert("먹는 약 여부를 체크해주세요");
+				return;
+			}
+			
+			if($("input[name=drugAllergy]").is(":checked") == false) {
+				alert("약물 알러지 여부를 체크해주세요");
+				return;
+			}
+			
+			if($("input[name=lastDentalClinic]").is(":checked") == false) {
+				alert("마지막 치과 방문일을 체크해주세요");
+				return;
+			}
+			
+			if($("input[name=discomfort]").is(":checked") == false) {
+				alert("현재 불편한 점을 체크해주세요");
+				return;
+			}
+			
+			if($("input[name=address]").is(":checked") == false) {
+				alert("거주지를 체크해주세요");
+				return;
+			}
+			
+			$.ajax({
+				type:"post"
+				, url:"/user/private-survey"
+				, data:{
+					"userId":userId
+					, "disease":diseaseStr
+					, "medicine":medicine
+					, "drugAllergy":drugAllergy
+					, "lastDentalClinic":lastDentalClinic
+					, "discomfort":discomfortStr
+					, "address":address
+					}
+				, success:function(data){
+					if(data.result == "success"){
+						alert("문진표 저장 성공");
+						if(address != "none"){
+							location.href="/user/private/dentalClinic-view"
+						} else {
+							location.reload();
+						}
+						
+					} else {
+						alert("문진표 저장 실패");
+					}
+				}
+				, error:function(){
+					alert("문진표 저장 에러");
+				}
+			});
+		});
+		
 		//  체크박스 중복 체크 방지 - 치과 추천을 원하신다면 거주지 선택
-		$('input[type="checkbox"][name="address"]').on("click", function(){
+		$("input[type=checkbox][name=address]").on("click", function(){
 			
 			if ($(this).prop("checked")){
-				 $('input[type="checkbox"][name="address"]').prop("checked",false);
+				 $("input[type=checkbox][name=address]").prop("checked",false);
 				 $(this).prop("checked",true);
 			}
 			
 		});
 		
 		//  체크박스 중복 체크 방지 - 마지막 치과 방문일
-		$('input[type="checkbox"][name="lastDentalClinic"]').on("click", function(){
+		$("input[type=checkbox][name=lastDentalClinic]").on("click", function(){
 			
 			if ($(this).prop("checked")){
-				 $('input[type="checkbox"][name="lastDentalClinic"]').prop("checked",false);
+				 $("input[type=checkbox][name=lastDentalClinic]").prop("checked",false);
 				 $(this).prop("checked",true);
 			}
 			
 		});
 		
 		//  체크박스 중복 체크 방지 - 약물 알러지 유무
-		$('input[type="checkbox"][name="drugAllergy"]').on("click", function(){
+		$("input[type=checkbox][name=drugAllergy]").on("click", function(){
 			
 			if ($(this).prop("checked")){
-				 $('input[type="checkbox"][name="drugAllergy"]').prop("checked",false);
+				 $("input[type=checkbox][name=drugAllergy]").prop("checked",false);
 				 $(this).prop("checked",true);
 			}
 			
 		});
 		
 		//  체크박스 중복 체크 방지 - 먹는 약 유무
-		$('input[type="checkbox"][name="medicine"]').on("click", function(){
+		$("input[type=checkbox][name=medicine]").on("click", function(){
 			
 			if ($(this).prop("checked")){
-				 $('input[type="checkbox"][name="medicine"]').prop("checked",false);
+				 $("input[type=checkbox][name=medicine]").prop("checked",false);
 				 $(this).prop("checked",true);
 			}
 			

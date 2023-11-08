@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sunny.onlineoralcare.user.domain.User;
 import com.sunny.onlineoralcare.user.service.UserService;
 
-// View 
-
 @RequestMapping("/user")
 @Controller
 public class UserController {
