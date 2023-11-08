@@ -155,6 +155,25 @@ public class UserRestController {
 		return resultMap;
 	}
 
+	// 본인인증 메일 보내기
+	@PostMapping("/send/authentication-number")
+	public Map<String, String> checkPerson(
+			@RequestParam("email") String email
+			, @RequestParam("name") String name){
+		
+		String number = userService.sendMail(name, email);
+		
+		// response
+		Map<String, String> resultMap = new HashMap<>();
+		if (number != null) {
+			resultMap.put("result", "success");
+		} else {
+			resultMap.put("result", "fail");
+		}
+
+		return resultMap;
+	}
+	
 	// 회원가입 아이디 중복확인 기능
 	@GetMapping("/duplicate-id")
 	public Map<String, Boolean> duplicateUserId(@RequestParam("loginId") String loginId) {

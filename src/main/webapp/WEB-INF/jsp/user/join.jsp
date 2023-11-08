@@ -30,12 +30,14 @@
 					<button id="duplicateBtn" type="submit">중복확인</button>
 					<div id="duplicateId">중복된 아이디 입니다</div>
 					<div id="nonDuplicateId">사용가능한 아이디 입니다</div>
+					<div id="loginIdCondition6">아이디를 6자 이상으로 입력하세요</div>
+					<div id="loginIdCondition20">아이디를 20자 이하로 입력하세요</div>
 					
 					<div class="join-box-text">비밀번호</div>
-					<input class="join-box-type" type="password" placeholder="문자,숫자,특수문자 포함 8~20자" id="passwordInput">
+					<input class="join-box-type" type="text" placeholder="문자,숫자,특수문자 포함 8~20자" id="passwordInput">
 					
 					<div class="join-box-text">비밀번호 확인</div>
-					<input class="join-box-type" type="password" placeholder="비밀번호 재입력" id="passwordCheckInput">
+					<input class="join-box-type" type="text" placeholder="비밀번호 재입력" id="passwordCheckInput">
 					
 					<div class="join-box-text">이름</div>
 					<input class="join-box-type" type="text" placeholder="이름을 입력해주세요" id="nameInput">
@@ -71,8 +73,16 @@
 					
 					<div class="join-box-text">본인확인 이메일</div>
 					<div class="join-box-email">
-						<input class="join-box-type" type="text" placeholder="abcd @ gmail.net" id="emailInput">
-						<button id="personalAuthenticationBtn" type="submit">본인인증하기</button>
+						<input type="text" class="join-box-emailId" id="emailIdInput"> @
+						<input type="text" class="join-box-domain" id="emailDomainInput">
+						<select id="domainList">
+							<option value="direct">직접 입력</option>
+							<option value="naver.com">naver.com</option>
+							<option value="google.com">google.com</option>
+							<option value="hanmail.net">hanmail.net</option>
+							<option value="kakao.com">kakao.com</option>
+						</select>
+						<button id="personalAuthenticationBtn" type="submit">본인인증</button>
 					</div>
 					
 					<%--- 본인확인 번호인증 --%>
@@ -97,6 +107,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>	
 <script>
 $(document).ready(function() {
+
+	// input값이 채워지면 icon보이기
+	$("#loginIdInput").on("input", function(){
+		
+		let loginId = $("#loginIdInput").val();
+		
+		if (loginId != null){
+			$(".bi-check-circle").show(); 
+		} else {
+			$(".bi-check-circle").hide();
+		}
+	});
 	
 	// 아이디 중복 확인 체크 여부
 	var isCheckDuplicate = false;
@@ -117,10 +139,28 @@ $(document).ready(function() {
 	
 	// 로그인 아이디 중복확인
 	$("#duplicateBtn").on("click", function(){
+		
+		// 경고 문구 초기화
+		$("#loginIdCondition6").hide();
+		$("#loginIdCondition20").hide();
+		$("#duplicateId").hide();
+		$("#nonDuplicateId").hide();
+		
 		let loginId = $("#loginIdInput").val();
 		
 		if(loginId == "") {
 			alert("로그인 아이디를 입력하세요.");
+			return;
+		}
+		
+		// 로그인 아이디 조건 6~20자 사이
+		if(loginId.length < 6) {
+			$("#loginIdCondition6").show();
+			return;
+		}
+		
+		if(loginId.length > 20) {
+			$("#loginIdCondition20").show();
 			return;
 		}
 		
@@ -150,11 +190,6 @@ $(document).ready(function() {
 					alert("중복확인 에러");
 				}
 		});
-	});
-	
-	// 본인인증 input 보여주기
-	$("#personalAuthenticationBtn").on("click", function(){
-		$(".join-box-personal-authentication").show(); // display 속성을 block 으로 바꾼다.
 	});
 	
 	// 회원가입 정보 저장 
@@ -191,10 +226,32 @@ $(document).ready(function() {
 		const strBirthday = birthdayArray.join("");
 		let birthday = strBirthday;
 		
-		let email = $("#emailInput").val();
+		// email select값 emailDomainInput에 담기
+		$("#domainList").on("change", function(){
+			
+			let emailDomain = $("#emailDomainInput").val();
+			let domainList = $("#domainList").val();
+			
+			if (domainList == "direct") {
+				 $("#emailDomainInput").attr("disabled", false); // 활성화
+				 $("#emailDomainInput").val(""); 
+				 
+			} else {
+				 $("#emailDomainInput").val(domainList);
+				 $("#emailDomainInput").attr("disabled", true); // 비활성화
+			}
+		});
+		
+		// email 도메인 직접 입력 또는 domain option 선택
+		let emailId = $("#emailIdInput").val();
+		let emailDomain = $("#emailDomainInput").val();
+		
+		alert(emailId);
+		alert(emailDomain);
+		let email = emailId + "@" + emailDomain;
+		
 		let authenticationNumber = $("#authenticationInput").val();
 		
-
 		// validation
 		if(loginId == "") {
 			alert("로그인 아이디를 입력하세요.");
@@ -216,8 +273,19 @@ $(document).ready(function() {
 			return;
 		}
 		
-		if(password == "") {
-			alert("비밀번호를 입력하세요.");
+		// 정규표현식으로 비밀번호 validation
+		// (?=.*?[A-Z]) : A부터 Z까지 포함여부
+		// (?=.*?[a-z]) : a부터 z까지 포함여부 
+		// (?=.*?[0-9]) : 0부터 9까지 포함여부 
+		// (?=.*?[~?!@#$%^&*_-]) : 특수기호 포함여부
+		// .{8,20} : 8자 이상 20자 이하 (길이 8~20자)
+		// ^ : 이걸로 시작해서  $ : 로 끝난다
+		
+		const passwordValidation =/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@#$%^&*_-]).{8,20}$/;
+		let passwordTest = passwordValidation.test(password);
+
+		if(!passwordTest){
+			alert("비밀번호는 문자,숫자,특수문자 포함 8~20자로 입력해주세요.");
 			return;
 		}
 		
@@ -231,18 +299,27 @@ $(document).ready(function() {
 			return;
 		}
 		
-		if(phoneNumber == "") {
-			alert("핸드폰번호를 입력하세요.");
+		if(phoneNumber.length < 11){
+			alert("휴대폰 번호를 확인해주세요.");
 			return;
 		}
 		
-		if(birthday == "") {
-			alert("생년월일을 입력하세요.");
+		if(birthday.length < 6 || birthday.length > 8){
+			alert("생년월일을 확인해주세요.");
 			return;
 		}
 		
-		if(email == "") {
-			alert("이메일 주소를 입력하세요.");
+		// 정규표현식으로 이메일주소 validation 
+		// /i 정규표현식에 사용된 패턴이 대소문자를 구분하지 않도록 i를 사용
+		// ^ 표시는 처음시작하는 부분부터 일치한다는 표시
+		// [0-9a-zA-Z] 하나의 문자가 []안에 위치한 규칙을 따른다는 것으로 숫자와 알파벳 소문지 대문자인 경우
+		// * 이 기호는 0또는 그 이상의 문자가 연속될 수 있음
+		
+		const emailValidation =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		let emailTest = emailValidation.test(email);
+
+		if(!emailTest){
+			alert("이메일을 확인해주세요.");
 			return;
 		}
 		
@@ -276,6 +353,67 @@ $(document).ready(function() {
 			}
 		});
 		
+		
+	});
+	
+	// 본인인증 확인하기
+	$("#button-authentication-number").on("click", function(){
+		
+		let checkNumber = $("#authenticationInput").val();
+		
+		if (checkNumber == "") {
+			alert("인증번호를 입력하세요.");
+			return;
+		}
+		
+		//발송한 값이랑 checkNumber가 같으면 회원가입 진행
+	});
+	
+	
+	// 본인인증 메일 보내기
+	$("#personalAuthenticationBtn").on("click", function(){
+		
+		let name = $("#nameInput").val();
+		let emailId = $("#emailIdInput").val();
+		let emailDomain = $("#emailDomainInput").val();
+		
+		let email = emailId + "@" + emailDomain; 
+		
+		
+		// validation
+		if(emailId == "") {
+			alert("이메일을 입력하세요.");
+			return;
+		}
+		
+		if(emailDomain == "") {
+			alert("이메일을 입력하세요.");
+			return;
+		}
+		
+		// 인증번호 입력칸 보여주기
+		if(emailId != null && emailDomain != null) {
+			$(".join-box-personal-authentication").show();
+		}
+		
+		$.ajax({
+			type:"post"
+			, url:"/user/send/authentication-number"
+			, data:{
+				"name":name
+				, "email":email
+			}
+			, success:function(data){
+				if (data.result == "success") {
+					alert("인증메일 발송 성공");
+				} else {
+					alert("인증메일 발송 실패");
+				}
+			}
+			, error:function(){
+				alert("인증메일 발송 에러");
+			}
+		});
 		
 	});
 	

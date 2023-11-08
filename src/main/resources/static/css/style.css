@@ -215,11 +215,11 @@ nav {
 	margin-top: 30px;
 	margin-bottom: 30px;
 	border: solid 3px black;
-	width: 500px;
+	width: 600px;
 	padding-right: 50px;
-	padding-left: 50px;
+	padding-left: 60px;
 	padding-top: 30px;
-	padding-bottom: 20px;
+	padding-bottom: 30px;
 }
 
 .join-box-kakao {
@@ -249,6 +249,10 @@ nav {
 	height: 30px;
 }
 
+.bi-check-circle {
+	display: none;
+}
+
 #duplicateBtn {
 	color: white;
 	background-color: navy;
@@ -271,6 +275,20 @@ nav {
 	display: none;
 }
 
+#loginIdCondition6 {
+	font-size: small;
+	font-weight: 900;
+	color: red;
+	display: none;
+}
+
+#loginIdCondition20 {
+	font-size: small;
+	font-weight: 900;
+	color: red;
+	display: none;
+}
+
 .join-box-phone {
 	display: flex;
 }
@@ -280,10 +298,21 @@ nav {
 	margin-right: 10px;
 }
 
+
+.join-box-emailId {
+	width: 130px;
+	height: 30px;
+}
+
+.join-box-domain {
+	width: 130px;
+	height: 30px;
+}
 #personalAuthenticationBtn {
 	text-decoration: none;
 	color: rgb(255, 255, 255);
 	background-color: navy;
+	margin-left: 5px;
 }
 
 .join-box-personal-authentication {
@@ -1130,33 +1159,3 @@ nav {
 	margin-top: 10px;
 	margin-left: 350px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

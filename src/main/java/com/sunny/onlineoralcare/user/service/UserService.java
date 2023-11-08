@@ -86,6 +86,34 @@ public class UserService {
 		return userRepository.selectUserByloginIdAndPassword(loginId, hashingPassword);
 	}	
 	
+	// 본인인증 메일 보내기
+	public String sendMail(String name, String email) {
+		
+		// 인증번호 만들기
+        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+
+        String number = "";
+        
+        int idx = 0;
+        for (int i = 0; i < 10; i++) {
+            idx = (int) (charSet.length * Math.random());
+            number += charSet[idx];
+        }
+        
+		// 메일 전송하기
+		MailDto mailDto = MailDto.builder()
+				.receiver(email)
+				.title( name + "님의 본인 확인 이메일 입니다.")
+				.message("안녕하세요. 본인 확인 이메일 입니다." + "[" + name + "]" + " 님의 본인인증 번호는"
+						+ "[" + number + "]" + " 입니다. 인증번호를 입력해주세요.")
+				.build();
+		
+		mailService.sendSimpleMessage(mailDto);
+		
+		return number;
+	}
+	
 	// 로그인 아이디 중복확인
 	public boolean isDuplicate (String loginId) {
 		
