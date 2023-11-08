@@ -21,18 +21,7 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			<div class="survey-start-box-center">	
-				<div class="survey-start-box">
-					<div class="survey-start-text1-center">
-						<div class="survey-start-text1">구강관리 점수</div>
-					</div>	
-					<div class="survey-start-text2-center">
-						<div class="survey-start-text2">측정하기</div>
-					</div>
-					
-					<a href="/survey/age-view"><button type="button" class="button-survey-start">시작하기</button></a>
-				</div>
-			</div>
+			Q3
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>

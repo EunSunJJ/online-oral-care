@@ -88,7 +88,7 @@
 					<%--- 본인확인 번호인증 --%>
 					<div class="join-box-personal-authentication">
 						<input class="authentication-number" type="text" placeholder="인증번호를 입력하세요" id="authenticationInput">
-						<button id="button-authentication-number" type="submit">확인</button>
+						<button id="button-authentication-number" type="button">확인</button>
 					</div>
 					
 					<div id="success-personal-authentication">본인인증이 완료되었습니다.</div>
@@ -119,6 +119,12 @@ $(document).ready(function() {
 			$(".bi-check-circle").hide();
 		}
 	});
+	
+	//
+	var certificationNumber
+	
+	// 본인 확인 체크 여부
+	var isVerify = false;
 	
 	// 아이디 중복 확인 체크 여부
 	var isCheckDuplicate = false;
@@ -246,10 +252,8 @@ $(document).ready(function() {
 		let emailId = $("#emailIdInput").val();
 		let emailDomain = $("#emailDomainInput").val();
 		
-		alert(emailId);
-		alert(emailDomain);
 		let email = emailId + "@" + emailDomain;
-		
+
 		let authenticationNumber = $("#authenticationInput").val();
 		
 		// validation
@@ -328,6 +332,12 @@ $(document).ready(function() {
 			return;
 		}
 		
+		// 본인 인증이 안된 경우
+		if(!isVerify) {
+			alert("본인인증를 해주세요.");
+			return;
+		}
+		
 		$.ajax({
 			type:"post"
 			, url:"/user/join"
@@ -359,6 +369,18 @@ $(document).ready(function() {
 	// 본인인증 확인하기
 	$("#button-authentication-number").on("click", function(){
 		
+		// authenticationInput에 변화가 생기면 다시 중복확인체크
+		$("#authenticationInput").on("input", function(){
+			isVerify = false;
+			//isDuplicate = true;
+			
+			// 안내 문구 초기화
+			$("#success-personal-authentication").hide();
+			$("#fail-personal-authentication").hide();
+			
+		});
+
+		
 		let checkNumber = $("#authenticationInput").val();
 		
 		if (checkNumber == "") {
@@ -367,27 +389,73 @@ $(document).ready(function() {
 		}
 		
 		//발송한 값이랑 checkNumber가 같으면 회원가입 진행
+		$.ajax({
+			type:"get"
+			, url:"/user/ckeck/authentication-number"
+			, data:{
+				"checkNumber":checkNumber
+				}
+			, success:function(data){
+				if (data.isSame) {
+					
+					// 본인인증 여부 = true
+					isVerify = true;
+					
+					// 일치
+					$("#success-personal-authentication").show();
+					$("#fail-personal-authentication").hide();
+				} else {
+					// 불일치
+					$("#fail-personal-authentication").show();
+					$("#success-personal-authentication").hide();
+				}
+			}
+			, error:function(){
+				alert("본인확인 에러");
+			}
+		
+			
+		});
 	});
 	
 	
 	// 본인인증 메일 보내기
 	$("#personalAuthenticationBtn").on("click", function(){
 		
+		// email select값 emailDomainInput에 담기
+		$("#domainList").on("change", function(){
+			
+			let emailDomain = $("#emailDomainInput").val();
+			let domainList = $("#domainList").val();
+			
+			if (domainList == "direct") {
+				 $("#emailDomainInput").attr("disabled", false); // 활성화
+				 $("#emailDomainInput").val(""); 
+				 
+			} else {
+				 $("#emailDomainInput").val(domainList);
+				 $("#emailDomainInput").attr("disabled", true); // 비활성화
+			}
+		});
+		
+		// email 도메인 직접 입력 또는 domain option 선택
 		let name = $("#nameInput").val();
 		let emailId = $("#emailIdInput").val();
 		let emailDomain = $("#emailDomainInput").val();
 		
 		let email = emailId + "@" + emailDomain; 
 		
+		// 정규표현식으로 이메일주소 validation 
+		// /i 정규표현식에 사용된 패턴이 대소문자를 구분하지 않도록 i를 사용
+		// ^ 표시는 처음시작하는 부분부터 일치한다는 표시
+		// [0-9a-zA-Z] 하나의 문자가 []안에 위치한 규칙을 따른다는 것으로 숫자와 알파벳 소문지 대문자인 경우
+		// * 이 기호는 0또는 그 이상의 문자가 연속될 수 있음
 		
-		// validation
-		if(emailId == "") {
-			alert("이메일을 입력하세요.");
-			return;
-		}
-		
-		if(emailDomain == "") {
-			alert("이메일을 입력하세요.");
+		const emailValidation =/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		let emailTest = emailValidation.test(email);
+
+		if(!emailTest){
+			alert("이메일을 확인해주세요.");
 			return;
 		}
 		

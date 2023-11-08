@@ -327,10 +327,16 @@ nav {
 }
 
 #success-personal-authentication {
+	font-size: small;
+	font-weight: 900;
+	color: rgb(0, 0, 255);
 	display: none;
 }
 
 #fail-personal-authentication {
+	font-size: small;
+	font-weight: 900;
+	color: red;
 	display: none;
 }
 
@@ -1159,3 +1165,66 @@ nav {
 	margin-top: 10px;
 	margin-left: 350px;
 }
+
+/* survey - start */
+.survey-start-box-center {
+	display: flex;
+	justify-content: center;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.survey-start-box {
+	border: 1px black solid;
+	width: 600px;
+	height: 310px;
+	padding: 50px;
+}
+
+.survey-start-text1-center {
+	display: flex;
+	justify-content: center;
+}
+
+.survey-start-text1 {
+	width: 320px;
+	height: 60px;
+	font-size: 50px;
+	font-weight: 500;
+}
+
+.survey-start-text2-center {
+	display: flex;
+	justify-content: center;
+}
+
+.survey-start-text2 {
+	width: 210px;
+	height: 60px;
+	font-size: 50px;
+	font-weight: 500;
+}
+
+.button-survey-start {
+	width: 320px;
+	height: 50px;
+	color: white;
+	font-size: 25px;
+	background-color: navy;
+	text-decoration: none;
+	margin-top: 30px;
+	margin-left: 85px;
+}
+/* survey - age */
+
+/* survey - Q1 */
+
+/* survey - Q2 */
+
+/* survey - Q3 */
+
+/* survey - Q4 */
+
+/* survey - Q5 */
+
+/* survey - result */

@@ -155,13 +155,43 @@ public class UserRestController {
 		return resultMap;
 	}
 
+	//발송한 값이랑 checkNumber가 같으면 회원가입 진행
+	@GetMapping("/ckeck/authentication-number")
+	public Map<String, Boolean> checkNumber(
+			@RequestParam("checkNumber") String checkNumber
+			, HttpSession session) {
+		
+		String certificationNumber = (String) session.getAttribute("certificationNumber");
+		
+		boolean isSame = true;
+		if (checkNumber.equals(certificationNumber)) {
+			isSame = true;
+		} else {
+			isSame = false;
+		}
+		
+		// response
+		Map<String, Boolean> resultMap = new HashMap<>();
+		if (isSame) {
+			resultMap.put("isSame", true);
+		} else {
+			resultMap.put("isSame", false);
+		}
+
+		return resultMap;
+	}
+	
 	// 본인인증 메일 보내기
 	@PostMapping("/send/authentication-number")
 	public Map<String, String> checkPerson(
 			@RequestParam("email") String email
-			, @RequestParam("name") String name){
+			, @RequestParam("name") String name
+			, HttpSession session){
 		
 		String number = userService.sendMail(name, email);
+		
+        // session에 number값 저장
+        session.setAttribute("certificationNumber", number);
 		
 		// response
 		Map<String, String> resultMap = new HashMap<>();
