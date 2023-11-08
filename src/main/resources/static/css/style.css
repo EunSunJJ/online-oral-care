@@ -240,17 +240,13 @@ nav {
 
 .join-box-text {
 	margin-bottom: 5px;
-	margin-top: 5px;
+	margin-top: 15px;
 	font-weight: bold;
 }
 
 .join-box-type {
 	width: 250px;
 	height: 30px;
-}
-
-.bi-check-circle {
-	display: none;
 }
 
 #duplicateBtn {
@@ -284,9 +280,36 @@ nav {
 
 #loginIdCondition20 {
 	font-size: small;
-	font-weight: 900;
 	color: red;
 	display: none;
+}
+
+#passwordInfo {
+	font-size: small;
+	font-weight: 900;
+	color:black;
+}
+
+#possiblePassword {
+	font-size: small;
+	font-weight: 900;
+	color:blue;
+	display: none;
+}
+
+#impossiblePassword {
+	font-size: small;
+	font-weight: 900;
+	color:red;
+	display: none;
+}
+
+#hiddenPassowrd{
+	color: blue;
+}
+#showPassword {
+	display: none;
+	color: blue;
 }
 
 .join-box-phone {

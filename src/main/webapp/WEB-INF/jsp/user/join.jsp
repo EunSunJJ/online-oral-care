@@ -25,7 +25,7 @@
 						<a href="#"><img class="kakao" src="/static/images/kakao-logo.png" alt="카카오톡 로고"></a>
 					</div>
 					
-					<div class="join-box-text">아이디 <i class="bi bi-check-circle"></i></div>
+					<div class="join-box-text">아이디</div>
 					<input class="join-box-type" type="text" placeholder="아이디입력 (6~20자)" id="loginIdInput">
 					<button id="duplicateBtn" type="submit">중복확인</button>
 					<div id="duplicateId">중복된 아이디 입니다</div>
@@ -34,11 +34,18 @@
 					<div id="loginIdCondition20">아이디를 20자 이하로 입력하세요</div>
 					
 					<div class="join-box-text">비밀번호</div>
-					<input class="join-box-type" type="text" placeholder="문자,숫자,특수문자 포함 8~20자" id="passwordInput">
+					<input class="join-box-type" type="password" placeholder="비밀번호 입력" id="passwordInput">
+					<i class="bi bi-eye-slash" id="hiddenPassowrd"></i>
+					<i class="bi bi-eye" id="showPassword"></i>
+					
+					<div id="passwordInfo">대문자,소문자,숫자,특수문자 포함 8~20자를 입력하세요</div>
+					<div id="possiblePassword">사용할 수 있는 비밀번호 입니다</div>
+					<div id="impossiblePassword">사용할 수 없는 비밀번호 입니다</div>
+					
 					
 					<div class="join-box-text">비밀번호 확인</div>
-					<input class="join-box-type" type="text" placeholder="비밀번호 재입력" id="passwordCheckInput">
-					
+					<input class="join-box-type" type="password" placeholder="비밀번호 재입력" id="passwordCheckInput">			
+				
 					<div class="join-box-text">이름</div>
 					<input class="join-box-type" type="text" placeholder="이름을 입력해주세요" id="nameInput">
 					
@@ -108,29 +115,57 @@
 <script>
 $(document).ready(function() {
 
-	// input값이 채워지면 icon보이기
-	$("#loginIdInput").on("input", function(){
-		
-		let loginId = $("#loginIdInput").val();
-		
-		if (loginId != null){
-			$(".bi-check-circle").show(); 
-		} else {
-			$(".bi-check-circle").hide();
-		}
-	});
-	
-	//
-	var certificationNumber
-	
 	// 본인 확인 체크 여부
 	var isVerify = false;
+	
+	// 비밀번호 validation 통과 여부
+	var isAvailablePassword = false;
 	
 	// 아이디 중복 확인 체크 여부
 	var isCheckDuplicate = false;
 	
 	// 중복된 아이디는 가입 불가능
 	var isDuplicate = true;
+	
+	// 비밀번호 보여주는 기능
+	$("#hiddenPassowrd").on("click", function(){
+		
+		let password = $("#passwordInput");
+		let passwordType = password.attr("type");
+		
+		if (passwordType == "password") {
+			
+			password.attr("type", "text");
+			$("#showPassword").show();
+			$("#hiddenPassowrd").hide();
+			
+		}
+	});
+	
+	// 비밀번호 숨기는 기능
+	$("#showPassword").on("click", function(){
+
+		let password = $("#passwordInput");
+		let passwordType = password.attr("type");
+		
+		if (passwordType == "text") {
+			
+			password.attr("type", "password");
+			$("#hiddenPassowrd").show();
+			$("#showPassword").hide();
+			
+		}
+	});
+	
+	// passwordInput에 변화가 생기면 다시 중복확인체크
+	$("#passwordInput").on("input", function(){
+		isAvailablePassword = false;
+		
+		// 안내 문구 초기화
+		$("#possiblePassword").hide();
+		$("#impossiblePassword").hide();
+		
+	});
 	
 	// loginIdInput에 변화가 생기면 다시 중복확인체크
 	$("#loginIdInput").on("input", function(){
@@ -198,6 +233,24 @@ $(document).ready(function() {
 		});
 	});
 	
+	// email select값 emailDomainInput에 담기
+	$("#domainList").on("change", function(){
+		
+		let emailDomain = $("#emailDomainInput").val();
+		let domainList = $("#domainList").val();
+		
+		if (domainList == "direct") {
+			 $("#emailDomainInput").attr("disabled", false); // 활성화
+			 $("#emailDomainInput").val(""); 
+			 
+		} else {
+			 $("#emailDomainInput").val(domainList);
+			 $("#emailDomainInput").attr("disabled", true); // 비활성화
+		}
+	});
+
+	
+	
 	// 회원가입 정보 저장 
 	$("#joinBtn").on("click", function(){
 		
@@ -232,28 +285,12 @@ $(document).ready(function() {
 		const strBirthday = birthdayArray.join("");
 		let birthday = strBirthday;
 		
-		// email select값 emailDomainInput에 담기
-		$("#domainList").on("change", function(){
-			
-			let emailDomain = $("#emailDomainInput").val();
-			let domainList = $("#domainList").val();
-			
-			if (domainList == "direct") {
-				 $("#emailDomainInput").attr("disabled", false); // 활성화
-				 $("#emailDomainInput").val(""); 
-				 
-			} else {
-				 $("#emailDomainInput").val(domainList);
-				 $("#emailDomainInput").attr("disabled", true); // 비활성화
-			}
-		});
-		
 		// email 도메인 직접 입력 또는 domain option 선택
 		let emailId = $("#emailIdInput").val();
 		let emailDomain = $("#emailDomainInput").val();
 		
-		let email = emailId + "@" + emailDomain;
-
+		let email = emailId + "@" + emailDomain; 
+		
 		let authenticationNumber = $("#authenticationInput").val();
 		
 		// validation
@@ -289,8 +326,15 @@ $(document).ready(function() {
 		let passwordTest = passwordValidation.test(password);
 
 		if(!passwordTest){
-			alert("비밀번호는 문자,숫자,특수문자 포함 8~20자로 입력해주세요.");
+			$("#impossiblePassword").show();
 			return;
+		}
+		
+		if(passwordTest){
+			isAvailablePassword = true;
+			$("#possiblePassword").show();
+			$("#impossiblePassword").hide();
+			
 		}
 		
 		if(password != passwordCheck) {
@@ -366,20 +410,19 @@ $(document).ready(function() {
 		
 	});
 	
+	// authenticationInput에 변화가 생기면 다시 중복확인체크
+	$("#authenticationInput").on("input", function(){
+		isVerify = false;
+		//isDuplicate = true;
+		
+		// 안내 문구 초기화
+		$("#success-personal-authentication").hide();
+		$("#fail-personal-authentication").hide();
+		
+	});
+	
 	// 본인인증 확인하기
 	$("#button-authentication-number").on("click", function(){
-		
-		// authenticationInput에 변화가 생기면 다시 중복확인체크
-		$("#authenticationInput").on("input", function(){
-			isVerify = false;
-			//isDuplicate = true;
-			
-			// 안내 문구 초기화
-			$("#success-personal-authentication").hide();
-			$("#fail-personal-authentication").hide();
-			
-		});
-
 		
 		let checkNumber = $("#authenticationInput").val();
 		
@@ -421,22 +464,6 @@ $(document).ready(function() {
 	
 	// 본인인증 메일 보내기
 	$("#personalAuthenticationBtn").on("click", function(){
-		
-		// email select값 emailDomainInput에 담기
-		$("#domainList").on("change", function(){
-			
-			let emailDomain = $("#emailDomainInput").val();
-			let domainList = $("#domainList").val();
-			
-			if (domainList == "direct") {
-				 $("#emailDomainInput").attr("disabled", false); // 활성화
-				 $("#emailDomainInput").val(""); 
-				 
-			} else {
-				 $("#emailDomainInput").val(domainList);
-				 $("#emailDomainInput").attr("disabled", true); // 비활성화
-			}
-		});
 		
 		// email 도메인 직접 입력 또는 domain option 선택
 		let name = $("#nameInput").val();
