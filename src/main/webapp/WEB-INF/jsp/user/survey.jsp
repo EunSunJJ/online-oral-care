@@ -24,7 +24,7 @@
 			<div class="print-icon"><i class="bi bi-printer" id="printIcon"></i></div>
 			
 			<div class="online-survey-box-center">
-				<div class="online-survey-box">
+				<div class="online-survey-box" id="printArea">
 					<div class="online-survey-text">온라인 문진표</div>
 
 					<div class="disease-input-box">
@@ -89,9 +89,9 @@
 					</div>
 					
 					<br>
-					<button type="button" class="button-private-survey" id="privateSurveySubmitBtn" data-user-id="${userId}">제출하기</button>
 				</div>
 			</div>	
+					<button type="button" class="button-private-survey" id="privateSurveySubmitBtn" data-user-id="${userId}">제출하기</button>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>
@@ -102,6 +102,21 @@
 
 	<script>
 	$(document).ready(function(){
+		
+		// 프린트 기능 printArea
+		$("#printIcon").on("click", function(){
+			
+			var initBody = document.body.innerHTML; //body영역 저장
+			
+			window.onbeforeprint = function () { //프린터 출력 전 이벤트
+				document.body.innerHTML = document.getElementById('printArea').innerHTML; //원하는 영역 지정 'div_print'
+			}
+			window.onafterprint = function () { //프린터 출력 후 이벤트
+				document.body.innerHTML = initBody;
+			}
+			window.print();
+		
+		});
 		
 		// 설문지 제출하기
 		$("#privateSurveySubmitBtn").on("click", function(){
