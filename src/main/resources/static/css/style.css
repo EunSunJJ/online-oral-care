@@ -1195,6 +1195,23 @@ nav {
 	margin-left: 870px;
 }
 
+/* dentalClinic List */
+.dentalClinic-box-center{
+	display: flex;
+	justify-content: center;
+}
+.dentalClinic-box {
+	border: 1px black solid;
+	width: 1100px;
+	height: 800px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	padding: 40px;
+}
+.dentalClinic-text {
+	font-size: 40px;
+	margin-bottom: 20px;
+}
 /* survey - start */
 .survey-start-box-center {
 	display: flex;

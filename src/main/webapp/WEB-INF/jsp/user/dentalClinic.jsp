@@ -21,7 +21,45 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			문진표에 주소를 적어주면 근처 치과데이터 조회해서 알려주기
+			<div class="dentalClinic-box-center">
+				<div class="dentalClinic-box">
+					<div class="dentalClinic-text">ㅁㅁ시 치과 목록</div>
+					
+					<table class="table text-center">
+						<thead>
+							<tr>
+								<td><strong>No.</strong></td>
+								<td><strong>치과명</strong></td>
+								<td><strong>치과주소</strong></td>
+								<td><strong>진료과목</strong></td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>이편한치과</td>
+								<td>경기도 수원시</td>
+								<td>구강악안면외과, 치과보철과, 치과교정과, 소아치과, 치주과</td>
+							</tr>
+							
+							<tr>
+								<td>2</td>
+								<td>연세미치과</td>
+								<td>경기도 수원시</td>
+								<td>치과보철과, 치과교정과</td>
+							</tr>	
+							
+							<tr>
+								<td>3</td>
+								<td>연세고운미소치과</td>
+								<td>경기도 수원시</td>
+								<td>구강악안면외과</td>
+							</tr>													
+							
+						</tbody>
+					</table>
+				</div>	
+			</div>	
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>

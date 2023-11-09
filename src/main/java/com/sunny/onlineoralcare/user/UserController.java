@@ -20,12 +20,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	// 문진표 기반 근처치과 list
-	@GetMapping("/private/dentalClinic-view") 
-	public String dentalClinic() {
-		return "user/dentalClinic";
-	}
-	
 	// 사적인 구강관리 문진표 
 	@GetMapping("/private/survey-view")
 		public String privateSurvey() {
