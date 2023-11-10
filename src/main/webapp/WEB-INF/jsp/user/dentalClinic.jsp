@@ -35,27 +35,14 @@
 							</tr>
 						</thead>
 						<tbody>
+							<c:forEach var="data" items="${apiData}">
 							<tr>
-								<td>1</td>
-								<td>이편한치과</td>
-								<td>경기도 수원시</td>
-								<td>구강악안면외과, 치과보철과, 치과교정과, 소아치과, 치주과</td>
+								<td></td>
+								<td>${data.BIZPLC_NM}</td>
+								<td>${data.REFINE_ROADNM_ADDR}</td>
+								<td>${data.TREAT_SBJECT_CONT}</td>
 							</tr>
-							
-							<tr>
-								<td>2</td>
-								<td>연세미치과</td>
-								<td>경기도 수원시</td>
-								<td>치과보철과, 치과교정과</td>
-							</tr>	
-							
-							<tr>
-								<td>3</td>
-								<td>연세고운미소치과</td>
-								<td>경기도 수원시</td>
-								<td>구강악안면외과</td>
-							</tr>													
-							
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>	

@@ -191,7 +191,7 @@
 					if(data.result == "success"){
 						alert("문진표 저장 성공");
 						if(address != "none"){
-							location.href="/user/private/dentalClinic-view"
+							location.href="/user/private/dentalClinic-view?address="+address
 						} else {
 							location.reload();
 						}
