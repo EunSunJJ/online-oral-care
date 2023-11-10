@@ -76,7 +76,7 @@
 					</div>	
 					
 					<br>					
-                    <form method="get" action="/user/private/dentalClinic-view">					
+                    <div class="address-input-box">				
 						<h5>5. 치과 추천을 원하신다면 거주지를 선택해주세요</h5>
 					    <label><input type="checkbox" name="address" value="화성시"> 화성 </label>
 					    <label><input type="checkbox" name="address" value="오산시"> 오산 </label>
@@ -85,8 +85,7 @@
 					    <label><input type="checkbox" name="address" value="안산시"> 안산 </label>
 					    <label><input type="checkbox" name="address" value="과천시"> 과천 </label>
 					    <label><input type="checkbox" name="address" value="none"> 추천을 원하지 않는다 </label>
-					    <input type=submit>
-					</form>
+					</div>
 					
 					<br>
 				</div>

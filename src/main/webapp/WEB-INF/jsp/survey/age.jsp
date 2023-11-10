@@ -21,7 +21,25 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			구강건강 관리점수 측정 나이 질문
+			<div class="survey-age-box-center">
+				<div class="survey-age-box">
+					<div class="survey-age-text-center">
+						<div class="survey-age-text">나이를 선택해 주세요</div>
+					</div>
+					
+					<div class="survey-age-input-box">
+						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">6세 이하</label>
+						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">7~18세</label>
+						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">19~64세</label>
+						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">65세 이상</label>
+					</div>
+					
+					<div class="survey-age-button-box">
+						<a href="/survey/start-view"><button type="button" class="survey-age-button">이전으로</button></a>
+						<a href="/survey/question1-view"><button type="button" class="survey-age-button">다음으로</button></a>
+					</div>
+				</div>
+			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>

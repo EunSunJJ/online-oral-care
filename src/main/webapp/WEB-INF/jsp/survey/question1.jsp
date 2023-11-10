@@ -21,7 +21,30 @@
 		<c:import url="/WEB-INF/jsp/layout/header.jsp" />
 		<c:import url="/WEB-INF/jsp/layout/nav.jsp" />
 		<section>
-			Q1
+			<div class="survey-question-box-center">
+				<div class="survey-question-box">
+					<div class="survey-question-number-end">
+						<div class="survey-question-number">1/5</div>
+					</div>
+					
+					<div class="survey-question-text-center">
+						<div class="survey-question-text">
+							<div class="survey-question-text1">하루에 2번 이상</div>
+							<div class="survey-question-text2">칫솔질을 하고 있나요?</div>
+						</div>				
+					</div>
+					
+					<div class="survey-question-input-box">
+						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">예</label>
+						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">아니오</label>
+					</div>
+					
+					<div class="survey-question-button-box">
+						<a href="/survey/age-view"><button type="button" class="survey-question-button">이전으로</button></a>
+						<a href="/survey/question2-view"><button type="button" class="survey-question-button">다음으로</button></a>
+					</div>
+				</div>
+			</div>
 		</section>
 		<c:import url="/WEB-INF/jsp/layout/footer.jsp" />
 	</div>
