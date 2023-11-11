@@ -35,13 +35,13 @@
 					</div>
 					
 					<div class="survey-question-input-box">
-						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">예</label>
-						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">아니오</label>
+						<label class="survey-question-input-text"><input type="radio" name="question" class="survey-question-input" value="true">예</label>
+						<label class="survey-question-input-text"><input type="radio" name="question" class="survey-question-input" value="false">아니오</label>
 					</div>
 					
 					<div class="survey-question-button-box">
 						<a href="/survey/question4-view"><button type="button" class="survey-question-button">이전으로</button></a>
-						<a href="/survey/result-view"><button type="button" class="survey-result-button">결과보기</button></a>
+						<button type="button" class="survey-result-button" id="surveyResultBtn" data-user-id="${userId}">결과보기</button>
 					</div>
 				</div>
 			</div>
@@ -52,5 +52,42 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#surveyResultBtn").on("click", function(){
+				
+				let userId = $(this).data("");
+				let dentalClinic = $('input[name="question"]:checked').val();
+				
+				// validation
+				if($("input[name=question]").is(":checked") == false) {
+				alert("답변을 체크해주세요");
+				return;
+			}
+				
+				$.ajax({
+					type:"post"
+					, url:"/survey/answer"
+					, data:{
+						"userId":userId
+						, "dentalClinic":dentalClinic
+						}
+					, success:function(data){
+						if(data.result == "success") {
+							alert("구강건강 관리점수 저장 성공");
+							location.href="/survey/result-view"
+						} else {
+							alert("구강건강 관리점수 저장 실패");
+						}
+					}
+					, error:function(){
+						alert("구강건강 관리점수 저장 에러");
+					}
+				});
+				
+			});
+		});
+	</script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sunny.onlineoralcare.survey.repository.SurveyRepository">
+
+	<!-- 설문지 응답값 저장하기 -->
+	<insert id="insertSurveyAnswer" parameterType="map">
+		INSERT INTO
+			`oral_care_score`
+			(
+				`userId`
+				, `age`
+				, `brushingTeeth`
+				, `fluorideToothpaste`
+				, `interdental`
+				, `sugar`
+				, `dentalClinic`
+			)
+			VALUE
+			(
+				#{userId}
+				, #{age}
+				, #{brushingTeeth}
+				, #{fluorideToothpaste}
+				, #{interdental}
+				, #{sugar}
+				, #{dentalClinic}			
+			)
+		
+	
+	</insert>
+</mapper>

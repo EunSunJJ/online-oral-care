@@ -27,16 +27,18 @@
 						<div class="survey-age-text">나이를 선택해 주세요</div>
 					</div>
 					
-					<div class="survey-age-input-box">
-						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">6세 이하</label>
-						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">7~18세</label>
-						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">19~64세</label>
-						<label class="survey-age-input-text"><input type="radio" name="age" id="" class="survey-age-input">65세 이상</label>
-					</div>
+					<form method="post" action="/survey/question5-view">
+						<div class="survey-age-input-box">
+							<label class="survey-age-input-text"><input type="radio" name="age" value="6" class="survey-age-input">6세 이하</label>
+							<label class="survey-age-input-text"><input type="radio" name="age" value="7-18" class="survey-age-input">7~18세</label>
+							<label class="survey-age-input-text"><input type="radio" name="age" value="19-64" class="survey-age-input">19~64세</label>
+							<label class="survey-age-input-text"><input type="radio" name="age" value="65" class="survey-age-input">65세 이상</label>
+						</div>
+					</form>
 					
 					<div class="survey-age-button-box">
 						<a href="/survey/start-view"><button type="button" class="survey-age-button">이전으로</button></a>
-						<a href="/survey/question1-view"><button type="button" class="survey-age-button">다음으로</button></a>
+						<a href="/survey/question1-view"><button type="submit" class="survey-age-button">다음으로</button></a>
 					</div>
 				</div>
 			</div>

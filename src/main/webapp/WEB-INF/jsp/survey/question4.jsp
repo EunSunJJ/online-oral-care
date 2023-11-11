@@ -30,18 +30,20 @@
 					<div class="survey-question-text-center">
 						<div class="survey-question-text">
 							<div class="survey-question-text1">설탕이 함유된 간식을</div>
-							<div class="survey-question-text2">하루에 2회 이내로 섭취하고 있나요?</div>
+							<div class="survey-question-text2">하루에 2회 이하로 섭취하고 있나요?</div>
 						</div>				
 					</div>
 					
-					<div class="survey-question-input-box">
-						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">예</label>
-						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">아니오</label>
-					</div>
+					<form method="post" action="/survey/question5-view">
+						<div class="survey-question-input-box">
+							<label class="survey-question-input-text"><input type="radio" name="question" value="true" class="survey-question-input">예</label>
+							<label class="survey-question-input-text"><input type="radio" name="question" value="false" class="survey-question-input">아니오</label>
+						</div>
+					</form>
 					
 					<div class="survey-question-button-box">
 						<a href="/survey/question3-view"><button type="button" class="survey-question-button">이전으로</button></a>
-						<a href="/survey/question5-view"><button type="button" class="survey-question-button">다음으로</button></a>
+						<a href="/survey/question5-view"><button type="submit" class="survey-question-button">다음으로</button></a>
 					</div>
 				</div>
 			</div>

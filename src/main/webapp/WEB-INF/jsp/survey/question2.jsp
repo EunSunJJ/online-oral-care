@@ -34,14 +34,16 @@
 						</div>				
 					</div>
 					
-					<div class="survey-question-input-box">
-						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">예</label>
-						<label class="survey-question-input-text"><input type="radio" name="question" id="" class="survey-question-input">아니오</label>
-					</div>
+					<form method="post" action="/survey/question5-view">
+						<div class="survey-question-input-box">
+							<label class="survey-question-input-text"><input type="radio" name="question" value="true" class="survey-question-input">예</label>
+							<label class="survey-question-input-text"><input type="radio" name="question" value="false" class="survey-question-input">아니오</label>
+						</div>
+					</form>
 					
 					<div class="survey-question-button-box">
 						<a href="/survey/question1-view"><button type="button" class="survey-question-button">이전으로</button></a>
-						<a href="/survey/question3-view"><button type="button" class="survey-question-button">다음으로</button></a>
+						<a href="/survey/question3-view"><button type="submit" class="survey-question-button">다음으로</button></a>
 					</div>
 				</div>
 			</div>
