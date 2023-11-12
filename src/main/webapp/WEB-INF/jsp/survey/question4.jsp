@@ -34,16 +34,14 @@
 						</div>				
 					</div>
 					
-					<form method="post" action="/survey/question5-view">
 						<div class="survey-question-input-box">
 							<label class="survey-question-input-text"><input type="radio" name="question" value="true" class="survey-question-input">예</label>
 							<label class="survey-question-input-text"><input type="radio" name="question" value="false" class="survey-question-input">아니오</label>
 						</div>
-					</form>
 					
 					<div class="survey-question-button-box">
 						<a href="/survey/question3-view"><button type="button" class="survey-question-button">이전으로</button></a>
-						<a href="/survey/question5-view"><button type="submit" class="survey-question-button">다음으로</button></a>
+						<button type="submit" class="survey-question-button" id="surveyNextBtn">다음으로</button>
 					</div>
 				</div>
 			</div>
@@ -54,5 +52,25 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script>
+	$(document).ready(function(){
+		$("#surveyNextBtn").on("click", function(){
+			
+			let sugar =  $('input[name="question"]:checked').val();
+			
+			let getLink = location.search;
+			let parameter = getLink;
+			
+			// validation
+			if($("input[name=question]").is(":checked") == false) {
+			alert("답변을 체크해주세요");
+			return;
+		}
+			
+			location.href = "/survey/question5-view" + parameter + "&sugar=" + sugar
+		});
+	});
+	</script
 </body>
 </html>

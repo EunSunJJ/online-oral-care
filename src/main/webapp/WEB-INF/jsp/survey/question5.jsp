@@ -57,7 +57,27 @@
 		$(document).ready(function(){
 			$("#surveyResultBtn").on("click", function(){
 				
-				let userId = $(this).data("");
+				let userId = $(this).data("user-id");
+				
+				let getLink = location.search;
+				let parameter = getLink;
+				let getParameter = getLink.split("&");
+
+				let getAge = getParameter[0].split("=");
+				let age = getAge[1];
+				
+				let getBrushingTeeth = getParameter[1].split("=");
+				let brushingTeeth = getBrushingTeeth[1];
+				
+				let getFluorideToothpaste = getParameter[2].split("=");
+				let fluorideToothpaste = getFluorideToothpaste[1];
+				
+				let getInterdental = getParameter[3].split("=");
+				let interdental = getInterdental[1];
+				
+				let getSugar = getParameter[4].split("=");
+				let sugar = getSugar[1];
+				
 				let dentalClinic = $('input[name="question"]:checked').val();
 				
 				// validation
@@ -67,10 +87,15 @@
 			}
 				
 				$.ajax({
-					type:"post"
+					type:"get"
 					, url:"/survey/answer"
 					, data:{
 						"userId":userId
+						, "age":age
+						, "brushingTeeth":brushingTeeth
+						, "fluorideToothpaste":fluorideToothpaste
+						, "interdental":interdental
+						, "sugar":sugar
 						, "dentalClinic":dentalClinic
 						}
 					, success:function(data){

@@ -27,18 +27,16 @@
 						<div class="survey-age-text">나이를 선택해 주세요</div>
 					</div>
 					
-					<form method="post" action="/survey/question5-view">
 						<div class="survey-age-input-box">
 							<label class="survey-age-input-text"><input type="radio" name="age" value="6" class="survey-age-input">6세 이하</label>
 							<label class="survey-age-input-text"><input type="radio" name="age" value="7-18" class="survey-age-input">7~18세</label>
 							<label class="survey-age-input-text"><input type="radio" name="age" value="19-64" class="survey-age-input">19~64세</label>
 							<label class="survey-age-input-text"><input type="radio" name="age" value="65" class="survey-age-input">65세 이상</label>
 						</div>
-					</form>
 					
 					<div class="survey-age-button-box">
 						<a href="/survey/start-view"><button type="button" class="survey-age-button">이전으로</button></a>
-						<a href="/survey/question1-view"><button type="submit" class="survey-age-button">다음으로</button></a>
+						<button type="button" class="survey-age-button" id="surveyNextBtn">다음으로</button>
 					</div>
 				</div>
 			</div>
@@ -49,5 +47,20 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+	<script>
+	$(document).ready(function(){
+		$("#surveyNextBtn").on("click", function(){
+			let age =  $('input[name="age"]:checked').val();
+			
+			// validation
+			if($("input[name=age]").is(":checked") == false) {
+			alert("나이를 체크해주세요");
+			return;
+		}
+			location.href = "/survey/question1-view?age=" + age;
+		});
+	});
+	</script>
 </body>
 </html>
