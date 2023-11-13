@@ -35,12 +35,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="data" items="">
+							<c:forEach var="data" items="${list}">
 							<tr>
 								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>${data.BIZPLC_NM}</td>
+								<td>${data.REFINE_ROADNM_ADDR}</td>
+								<td>${data.TREAT_SBJECT_CONT}</td>
 							</tr>
 							</c:forEach>
 						</tbody>

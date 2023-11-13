@@ -7,8 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -70,12 +70,32 @@ public class DentalClinicApi {
 		JSONObject DentistryPrivateHospital = (JSONObject) DentistryPrivateHospitalArr.get(1);
 		rowArr = (JSONArray)DentistryPrivateHospital.get("row");
 		
-		System.out.println(rowArr);
-		JSONObject J = (JSONObject)rowArr.get(0);
-		JSONObject JJ = (JSONObject)rowArr.get(1);
-		System.out.println(J);
-		System.out.println(JJ);
+		//System.out.println(rowArr);
+		ArrayList<OpenApiDto> list = new ArrayList<OpenApiDto>();
 		
+		JSONObject data = new JSONObject();
+		 for (int i = 0; i < rowArr.size(); i++) {
+			 data = (JSONObject) rowArr.get(i);
+			 
+			 String data1 =  (String) data.get("BIZPLC_NM"); //치과이름
+			 String data2 =  (String) data.get("BSN_STATE_NM"); // 영업상태
+			 String data3 =  (String) data.get("TREAT_SBJECT_CONT"); // 진료과목
+			 String data4 =  (String) data.get("REFINE_ROADNM_ADDR"); // 주소
+			 
+		
+			 
+			 OpenApiDto dto = OpenApiDto.builder()
+					 .BIZPLC_NM(data1)
+					 .BSN_STATE_NM(data2)
+					 .TREAT_SBJECT_CONT(data3)
+					 .REFINE_ROADNM_ADDR(data4)
+					 .build();
+			 
+			 list.add(dto);
+		 }		
+		
+		 model.addAttribute("list", list);
+		 
 		 return "user/dentalClinic";
 	}
 
