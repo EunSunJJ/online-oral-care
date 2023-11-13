@@ -1178,7 +1178,6 @@ nav {
 .online-survey-box {
 	border: 1px solid black;
 	width: 600px;
-	height: 720px;
 	padding: 3%;
 }
 
@@ -1186,6 +1185,14 @@ nav {
 	font-size: 40px;
 	font-weight: 600;
 	margin-bottom: 20px;
+}
+
+.northLocation {
+	display: none;
+}
+
+.southLocation {
+	display: none;
 }
 
 .button-private-survey {

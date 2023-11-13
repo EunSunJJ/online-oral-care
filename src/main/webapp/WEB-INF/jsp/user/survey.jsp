@@ -58,9 +58,9 @@
 					<br>
 					<div class="lastDentalClinic-input-box">
 						<h5>4. 마지막 치과 방문일</h5>
-					    <label><input type="checkbox" name="lastDentalClinic" value="1yearOver"> 1년 이상 </label>
-					    <label><input type="checkbox" name="lastDentalClinic" value="1year"> 1년 이내 </label>
 					    <label><input type="checkbox" name="lastDentalClinic" value="6month"> 6개월이내 </label>
+					    <label><input type="checkbox" name="lastDentalClinic" value="1year"> 1년 이내 </label>
+					    <label><input type="checkbox" name="lastDentalClinic" value="1yearOver"> 1년 이상 </label>
 					    <label><input type="checkbox" name="lastDentalClinic" value="none"> 기억나지 않는다 </label>
 					</div>	
 					
@@ -78,27 +78,45 @@
 					<br>					
                     <div class="address-input-box">				
 						<h5>5. 치과 추천을 원하신다면 거주지를 선택해주세요</h5>
-					    <label><input type="checkbox" name="address" value="화성시"> 화성 </label>
-					    <label><input type="checkbox" name="address" value="성남시"> 성남 </label>
-					    <label><input type="checkbox" name="address" value="수원시"> 수원 </label>
-					    <label><input type="checkbox" name="address" value="파주시"> 파주 </label>
-					    <label><input type="checkbox" name="address" value="안산시"> 안산 </label>
-					    <label><input type="checkbox" name="address" value="의정부시"> 의정부 </label>
-					    <label><input type="checkbox" name="address" value="고양시"> 고양 </label>
-					    <label><input type="checkbox" name="address" value="김포시"> 김포 </label>
-					    <label><input type="checkbox" name="address" value="부천시"> 부천 </label>
-					    <label><input type="checkbox" name="address" value="남양주시"> 남양주 </label>
-					    <label><input type="checkbox" name="address" value="구리시"> 구리 </label>
-					    <label><input type="checkbox" name="address" value="하남시"> 하남 </label>
-					    <label><input type="checkbox" name="address" value="광주시"> 광주 </label>
-					    <label><input type="checkbox" name="address" value="평택시"> 평택 </label>
-					    <label><input type="checkbox" name="address" value="용인시"> 용인 </label>
-					    <label><input type="checkbox" name="address" value="시흥시"> 시흥 </label>
-					    <label><input type="checkbox" name="address" value="광명시"> 광명 </label>
-					    <label><input type="checkbox" name="address" value="군포시"> 군포 </label>
-					    <label><input type="checkbox" name="address" value="안양시"> 안양 </label>
-					    <label><input type="checkbox" name="address" value="과천시"> 과천 </label>
-					    <label><input type="checkbox" name="address" value="none"> 추천을 원하지 않는다 </label>
+			
+						<label><input id="north" type="checkbox" name="location"> 경기 북부</label>
+						<label class="northLocation"><input type="radio" name="address" value="가평군"> 가평 </label>
+						<label class="northLocation"><input type="radio" name="address" value="연천군"> 연천 </label>
+				
+					    <label class="northLocation"><input type="radio" name="address" value="고양시"> 고양 </label>
+					    <label class="northLocation"><input type="radio" name="address" value="구리시"> 구리 </label>
+					    <label class="northLocation"><input type="radio" name="address" value="남양주시"> 남양주 </label>
+					    <label class="northLocation"><input type="radio" name="address" value="동두천시"> 동두천 </label>
+					    <label class="northLocation"><input type="radio" name="address" value="양주시"> 양주 </label>
+					    <label class="northLocation"><input type="radio" name="address" value="의정부시"> 의정부 </label>
+					    <label class="northLocation"><input type="radio" name="address" value="파주시"> 파주 </label>
+					    <label class="northLocation"><input type="radio" name="address" value="포천시"> 포천 </label>
+						
+						<label><input id="south" type="checkbox" name="location"> 경기 남부</label>
+					    <label class="southLocation"><input type="radio" name="address" value="양평군"> 양평 </label>
+						
+					    <label class="southLocation"><input type="radio" name="address" value="과천시"> 과천 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="광명시"> 광명 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="광주시"> 광주 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="군포시"> 군포 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="김포시"> 김포 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="부천시"> 부천 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="성남시"> 성남 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="수원시"> 수원 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="시흥시"> 시흥 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="안산시"> 안산 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="안성시"> 안성 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="안양시"> 안양 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="여주시"> 여주 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="오산시"> 오산 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="용인시"> 용인 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="의왕시"> 의왕 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="이천시"> 이천 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="평택시"> 평택 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="하남시"> 하남 </label>
+					    <label class="southLocation"><input type="radio" name="address" value="화성시"> 화성 </label>
+					    
+					    <label><input type="radio" value="none" name="address"> 추천을 원하지 않는다 </label>
 					</div>
 					
 					<br>
@@ -115,6 +133,27 @@
 
 	<script>
 	$(document).ready(function(){
+		
+		//  체크박스 중복 체크 방지 - 마지막 치과 방문일
+		$("input[type=checkbox][name=location]").on("click", function(){
+			
+			if ($(this).prop("checked")){
+				 $("input[type=checkbox][name=location]").prop("checked",false);
+				 $(this).prop("checked",true);
+			}
+			
+		});
+		
+		// 경기 남부 toggle
+		$("#south").on("click", function(){
+			$(".southLocation").toggle();
+		});
+		
+		// 경기 북부 toggle
+		$("#north").on("click", function(){
+			$(".northLocation").toggle();
+		});
+
 		
 		// 프린트 기능 printArea
 		$("#printIcon").on("click", function(){
@@ -140,7 +179,7 @@
 			let medicine = $("input[type=checkbox][name=medicine]:checked").val();
 			let drugAllergy = $("input[type=checkbox][name=drugAllergy]:checked").val();
 			let lastDentalClinic = $("input[type=checkbox][name=lastDentalClinic]:checked").val();
-			let address = $("input[type=checkbox][name=address]:checked").val();
+			let address = $("input[type=radio][name=address]:checked").val();
 			
 			// 다중선택 체크박스 값 가져오기
 			let diseaseArr = new Array();
@@ -218,16 +257,6 @@
 					alert("문진표 저장 에러");
 				}
 			});
-		});
-		
-		//  체크박스 중복 체크 방지 - 치과 추천을 원하신다면 거주지 선택
-		$("input[type=checkbox][name=address]").on("click", function(){
-			
-			if ($(this).prop("checked")){
-				 $("input[type=checkbox][name=address]").prop("checked",false);
-				 $(this).prop("checked",true);
-			}
-			
 		});
 		
 		//  체크박스 중복 체크 방지 - 마지막 치과 방문일

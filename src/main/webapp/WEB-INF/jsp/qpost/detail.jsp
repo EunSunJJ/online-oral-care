@@ -43,7 +43,7 @@
 					</div>
 					
 					<!-- 답변 -->
-					<c:if test="${qpost.answer == true}">
+					<c:if test="${not empty answer.content}">
 						<div class="qpost-detail-side">
 							<div class="qpost-detail-text">답변</div>
 							<textarea id="qpostAnswer" class="qpost-detail-content">${answer.content}</textarea>

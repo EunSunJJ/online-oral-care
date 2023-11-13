@@ -30,7 +30,7 @@
 					
 					<div class="qpost-detail-side">
 						<div class="qpost-detail-text">작성자</div>
-						<div class="writer">${qpost.userId}</div>
+						<div class="writer">${qpost.writer}</div>
 					</div>
 					
 					<div class="qpost-detail-side">

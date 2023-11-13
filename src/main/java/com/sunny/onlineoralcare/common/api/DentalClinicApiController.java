@@ -7,8 +7,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -20,7 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class DentalClinicApi {
+public class DentalClinicApiController {
 
 	// 문진표 기반 근처치과 list
 	@GetMapping("/user/private/dentalClinic-view")
@@ -33,8 +31,8 @@ public class DentalClinicApi {
 
 		urlBuilder.append("?" + URLEncoder.encode("KEY", "UTF-8") + "=b05cc4b4d56b41bdafa6bd033f6f6d1d");
 		urlBuilder.append("&" + URLEncoder.encode("Type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
-		urlBuilder.append("&" + URLEncoder.encode("pIndex", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8"));
-		urlBuilder.append("&" + URLEncoder.encode("pSize", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("pIndex", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+		urlBuilder.append("&" + URLEncoder.encode("pSize", "UTF-8") + "=" + URLEncoder.encode("1000", "UTF-8"));
 		urlBuilder.append("&" + URLEncoder.encode("SIGUN_NM", "UTF-8") + "=" + URLEncoder.encode(address, "UTF-8"));
 		
 		URL url = new URL(urlBuilder.toString());
@@ -77,6 +75,7 @@ public class DentalClinicApi {
 			 String data3 =  (String) data.get("TREAT_SBJECT_CONT"); // 진료과목
 			 String data4 =  (String) data.get("REFINE_ROADNM_ADDR"); // 주소
 			 
+			 System.out.println(data2);
 		
 			 
 			 OpenApiDto dto = OpenApiDto.builder()

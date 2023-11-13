@@ -63,14 +63,13 @@ public class QpostController {
 	// 질문 글 리스트 + 페이징 추가
 	@GetMapping("/list-view")
 	public String qpostList(Model model
-			, @RequestParam(value="page", required = false, defaultValue = "1") int page
+			, @RequestParam(value="page", defaultValue = "1") int page
 			, @RequestParam(value="searchType", required=false) String searchType
 			, @RequestParam(value="keyword", required=false) String keyword) {
-			
+		
 			
 			//Pagination 객체생성
 			Pagination pagination = new Pagination();
-			
 			pagination.searchMaker(keyword, searchType);
 			
 			// 전체 게시물 개수 

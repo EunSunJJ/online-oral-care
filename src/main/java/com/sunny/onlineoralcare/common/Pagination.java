@@ -55,7 +55,6 @@ public class Pagination {
 		this.page = page;
 		this.totalPost = totalPost;
 		
-		
 		// 전체 페이지수
 		this.totalPage = (int) Math.ceil((double)totalPost / postSize);
 		
@@ -73,7 +72,7 @@ public class Pagination {
 		// 시작 페이지
 		this.startPage = endPage - pageSize + 1;
 		
-		if (this.startPage < 0) {
+		if (this.startPage <= 0) {
 			this.startPage = 1;
 		}
 		
