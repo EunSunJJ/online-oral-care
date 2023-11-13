@@ -79,10 +79,24 @@
                     <div class="address-input-box">				
 						<h5>5. 치과 추천을 원하신다면 거주지를 선택해주세요</h5>
 					    <label><input type="checkbox" name="address" value="화성시"> 화성 </label>
-					    <label><input type="checkbox" name="address" value="오산시"> 오산 </label>
+					    <label><input type="checkbox" name="address" value="성남시"> 성남 </label>
 					    <label><input type="checkbox" name="address" value="수원시"> 수원 </label>
-					    <label><input type="checkbox" name="address" value="이천시"> 이천 </label>
+					    <label><input type="checkbox" name="address" value="파주시"> 파주 </label>
 					    <label><input type="checkbox" name="address" value="안산시"> 안산 </label>
+					    <label><input type="checkbox" name="address" value="의정부시"> 의정부 </label>
+					    <label><input type="checkbox" name="address" value="고양시"> 고양 </label>
+					    <label><input type="checkbox" name="address" value="김포시"> 김포 </label>
+					    <label><input type="checkbox" name="address" value="부천시"> 부천 </label>
+					    <label><input type="checkbox" name="address" value="남양주시"> 남양주 </label>
+					    <label><input type="checkbox" name="address" value="구리시"> 구리 </label>
+					    <label><input type="checkbox" name="address" value="하남시"> 하남 </label>
+					    <label><input type="checkbox" name="address" value="광주시"> 광주 </label>
+					    <label><input type="checkbox" name="address" value="평택시"> 평택 </label>
+					    <label><input type="checkbox" name="address" value="용인시"> 용인 </label>
+					    <label><input type="checkbox" name="address" value="시흥시"> 시흥 </label>
+					    <label><input type="checkbox" name="address" value="광명시"> 광명 </label>
+					    <label><input type="checkbox" name="address" value="군포시"> 군포 </label>
+					    <label><input type="checkbox" name="address" value="안양시"> 안양 </label>
 					    <label><input type="checkbox" name="address" value="과천시"> 과천 </label>
 					    <label><input type="checkbox" name="address" value="none"> 추천을 원하지 않는다 </label>
 					</div>

@@ -110,6 +110,10 @@ public class QpostRestController {
 			, @RequestParam(value="password" , required=false) String password
 			, HttpSession session) {
 		
+		if (password.isEmpty() == true) {
+			password = null;
+		}
+		
 		String writer = (String) session.getAttribute("userLoginId");
 		int userId = (Integer) session.getAttribute("userId");
 		int count = qpostService.addQpost(userId, writer, title, content, imageFile, password);

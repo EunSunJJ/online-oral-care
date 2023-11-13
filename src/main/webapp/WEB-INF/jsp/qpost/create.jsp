@@ -77,7 +77,7 @@ $(document).ready(function(){
 		
 		let title  = $("#qpostTitleInput").val();
 		let content = $("#qpostContentInput").val(); 
-		let password = $("#qpostPasswordInput").val();
+		let password = $("#qpostPasswordInput").val().trim();
 		
 		let imageFile = $("#qpostFileInput")[0];
 		

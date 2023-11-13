@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 @Getter
 public class OpenApiDto {
-	private String BIZPLC_NM;
-	private String BSN_STATE_NM;
-	private String TREAT_SBJECT_CONT;
-	private String REFINE_ROADNM_ADDR;
+	private String dentalClinicName;
+	private String status;
+	private String treatSubject;
+	private String address;
 }

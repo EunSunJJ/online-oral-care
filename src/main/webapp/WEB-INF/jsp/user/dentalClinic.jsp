@@ -23,7 +23,7 @@
 		<section>
 			<div class="dentalClinic-box-center">
 				<div class="dentalClinic-box">
-					<div class="dentalClinic-text">ㅁㅁ시 치과 목록</div>
+					<div class="dentalClinic-text">${address} 치과 목록</div>
 					
 					<table class="table text-center">
 						<thead>
@@ -35,12 +35,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach var="data" items="${list}">
+							<c:forEach var="api" items="${apiList}" varStatus="status">
 							<tr>
-								<td></td>
-								<td>${data.BIZPLC_NM}</td>
-								<td>${data.REFINE_ROADNM_ADDR}</td>
-								<td>${data.TREAT_SBJECT_CONT}</td>
+								<td>${status.count}</td>
+								<td>${api.dentalClinicName}</td>
+								<td>${api.address}</td>
+								<td>${api.treatSubject}</td>
 							</tr>
 							</c:forEach>
 						</tbody>

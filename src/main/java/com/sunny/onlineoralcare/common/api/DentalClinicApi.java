@@ -42,7 +42,6 @@ public class DentalClinicApi {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
-		//System.out.println("Response code: " + conn.getResponseCode()); 
 		
 		BufferedReader rd;
 		// 서비스코드가 정상이면 200~300사이의 숫자가 나옵니다.
@@ -57,21 +56,17 @@ public class DentalClinicApi {
 
 		rd.close();
 		conn.disconnect();
-		//System.out.println(result);
 
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
-		//System.out.println(jsonObject);
 		
 		JSONArray DentistryPrivateHospitalArr = (JSONArray)jsonObject.get("DentistryPrivateHospital");
-		//System.out.println(DentistryPrivateHospitalArr);
 		
 		JSONArray rowArr = new JSONArray();
 		JSONObject DentistryPrivateHospital = (JSONObject) DentistryPrivateHospitalArr.get(1);
 		rowArr = (JSONArray)DentistryPrivateHospital.get("row");
 		
-		//System.out.println(rowArr);
-		ArrayList<OpenApiDto> list = new ArrayList<OpenApiDto>();
+		ArrayList<OpenApiDto> dataList = new ArrayList<OpenApiDto>();
 		
 		JSONObject data = new JSONObject();
 		 for (int i = 0; i < rowArr.size(); i++) {
@@ -85,16 +80,17 @@ public class DentalClinicApi {
 		
 			 
 			 OpenApiDto dto = OpenApiDto.builder()
-					 .BIZPLC_NM(data1)
-					 .BSN_STATE_NM(data2)
-					 .TREAT_SBJECT_CONT(data3)
-					 .REFINE_ROADNM_ADDR(data4)
+					 .dentalClinicName(data1)
+					 .status(data2)
+					 .treatSubject(data3)
+					 .address(data4)
 					 .build();
 			 
-			 list.add(dto);
+			 dataList.add(dto);
 		 }		
 		
-		 model.addAttribute("list", list);
+		 model.addAttribute("apiList", dataList);
+		 model.addAttribute("address", address);
 		 
 		 return "user/dentalClinic";
 	}

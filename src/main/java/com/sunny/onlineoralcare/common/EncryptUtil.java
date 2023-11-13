@@ -8,6 +8,11 @@ public class EncryptUtil {
 	// md5 방식으로 암호화
 	public static String md5(String message) {
 		
+		// null값이 들어오면 null로 나가라!
+		if (message == null) {
+			return null;
+		}
+		
 		String resultString = "";
 		
 		try {
