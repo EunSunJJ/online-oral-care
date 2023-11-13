@@ -35,7 +35,6 @@
 						</div>
 					
 					<div class="survey-age-button-box">
-						<a href="/survey/start-view"><button type="button" class="survey-age-button">이전으로</button></a>
 						<button type="button" class="survey-age-button" id="surveyNextBtn">다음으로</button>
 					</div>
 				</div>

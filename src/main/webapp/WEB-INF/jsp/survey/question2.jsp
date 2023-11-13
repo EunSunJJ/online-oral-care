@@ -40,7 +40,6 @@
 						</div>
 					
 					<div class="survey-question-button-box">
-						<a href="/survey/question1-view"><button type="button" class="survey-question-button">이전으로</button></a>
 						<button type="button" class="survey-question-button" id="surveyNextBtn">다음으로</button>
 					</div>
 				</div>
@@ -55,6 +54,8 @@
 	
 	<script>
 	$(document).ready(function(){
+		
+		// 다음버튼
 		$("#surveyNextBtn").on("click", function(){
 			
 			let fluorideToothpaste =  $('input[name="question"]:checked').val();

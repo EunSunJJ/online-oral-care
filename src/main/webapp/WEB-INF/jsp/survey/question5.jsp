@@ -40,7 +40,6 @@
 					</div>
 					
 					<div class="survey-question-button-box">
-						<a href="/survey/question4-view"><button type="button" class="survey-question-button">이전으로</button></a>
 						<button type="button" class="survey-result-button" id="surveyResultBtn" data-user-id="${userId}">결과보기</button>
 					</div>
 				</div>
@@ -55,6 +54,8 @@
 
 	<script>
 		$(document).ready(function(){
+			
+			// 결과버튼
 			$("#surveyResultBtn").on("click", function(){
 				
 				let userId = $(this).data("user-id");
@@ -100,7 +101,6 @@
 						}
 					, success:function(data){
 						if(data.result == "success") {
-							alert("구강건강 관리점수 저장 성공");
 							location.href="/survey/result-view"
 						} else {
 							alert("구강건강 관리점수 저장 실패");

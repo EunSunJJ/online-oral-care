@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -39,7 +42,7 @@ public class DentalClinicApi {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
 		conn.setRequestProperty("Content-type", "application/json");
-		//System.out.println("Response code: " + conn.getResponseCode()); /* 연결 자체에 대한 확인이 필요하므로 추가합니다.*/
+		//System.out.println("Response code: " + conn.getResponseCode()); 
 		
 		BufferedReader rd;
 		// 서비스코드가 정상이면 200~300사이의 숫자가 나옵니다.
@@ -64,20 +67,15 @@ public class DentalClinicApi {
 		//System.out.println(DentistryPrivateHospitalArr);
 		
 		JSONArray rowArr = new JSONArray();
-		for(int i = 0; i < DentistryPrivateHospitalArr.size(); i++){
-			 JSONObject DentistryPrivateHospital = (JSONObject) DentistryPrivateHospitalArr.get(1);
-			 rowArr = (JSONArray)DentistryPrivateHospital.get("row");
-		}
-		//System.out.println(rowArr);
+		JSONObject DentistryPrivateHospital = (JSONObject) DentistryPrivateHospitalArr.get(1);
+		rowArr = (JSONArray)DentistryPrivateHospital.get("row");
 		
-		 //List<OpenApiDto> dataList = new ArrayList<>();
-		JSONObject data = new JSONObject();
-		 for (int i = 0; i < rowArr.size(); i++) {
-			 data = (JSONObject) rowArr.get(i);
-			 System.out.println(data);
-		 }
-	
-		 
+		System.out.println(rowArr);
+		JSONObject J = (JSONObject)rowArr.get(0);
+		JSONObject JJ = (JSONObject)rowArr.get(1);
+		System.out.println(J);
+		System.out.println(JJ);
+		
 		 return "user/dentalClinic";
 	}
 

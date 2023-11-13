@@ -3,6 +3,17 @@
 
 <mapper namespace="com.sunny.onlineoralcare.survey.repository.SurveyRepository">
 
+	<!-- 설문지 응답값 카운트 -->
+	<select id="">
+		SELECT
+			count(*)
+		FROM
+			`oral_care_score`
+		WHERE
+			`userId` = #{userId}
+		LIMIT 1
+	</select>
+
 	<!-- 설문지 응답값 저장하기 -->
 	<insert id="insertSurveyAnswer" parameterType="map">
 		INSERT INTO

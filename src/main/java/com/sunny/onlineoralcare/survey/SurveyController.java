@@ -1,6 +1,7 @@
 package com.sunny.onlineoralcare.survey;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -10,7 +11,8 @@ public class SurveyController {
 
 	// 설문지 결과 화면
 	@GetMapping("/result-view")
-	public String result() {
+	public String result(Model model) {
+		
 		return "survey/result";
 	}			
 

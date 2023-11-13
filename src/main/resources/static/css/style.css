@@ -1316,7 +1316,7 @@ nav {
 }
 
 .survey-age-button {
-	width: 120px;
+	width: 300px;
 	height: 35px;
 	color: white;
 	font-size: 17px;
@@ -1390,7 +1390,7 @@ nav {
 }
 
 .survey-question-button {
-	width: 120px;
+	width: 300px;
 	height: 35px;
 	color: white;
 	font-size: 17px;
@@ -1401,7 +1401,7 @@ nav {
 }
 
 .survey-result-button {
-	width: 120px;
+	width: 300px;
 	height: 35px;
 	color: white;
 	font-size: 17px;
