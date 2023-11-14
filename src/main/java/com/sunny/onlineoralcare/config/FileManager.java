@@ -13,7 +13,7 @@ public class FileManager {
 	// 파일 저장하기
 	
 	// 객체생성 없이 바로 사용할 수 있도록 static 붙여준다
-	public final static String FILE_UPLOAD_PATH = "C:\\Project\\upload";
+	public final static String FILE_UPLOAD_PATH = "/home/ec2-user/web/onlineOralCare";
 	
 	public static String saveImageFile(int userId, MultipartFile imageFile) {
 		
