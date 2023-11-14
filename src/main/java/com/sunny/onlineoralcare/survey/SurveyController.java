@@ -1,17 +1,45 @@
 package com.sunny.onlineoralcare.survey;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sunny.onlineoralcare.survey.survice.SurveyService;
+
 @RequestMapping("/survey")
 @Controller
 public class SurveyController {
 
+	@Autowired
+	private SurveyService surveyService;
+	
 	// 설문지 결과 화면
 	@GetMapping("/result-view")
-	public String result(Model model) {
+	public String result(
+			HttpSession session,
+			Model model) {
+
+		// session에 담긴 userId 가져오기
+		int userId = (Integer) session.getAttribute("userId");
+		
+		// 설문지 응답값 카운트
+		int count = surveyService.countSurveyAnswer(userId);
+			
+		String result = "";
+		// count 개수에 따라서 나누기
+		if(count <= 1) {  // 0 1
+			result = "위험";
+		} else if (count <= 3) { // 3 2
+			result = "주의";
+		} else { // 5 4
+			result = "양호";
+		}
+
+		model.addAttribute("result", result);
 		
 		return "survey/result";
 	}			

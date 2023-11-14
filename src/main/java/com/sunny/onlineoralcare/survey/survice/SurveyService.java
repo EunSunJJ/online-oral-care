@@ -11,6 +11,11 @@ public class SurveyService {
 	@Autowired
 	private SurveyRepository surveyRepository;
 	
+	// 설문지 응답값 카운트
+	public int countSurveyAnswer(int userId) {
+		return surveyRepository.countSurveyAnswer(userId);
+	}
+	
 	// 설문지 응답값 저장하기
 	public int addSurveyAnswer(int userId, String age, boolean brushingTeeth
 			, boolean fluorideToothpaste, boolean interdental, boolean sugar, boolean dentalClinic) {

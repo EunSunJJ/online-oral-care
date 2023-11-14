@@ -4,14 +4,19 @@
 <mapper namespace="com.sunny.onlineoralcare.survey.repository.SurveyRepository">
 
 	<!-- 설문지 응답값 카운트 -->
-	<select id="">
+	<select id="countSurveyAnswer" parameterType="int" resultType="int">
 		SELECT
-			count(*)
+			brushingTeeth
+			+fluorideToothpaste
+			+interdental
+			+sugar
+			+dentalClinic
 		FROM
 			`oral_care_score`
 		WHERE
 			`userId` = #{userId}
-		LIMIT 1
+		ORDER BY createdAt desc
+		limit 1;
 	</select>
 
 	<!-- 설문지 응답값 저장하기 -->

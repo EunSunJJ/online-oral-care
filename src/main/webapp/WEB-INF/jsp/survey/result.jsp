@@ -28,20 +28,20 @@
 						<div class="survey-result-score">
 							<div class="survey-score-box">
 								<div class="survey-score-text1">위험</div>
-								<div class="survey-score">1개</div>
+								<div class="survey-score">0~1점</div>
 								
 								<div class="survey-score-text2">주의</div>
-								<div class="survey-score">2개</div>
+								<div class="survey-score">2~3점</div>
 								
 								<div class="survey-score-text3">양호</div>
-								<div class="survey-score">2개</div>
+								<div class="survey-score">4~5점</div>
 							</div>
 							
 							<div class="survey-result-text-center">
 								<div class="survey-result-text">당신의 구강건강은</div>
 							</div>
 							<div class="survey-result-text-center">
-								<div class="survey-result-text">ㅁㅁ 한 상태입니다.</div>
+								<div class="survey-result-text"><strong>${result}</strong>한 상태입니다.</div>
 							</div>
 						</div>
 					</div>

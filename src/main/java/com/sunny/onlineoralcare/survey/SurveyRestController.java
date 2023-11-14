@@ -18,7 +18,6 @@ public class SurveyRestController {
 	@Autowired
 	private SurveyService surveyService;
 
-	
 	// 설문지 응답값 저장하기
 	@GetMapping("/answer")
 	public Map<String, String> surveyAnswerSave(
