@@ -9,12 +9,16 @@ import com.sunny.onlineoralcare.config.FileManager;
 import com.sunny.onlineoralcare.manager.domain.Answer;
 import com.sunny.onlineoralcare.manager.domain.Manager;
 import com.sunny.onlineoralcare.manager.repository.ManagerRepository;
+import com.sunny.onlineoralcare.qpost.service.QpostService;
 
 @Service
 public class ManagerService {
 
 	@Autowired
 	private ManagerRepository managerRepository;
+	
+	@Autowired
+	private QpostService qpostService;
 
 	// 답변 수정하기
 	public int updateAnswer(int postId, String content) {
@@ -28,6 +32,9 @@ public class ManagerService {
 	
 	// 질문 게시판에 답변달기
 	public int addAnswer(int postId, int managerId, String content, MultipartFile imageFile) {
+		
+		// answer값을 바로 true로 바꿔준다
+		qpostService.updateQpostAnswer(postId, true);
 		
 		//  imageFile을 imagePath로 변경
 		String imagePath = FileManager.saveImageFile(managerId, imageFile);

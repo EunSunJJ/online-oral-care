@@ -19,8 +19,8 @@ public class QpostService {
 	private QpostRepository qpostRepository;
 	
 	// 답변여부 변경해주기
-	public int updateQpostAnswer(int id, boolean answer) {
-		return qpostRepository.updateQpostAnswer(id, answer);
+	public int updateQpostAnswer(int postId, boolean answer) {
+		return qpostRepository.updateQpostAnswer(postId, answer);
 	}
 	
 	// 질문 글 삭제하기

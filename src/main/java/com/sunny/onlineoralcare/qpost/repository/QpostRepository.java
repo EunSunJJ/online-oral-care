@@ -13,7 +13,7 @@ public interface QpostRepository {
 	
 	// 답변여부 변경해주기
 	public int updateQpostAnswer(
-			@Param("id") int id
+			@Param("postId") int postId
 			, @Param("answer") boolean answer);
 	
 	// 질문 글 삭제하기

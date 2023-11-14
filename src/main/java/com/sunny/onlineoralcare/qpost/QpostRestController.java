@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sunny.onlineoralcare.manager.domain.Answer;
-import com.sunny.onlineoralcare.manager.service.ManagerService;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.service.QpostService;
 
@@ -26,34 +24,31 @@ public class QpostRestController {
 	@Autowired
 	private QpostService qpostService;
 	
-	@Autowired
-	private ManagerService managerService;
-	
 	// 답변여부 변경해주기
-	@PutMapping("/update/answer")
-	public Map<String, String> updateAnswer(
-			@RequestParam("id") int id
-			, @RequestParam("answer") boolean answer) {
-		
-		int count = qpostService.updateQpostAnswer(id, answer); 
-		
-		// answer_post정보 가져오기
-		Answer answerData = managerService.getAnswerByPostId(id);
-		if(answerData.getContent() != null) {
-			// answer값이 true로 바뀐다
-		}
-		
-		// response
-		Map<String, String> resultMap = new HashMap<>();
-		if (count == 1) {
-			resultMap.put("result", "success");
-		} else {
-			resultMap.put("result", "fail");
-		}
-		
-		return resultMap;
-	}
-	
+//	@PutMapping("/update/answer")
+//	public Map<String, String> updateAnswer(
+//			@RequestParam("id") int id
+//			, @RequestParam("answer") boolean answer) {
+//		
+//		int count = qpostService.updateQpostAnswer(id, answer); 
+//		
+//		// answer_post정보 가져오기
+//		Answer answerData = managerService.getAnswerByPostId(id);
+//		if(answerData.getContent() != null) {
+//			// answer값이 true로 바뀐다
+//		}
+//		
+//		// response
+//		Map<String, String> resultMap = new HashMap<>();
+//		if (count == 1) {
+//			resultMap.put("result", "success");
+//		} else {
+//			resultMap.put("result", "fail");
+//		}
+//		
+//		return resultMap;
+//	}
+//	
 	
 	// 질문 글 삭제하기
 	@DeleteMapping("/delete")

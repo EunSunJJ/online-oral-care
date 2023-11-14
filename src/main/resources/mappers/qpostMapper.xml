@@ -11,7 +11,7 @@
 			`answer` = #{answer}
 			, `updatedAt` = now()
 		WHERE
-			`id` = #{id}	
+			`id` = #{postId}	
 	</update>	
 	
 	<!-- 질문 글 삭제하기 -->
