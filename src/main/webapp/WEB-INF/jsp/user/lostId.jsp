@@ -24,12 +24,20 @@
 			<div class="lostId-box-center">
 				<div class="lostId-box">
 					<div class="lostId-text">아이디를 잊으셨나요?</div>
-					<form method="post" action="/user/find/loginId-view">
-						<input type="text" class="input-lostId" id="lostIdNameInput" placeholder="이름을 입력해주세요" name="name">
-						<input type="text" class="input-lostId" id="lostIdEmailInput" placeholder="이메일을 입력해주세요" name="email">
+						<input type="text" class="input-lostId" id="lostIdNameInput" placeholder="이름 입력하기" name="name">
 						
-						<button type="submit" class="button-lostId" id="findLostIdBtn">아이디 찾기</button>
-					</form>
+						<input type="text" class="lostId-email" id="emailIdInput" placeholder="이메일 입력하기"> @
+						<input type="text" class="lostId-domain" id="emailDomainInput">
+						<select id="domainList">
+							<option value="direct">직접 입력</option>
+							<option value="naver.com">naver.com</option>
+							<option value="google.com">google.com</option>
+							<option value="hanmail.net">hanmail.net</option>
+							<option value="kakao.com">kakao.com</option>
+						</select>
+						
+						<button type="button" class="button-lostId" id="findLostIdBtn">아이디 찾기</button>
+					
 					<div class="button-lostId-center">
 						<a href="/user/join-view"><button class="button-lostId-join" type="button">회원가입</button></a>
 						<a href="/user/lost/password-view"><button class="button-lostId-password" type="button">비밀번호 찾기</button></a>
@@ -47,10 +55,32 @@
 	<script>
 		$(document).ready(function(){
 			
+			// email select값 emailDomainInput에 담기
+			$("#domainList").on("change", function(){
+				
+				let emailDomain = $("#emailDomainInput").val();
+				let domainList = $("#domainList").val();
+				
+				if (domainList == "direct") {
+					 $("#emailDomainInput").attr("disabled", false); // 활성화
+					 $("#emailDomainInput").val(""); 
+					 
+				} else {
+					 $("#emailDomainInput").val(domainList);
+					 $("#emailDomainInput").attr("disabled", true); // 비활성화
+				}
+			});			
+			
+			// 아이디 찾기 버튼 이벤트 - 아이디 찾는 쿼리
 			$("#findLostIdBtn").on("click", function(){
 				
 				let name = $("#lostIdNameInput").val();
-				let email = $("#lostIdEmailInput").val();
+				
+				// email 도메인 직접 입력 또는 domain option 선택
+				let emailId = $("#emailIdInput").val();
+				let emailDomain = $("#emailDomainInput").val();
+				
+				let email = emailId + "@" + emailDomain; 
 				
 				// validation
 				if(name == "") {
@@ -64,7 +94,7 @@
 				}
 				
 				$.ajax({
-					type:"post"
+					type:"get"
 					, url:"/user/find/id"
 					, data:{
 						"name":name
@@ -73,9 +103,9 @@
 					, success:function(data){
 						if (data.result == "success") {
 							alert("아이디 찾기 성공");
-							location.href="/user/find/loginId-view"
+							location.href="/user/find/loginId-view?name=" + name + "&email=" + email
 						} else {
-							alert("아이디 찾기 실패");
+							alert("회원정보가 없습니다.");
 						}
 					}
 					, error:function(){

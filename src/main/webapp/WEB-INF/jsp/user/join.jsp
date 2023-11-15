@@ -45,23 +45,28 @@
 					
 					<div class="join-box-text">비밀번호 확인</div>
 					<input class="join-box-type" type="password" placeholder="비밀번호 재입력" id="passwordCheckInput">			
-				
+					<div id="notMachPassword">비밀번호가 일치하지 않습니다</div>
+					<div id="machPassword">비밀번호가 일치합니다</div>
+									
 					<div class="join-box-text">이름</div>
 					<input class="join-box-type" type="text" placeholder="이름을 입력해주세요" id="nameInput">
 					
 					<div class="join-box-text">핸드폰번호</div>
 					<div class="join-box-phone">
-						<input class="join-box-phone-number" type="text" maxlength=3 placeholder="010" name="phoneNumber">
-						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="1234" name="phoneNumber">
-						<input class="join-box-phone-number" type="text" maxlength=4 placeholder="5678" name="phoneNumber">
+						<input class="join-box-phone-number" type="text" maxlength=3 value="010" name="phoneNumber" readonly>
+						<input class="join-box-phone-number" type="text" maxlength=4 name="phoneNumber">
+						<input class="join-box-phone-number" type="text" maxlength=4 name="phoneNumber">
 					</div>
 					
 					<div class="join-box-text">생년월일<i class="bi bi-cake"></i></div>
 					<select class="select-year" name="birth">
 							<option value="year" selected disabled hidden>년</option>
-						<c:forEach var="year" begin="1920" end="2023">
-							<option value="${year}">${year}년</option>
+						
+						<c:set var="nowYear" value="2023"></c:set>
+						<c:forEach var="year" begin="1920" end="${nowYear}" step="1">
+							<option value="${nowYear - year + 1920}">${nowYear - year + 1920}년</option>
 						</c:forEach>
+						
 					</select>
 					
 					<select class="select-month" name="birth">
@@ -248,8 +253,49 @@ $(document).ready(function() {
 			 $("#emailDomainInput").attr("disabled", true); // 비활성화
 		}
 	});
-
 	
+	// 비밀번호 일치여부 체크
+	$("#passwordCheckInput").on("input", function(){
+		
+		let password = $("#passwordInput").val();
+		let passwordCheck = $("#passwordCheckInput").val();
+		
+		if(password != passwordCheck) {
+			$("#notMachPassword").show();
+			
+		} else {
+			$("#notMachPassword").hide();
+			$("#machPassword").show();
+		}
+	});
+	
+	// 비밀번호 input값이 들어가면 실시간 체크
+	$("#passwordInput").on("input", function(){
+		
+		let password = $("#passwordInput").val();
+		
+		// 정규표현식으로 비밀번호 validation
+		// (?=.*?[A-Z]) : A부터 Z까지 포함여부
+		// (?=.*?[a-z]) : a부터 z까지 포함여부 
+		// (?=.*?[0-9]) : 0부터 9까지 포함여부 
+		// (?=.*?[~?!@#$%^&*_-]) : 특수기호 포함여부
+		// .{8,20} : 8자 이상 20자 이하 (길이 8~20자)
+		// ^ : 이걸로 시작해서  $ : 로 끝난다
+		const passwordValidation =/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@#$%^&*_-]).{8,20}$/;
+		let passwordTest = passwordValidation.test(password);
+
+		if(!passwordTest){
+			$("#impossiblePassword").show();
+			return;
+		}
+		
+		if(passwordTest){
+			isAvailablePassword = true;
+			$("#possiblePassword").show();
+			$("#impossiblePassword").hide();
+			
+		}
+	});
 	
 	// 회원가입 정보 저장 
 	$("#joinBtn").on("click", function(){
@@ -314,29 +360,6 @@ $(document).ready(function() {
 			return;
 		}
 		
-		// 정규표현식으로 비밀번호 validation
-		// (?=.*?[A-Z]) : A부터 Z까지 포함여부
-		// (?=.*?[a-z]) : a부터 z까지 포함여부 
-		// (?=.*?[0-9]) : 0부터 9까지 포함여부 
-		// (?=.*?[~?!@#$%^&*_-]) : 특수기호 포함여부
-		// .{8,20} : 8자 이상 20자 이하 (길이 8~20자)
-		// ^ : 이걸로 시작해서  $ : 로 끝난다
-		
-		const passwordValidation =/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[~?!@#$%^&*_-]).{8,20}$/;
-		let passwordTest = passwordValidation.test(password);
-
-		if(!passwordTest){
-			$("#impossiblePassword").show();
-			return;
-		}
-		
-		if(passwordTest){
-			isAvailablePassword = true;
-			$("#possiblePassword").show();
-			$("#impossiblePassword").hide();
-			
-		}
-		
 		if(password != passwordCheck) {
 			alert("비밀번호가 일치하지 않습니다.");
 			return;
@@ -396,7 +419,7 @@ $(document).ready(function() {
 				}
 			, success:function(data){
 				if(data.result == "success") {
-					alert("회원가입 성공");
+					alert("환영합니다 "+ name +" 님 로그인 해주세요!");
 					location.href="/user/login-view"
 				} else {
 					alert("회원가입 실패");

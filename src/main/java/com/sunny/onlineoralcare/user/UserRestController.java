@@ -89,7 +89,7 @@ public class UserRestController {
 	}
 	
 	// 아이디 찾기
-	@PostMapping("/find/id")
+	@GetMapping("/find/id")
 	public Map<String, String> findId(
 			@RequestParam("name") String name
 			, @RequestParam("email") String email) {

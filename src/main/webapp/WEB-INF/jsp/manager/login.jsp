@@ -20,12 +20,15 @@
 			<div class="login-box">
 				<div class="login-input-box">
 					<div class="login-box-text">로그인</div>
-					<input id="loginIdInput" type="text" placeholder="아이디를 입력하세요" class="login-box-loginId">
-					<input id="passwordInput" type="password" placeholder="비밀번호를 입력하세요" class="login-box-password">
-					<button id="loginBtn" type="submit" class="botton-login">로그인</button>
+					
+					<form id="adminLoginForm">
+						<input id="loginIdInput" type="text" placeholder="아이디를 입력하세요" class="login-box-loginId">
+						<input id="passwordInput" type="password" placeholder="비밀번호를 입력하세요" class="login-box-password">
+						<button id="loginBtn" type="submit" class="botton-login">로그인</button>
+					</form>
 					
 					<div class="manager-login-box-button-box">
-						<a href="/manager/join-view"><button type="button" class="link-join-manager">회원가입</button></a>
+						<a href="/admin/join-view"><button type="button" class="link-join-manager">회원가입</button></a>
 					</div>
 				</div>
 			</div>
@@ -40,7 +43,11 @@
 
 <script>
 $(document).ready(function(){
-	$("#loginBtn").on("click", function(){
+	$("#adminLoginForm").on("submit", function(e){
+		
+		// form 태그가 가진 페이지 이동 기능을 막자
+		e.preventDefault();
+		
 		let loginId = $("#loginIdInput").val();
 		let password = $("#passwordInput").val();
 		
@@ -56,14 +63,14 @@ $(document).ready(function(){
 		}
 		$.ajax({
 			type:"post"
-			, url:"/manager/login"
+			, url:"/admin/login"
 			, data:{
 				"loginId":loginId
 				, "password":password
 			}
 			, success:function(data){
 				if(data.result == "success"){
-					alert("환영합니다 ㅁㅁㅁ 관리자님");
+					alert("환영합니다 "+ loginId +" 관리자님");
 					location.href = "/home-view"
 				} else {
 					alert("아이디, 비밀번호를 확인해주세요");

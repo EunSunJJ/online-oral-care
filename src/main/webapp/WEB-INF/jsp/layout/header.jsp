@@ -27,7 +27,7 @@
 				
 				<c:when test="${not empty managerId}">
 					<span>${managerLoginId}님 안녕하세요</span>
-					<a href="/manager/logout"><span>로그아웃</span></a>
+					<a href="/admin/logout"><span>로그아웃</span></a>
 				</c:when>	
 							
 				<c:otherwise></c:otherwise>

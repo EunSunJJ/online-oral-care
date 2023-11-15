@@ -38,7 +38,7 @@
 					    <label><input type="checkbox" name="disease" value="hemorrhagic"> 출혈성질환 </label>
 					    <label><input type="checkbox" name="disease" value="mental"> 정신질환 </label>
 					    <label><input type="checkbox" name="disease" value="etc"> 기타 </label>
-					    <label><input type="checkbox" name="disease" value="none"> 해당사항 없음 </label>
+					    <label><input type="checkbox" name="disease" value="none" id="surveyDisease"> 해당사항 없음 </label>
 					</div>
 
 					<br>						
@@ -72,7 +72,7 @@
 					    <label><input type="checkbox" name="discomfort" value="chin"> 턱 </label>
 					    <label><input type="checkbox" name="discomfort" value="externalInjury"> 외상 </label>
 					    <label><input type="checkbox" name="discomfort" value="etc"> 기타 </label>
-					    <label><input type="checkbox" name="discomfort" value="none"> 불편한 점 없음 </label>
+					    <label><input type="checkbox" name="discomfort" value="none" id="surveyDiscomfort"> 불편한 점 없음 </label>
 					</div>	
 					
 					<br>					
@@ -134,6 +134,37 @@
 	<script>
 	$(document).ready(function(){
 		
+		// 전신질환 유무 해당사항 없음 - 체크박스 초기화 기능
+		$("input[type=checkbox][name=disease]").on("click", function(){
+			
+			if ($("#surveyDisease").prop("checked")){
+				 $("input[type=checkbox][name=disease]").prop("checked",false);
+				 $(this).prop("checked",true);
+			}
+			
+		});
+		
+		// 불편한 점 없음 - 체크박스 초기화 기능
+		$("input[type=checkbox][name=discomfort]").on("click", function(){
+			
+			if ($("#surveyDiscomfort").prop("checked")){
+				 $("input[type=checkbox][name=discomfort]").prop("checked",false);
+				 $(this).prop("checked",true);
+			}
+			
+		});
+		
+		//  체크박스 중복 체크 방지 
+		$("input[type=checkbox][id=disease]").on("click", function(){
+			
+			if ($("#surveyDisease").prop("checked")){
+				 $("input[type=checkbox][name=drugAllergy]").prop("checked",false);
+				 $(this).prop("checked",true);
+			}
+			
+		});
+		
+		
 		//  체크박스 중복 체크 방지 - 마지막 치과 방문일
 		$("input[type=checkbox][name=location]").on("click", function(){
 			
@@ -187,13 +218,16 @@
 				let disease = $(this).val();
 				diseaseArr.push(disease);
 			});	
+			
 			let diseaseStr = diseaseArr.join(",");
+			
 			
 			let discomfortArr = new Array();
 			$("input[name=discomfort]:checked").each(function(){
 				let discomfort = $(this).val();
 				discomfortArr.push(discomfort);
 			});	
+			
 			let discomfortStr = discomfortArr.join(",");
 			
 			

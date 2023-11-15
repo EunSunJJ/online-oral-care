@@ -13,7 +13,7 @@
 					</c:when>
 					
 					<c:when test="${not empty managerId}">
-						<a class="nav-box-anchor" href="/manager/qpost/list-view">질문게시판</a>
+						<a class="nav-box-anchor" href="/admin/qpost/list-view">질문게시판</a>
 					</c:when>
 				</c:choose>
 			</li>

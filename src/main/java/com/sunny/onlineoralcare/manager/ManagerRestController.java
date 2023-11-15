@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sunny.onlineoralcare.manager.domain.Manager;
 import com.sunny.onlineoralcare.manager.service.ManagerService;
 
-@RequestMapping("/manager")
+@RequestMapping("/admin")
 @RestController
 public class ManagerRestController {
 

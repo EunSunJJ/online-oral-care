@@ -72,6 +72,6 @@
 			location.href = "/survey/question5-view" + parameter + "&sugar=" + sugar
 		});
 	});
-	</script
+	</script>
 </body>
 </html>

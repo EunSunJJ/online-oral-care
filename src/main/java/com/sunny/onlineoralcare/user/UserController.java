@@ -45,7 +45,7 @@ public class UserController {
 	}
 	
 	// 찾은 아이디 알려주기
-	@PostMapping("/find/loginId-view")
+	@GetMapping("/find/loginId-view")
 	public String findLoginId(
 			@RequestParam("name") String name
 			, @RequestParam("email") String email

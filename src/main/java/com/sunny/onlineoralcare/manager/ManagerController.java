@@ -17,7 +17,7 @@ import com.sunny.onlineoralcare.manager.service.ManagerService;
 import com.sunny.onlineoralcare.qpost.domain.Qpost;
 import com.sunny.onlineoralcare.qpost.service.QpostService;
  
-@RequestMapping("/manager")
+@RequestMapping("/admin")
 @Controller
 public class ManagerController {
 
@@ -90,7 +90,7 @@ public class ManagerController {
 		session.removeAttribute("managerId");
 		session.removeAttribute("managerLoginId");
 		
-		return "redirect:/manager/login-view";
+		return "redirect:/admin/login-view";
 	}
 	
 	// 사용자 로그인 화면

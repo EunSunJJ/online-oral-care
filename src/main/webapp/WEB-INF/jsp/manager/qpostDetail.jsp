@@ -61,14 +61,16 @@
 									
 					<div class="qpost-detail-button-box">
 							<div class="qpost-detail-button1">
-								<a href="/manager/qpost/list-view"><button class="button-qpost-list" type="button">목록으로</button></a>
+								<a href="/admin/qpost/list-view"><button class="button-qpost-list" type="button">목록으로</button></a>
 							</div>
 							
 							<div class="qpost-detail-button2">
 								<c:if test="${qpostAnswer.managerId == managerId}">
 									<button id="ManagerAnswerModifyBtn" class="button-answer-modify" type="button" data-post-id="${qpost.id}">수정하기</button>
 								</c:if>
+								<c:if test="${empty qpostAnswer.content}">
 								<button id="ManagerAnswerSaveBtn" class="button-qpost-answer" type="button" data-post-id="${qpost.id}" data-manager-id="${managerId}">답변달기</button>
+								</c:if>
 							</div>
 							
 					</div>	
@@ -96,7 +98,7 @@
 				
 				$.ajax({
 					type:"put"
-					, url:"/manager/answer/qpost-modify"
+					, url:"/admin/answer/qpost-modify"
 					, data:{
 						"content":answer
 						, "postId":postId
@@ -144,7 +146,7 @@
 				
 				$.ajax({
 					type:"post"
-					, url:"/manager/answer/qpost"
+					, url:"/admin/answer/qpost"
 					, data:formData
 					
 					// 파일 업로드 필수 옵션

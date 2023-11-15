@@ -313,6 +313,20 @@ nav {
 	color: blue;
 }
 
+#machPassword {
+	font-size: small;
+	font-weight: 900;
+	color: blue;
+	display: none;
+}
+
+#notMachPassword {
+	font-size: small;
+	font-weight: 900;
+	color: red;
+	display: none;	
+}
+
 .join-box-phone {
 	display: flex;
 }
@@ -864,7 +878,7 @@ nav {
 
 .lostId-box {
 	border: 3px solid black;
-	width: 500px;
+	width: 550px;
 	height: 330px;
 	margin-top: 50px;
 	margin-bottom: 40px;
@@ -880,25 +894,34 @@ nav {
 }
 
 .input-lostId {
-	width: 400px;
+	width: 305px;
 	height: 30px;
 	margin-bottom: 12px;
 }
 
+.lostId-email {
+	width: 150px;
+}
+
+.lostId-domain {
+	width: 130px;
+	height: 30px;
+}
+
 .button-lostId {
-	width: 400px;
+	width: 420px;
 	height: 35px;
 	color: white;
 	font-size: 17px;
 	background-color: navy;
 	text-decoration: none;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 .button-lostId-center {
 	display: flex;
 	justify-content: space-between;
-	width: 400px;
+	width: 420px;
 }
 
 .button-lostId-join {
@@ -1414,7 +1437,7 @@ nav {
 	background-color: darkgreen;
 	text-decoration: none;
 	margin-right: 40px;
-	margin-left: 40px;	
+	margin-left: 40px;
 }
 
 /* survey - result */
@@ -1437,13 +1460,14 @@ nav {
 	margin-top: 40px;
 	margin-bottom: 25px;
 }
-.survey-result-score{
+
+.survey-result-score {
 	border: 1px black solid;
 	width: 400px;
 	height: 200px;
 }
 
-.survey-score-box{
+.survey-score-box {
 	display: flex;
 	justify-content: space-between;
 	padding-top: 40px;
@@ -1453,7 +1477,7 @@ nav {
 }
 
 .survey-score-text1 {
-	background-color:orangered;
+	background-color: orangered;
 	font-size: 17px;
 	font-weight: 700;
 }
@@ -1473,7 +1497,8 @@ nav {
 .survey-score {
 	font-size: 17px;
 }
-.survey-result-text-center{
+
+.survey-result-text-center {
 	display: flex;
 	justify-content: center;
 }
@@ -1497,6 +1522,7 @@ nav {
 	justify-content: center;
 	margin-bottom: 15px;
 }
+
 .button-survey-result {
 	width: 200px;
 	height: 30px;
@@ -1514,23 +1540,3 @@ nav {
 .survey-text2 {
 	font-size: 13px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
