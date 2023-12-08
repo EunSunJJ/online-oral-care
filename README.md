@@ -6,19 +6,25 @@
 
   ## 1. 프로젝트 개요
   ### 1-1. 구현 기능
+  
   ### 1-2. 개발 환경
   
   ## 2. 서비스 기획 및 설계
-  ### 2-1. 기획  🔥[기획서 자세히 보기](https://ovenapp.io/view/C5tMuonvWKnKpdp0yzAvxwPhAgKRu2RZ/xivXo "기획서")
-  
-![기획1](https://github.com/EunSunJJ/online-oral-care/assets/126765411/a4a74aa4-5e3f-4544-8b8a-8c2f5175f929)
-
-![기획2](https://github.com/EunSunJJ/online-oral-care/assets/126765411/599c8794-003a-43c5-95e3-e622b278c0fe)
+  ### 2-1. 기획  🔥[기획서 자세히 보기](https://ovenapp.io/view/C5tMuonvWKnKpdp0yzAvxwPhAgKRu2RZ/xivXo "기획서 링크")
+![기획1](https://github.com/EunSunJJ/online-oral-care/assets/126765411/a4a74aa4-5e3f-4544-8b8a-8c2f5175f929 "기획-질문 게시판")
+![기획2](https://github.com/EunSunJJ/online-oral-care/assets/126765411/599c8794-003a-43c5-95e3-e622b278c0fe "기획-설문 결과지")
 
   ### 2-2. 설계
-  - DB 설계 🔥[ERD 자세히 보기](https://www.erdcloud.com/d/4XDGqN95CusyakDuM "DB 설계 ERD")
-    
+  - DB 설계 🔥[ERD 자세히 보기](https://www.erdcloud.com/d/4XDGqN95CusyakDuM "DB 설계 ERD 링크")
+    ![ERD 설계](https://github.com/EunSunJJ/online-oral-care/assets/126765411/7d8bc8f7-5d13-407e-9cf4-3381f8f0756c "ERD설계 이미지")
+
   - URL 설계 🔥[URL 설계 자세히 보기](https://docs.google.com/spreadsheets/d/1oH9uhe67nG7w688nEha89jCRufneH8w7TDERo9vvqXw/edit?usp=sharing "URL 설계")
+    ![Memo View 설계](https://github.com/EunSunJJ/online-oral-care/assets/126765411/9e417dd4-9d46-414e-bf3e-98d0693d6236 "URL설계 - View")
+    ![API URL 설계1](https://github.com/EunSunJJ/online-oral-care/assets/126765411/ec28ed9a-6587-4c8d-a143-e4a464318e1e "URL설계 - 회원가입 API")
+    ![API URL설계2](https://github.com/EunSunJJ/online-oral-care/assets/126765411/f1c9ff54-e9fc-47ca-a3e8-2daf3c728a7a "URL설계 - 질문게시판 API")
+    ![API URL 설계 3](https://github.com/EunSunJJ/online-oral-care/assets/126765411/6980eeb6-86d1-4e1a-8ba4-8385a5b0a3d5 "URL설계 - 설문지 API")
+
+    
     
   ## 3. 기능 명세 + 트러블 슈팅
   ### 3-1.
