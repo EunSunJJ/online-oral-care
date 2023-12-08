@@ -10,16 +10,17 @@
   ### 1-2. 개발 환경
   
   ## 2. 서비스 기획 및 설계
-  ### 2-1. 기획        🔥[기획서 자세히 보기](https://ovenapp.io/view/C5tMuonvWKnKpdp0yzAvxwPhAgKRu2RZ/xivXo "기획서 링크")
+  ### 2-1. 기획 &nasp;&nasp;🔥[기획서 자세히 보기](https://ovenapp.io/view/C5tMuonvWKnKpdp0yzAvxwPhAgKRu2RZ/xivXo "기획서 링크")
 ![기획1](https://github.com/EunSunJJ/online-oral-care/assets/126765411/a4a74aa4-5e3f-4544-8b8a-8c2f5175f929 "기획-질문 게시판")
 ![기획2](https://github.com/EunSunJJ/online-oral-care/assets/126765411/599c8794-003a-43c5-95e3-e622b278c0fe "기획-설문 결과지")
 
   ### 2-2. 설계
-  - DB 설계 🔥[ERD 자세히 보기](https://www.erdcloud.com/d/4XDGqN95CusyakDuM "DB 설계 ERD 링크")
+  - DB 설계 &nasp;&nasp;🔥[ERD 자세히 보기](https://www.erdcloud.com/d/4XDGqN95CusyakDuM "DB 설계 ERD 링크")
     ![ERD 설계](https://github.com/EunSunJJ/online-oral-care/assets/126765411/7d8bc8f7-5d13-407e-9cf4-3381f8f0756c "ERD설계 이미지")
 
-  - URL 설계 🔥[URL 설계 자세히 보기](https://docs.google.com/spreadsheets/d/1oH9uhe67nG7w688nEha89jCRufneH8w7TDERo9vvqXw/edit?usp=sharing "URL 설계 링크")
-    ![Memo View 설계](https://github.com/EunSunJJ/online-oral-care/assets/126765411/9e417dd4-9d46-414e-bf3e-98d0693d6236 "URL설계 - View")
+  - URL 설계 &nasp;&nasp;🔥[URL 설계 자세히 보기](https://docs.google.com/spreadsheets/d/1oH9uhe67nG7w688nEha89jCRufneH8w7TDERo9vvqXw/edit?usp=sharing "URL 설계 링크")
+    ![View URL설계](https://github.com/EunSunJJ/online-oral-care/assets/126765411/fe9fd13c-7590-4430-bc14-a2ab513d26f8 "URL설계 - View")
+
     ![API URL 설계1](https://github.com/EunSunJJ/online-oral-care/assets/126765411/ec28ed9a-6587-4c8d-a143-e4a464318e1e "URL설계 - 회원가입 API")
     ![API URL설계2](https://github.com/EunSunJJ/online-oral-care/assets/126765411/f1c9ff54-e9fc-47ca-a3e8-2daf3c728a7a "URL설계 - 질문게시판 API")
     ![API URL 설계 3](https://github.com/EunSunJJ/online-oral-care/assets/126765411/6980eeb6-86d1-4e1a-8ba4-8385a5b0a3d5 "URL설계 - 설문지 API")
@@ -41,13 +42,14 @@
   
   ## 5. 앞으로 업데이트 될 부분
   ### 5-1. Version2
-  **Open API보충할 부분**
+  - Open API보충할 부분
 - [ ]  추가 조건들 걸어주기
 - [ ]  폐업 중인 병원들 제외시기기
 - [ ]  병원 리스트에 페이징 기능 넣기
 - [ ]  병원 리스트에 검색 기능 넣기
 - [ ]  권한 부여하기
 
+  - 부족해서 추가할 부분
 - [ ]  꿀팁 모음집 화면
 - [ ]  댓글달기 기능
 - [ ]  좋아요 기능
@@ -55,13 +57,9 @@
 - [ ]  질문게시판 수정기능에서 이미지 수정기능 구현
 
   ### 5-2. Version3
-- 카카오 간편가입 기능 구현
-- 암호화 방법 변경 : md5 → SHA256 방법 + salt까지 구현
-- 본인인증 링크 클릭으로 완료 가능하도록 구현 (토큰 사용)
-- 비밀번호는 보안 때문에 재설정 이메일로 발송 = 직접 변경할 수 있도록 구현
-- 치과 의원급 / 병원급 API가 나누어져 있어서 의원급 치과 정보만 가져왔는데
-병원급 Open API도 가져와서 사용자들이 선택해 정보를 가져갈 수 있도록 구현
-- 위치들을 지도에 뿌려주는 기능 구현 (지도 api사용)
-- 나중에 빅데이터를 활용하여 대충 환자의 증상을 맞춰보는 것도 개발해 보고 싶다.
-- 문진표를 치과랑 연계시켜 병원에 방문할 환자 정보제공이 쉽도록 만들고 싶다.
-- 설문지 추가하고 싶은 기능 : 나이별로 설문지 내용을 다르게 만들어보고 싶다.
+- [ ] Oauth2.0 소셜 로그인 기능 구현
+- [ ] 암호화 방법 변경 : md5 → SHA256 방법 + salt로 변경하기
+- [ ] JWT를 사용하여 로그인 상태 유지하기
+- [ ] 치과 병원급 Open API도 파싱해서 사용하기
+- [ ] 치과 위치를 지도위에 나타내기
+- [ ] 나이별로 설문지 내용을 다르게 구성하기
