@@ -18,7 +18,7 @@
   - DB 설계 🔥[ERD 자세히 보기](https://www.erdcloud.com/d/4XDGqN95CusyakDuM "DB 설계 ERD 링크")
     ![ERD 설계](https://github.com/EunSunJJ/online-oral-care/assets/126765411/7d8bc8f7-5d13-407e-9cf4-3381f8f0756c "ERD설계 이미지")
 
-  - URL 설계 🔥[URL 설계 자세히 보기](https://docs.google.com/spreadsheets/d/1oH9uhe67nG7w688nEha89jCRufneH8w7TDERo9vvqXw/edit?usp=sharing "URL 설계")
+  - URL 설계 🔥[URL 설계 자세히 보기](https://docs.google.com/spreadsheets/d/1oH9uhe67nG7w688nEha89jCRufneH8w7TDERo9vvqXw/edit?usp=sharing "URL 설계 링크")
     ![Memo View 설계](https://github.com/EunSunJJ/online-oral-care/assets/126765411/9e417dd4-9d46-414e-bf3e-98d0693d6236 "URL설계 - View")
     ![API URL 설계1](https://github.com/EunSunJJ/online-oral-care/assets/126765411/ec28ed9a-6587-4c8d-a143-e4a464318e1e "URL설계 - 회원가입 API")
     ![API URL설계2](https://github.com/EunSunJJ/online-oral-care/assets/126765411/f1c9ff54-e9fc-47ca-a3e8-2daf3c728a7a "URL설계 - 질문게시판 API")
@@ -27,14 +27,41 @@
     
     
   ## 3. 기능 명세 + 트러블 슈팅
-  ### 3-1.
-  ### 3-2.
-  ### 3-3.
-  ### 3-4.
-  ### 3-5.
-  ### 3-6.
+  ### 3-1. 서비스 홈 
+  ### 3-2. 회원가입 & 로그인,로그아
+  ### 3-3. 본인인증 이메일 발송
+  ### 3-4. 사용자 정보 수정하기 & 비밀번호 재설정 하기
+  ### 3-5. 온라인 문진표 & 문진표만 프린트 하기
+  ### 3-6. Open API를 통해 경기도 내 치과의원 정보 보여주기
+  ### 3-7. 질문게시판 기본 기능 - CRUD기반 글 작성,수정,삭제,답변달
+  ### 3-8. 질문게시판 심화 기능 - Rest기반 페이징 처리, 제목 또는 작성자 검색기능
+  ### 3-9. 구강관리점수 측정 설문
  
   ## 4. 느낀점
   
   ## 5. 앞으로 업데이트 될 부분
-  
+  ### 5-1. Version2
+  **Open API보충할 부분**
+- [ ]  추가 조건들 걸어주기
+- [ ]  폐업 중인 병원들 제외시기기
+- [ ]  병원 리스트에 페이징 기능 넣기
+- [ ]  병원 리스트에 검색 기능 넣기
+- [ ]  권한 부여하기
+
+- [ ]  꿀팁 모음집 화면
+- [ ]  댓글달기 기능
+- [ ]  좋아요 기능
+- [ ]  사용자들이 누르는 좋아요 개수에 따라 게시물 크기 반영
+- [ ]  질문게시판 수정기능에서 이미지 수정기능 구현
+
+  ### 5-2. Version3
+- 카카오 간편가입 기능 구현
+- 암호화 방법 변경 : md5 → SHA256 방법 + salt까지 구현
+- 본인인증 링크 클릭으로 완료 가능하도록 구현 (토큰 사용)
+- 비밀번호는 보안 때문에 재설정 이메일로 발송 = 직접 변경할 수 있도록 구현
+- 치과 의원급 / 병원급 API가 나누어져 있어서 의원급 치과 정보만 가져왔는데
+병원급 Open API도 가져와서 사용자들이 선택해 정보를 가져갈 수 있도록 구현
+- 위치들을 지도에 뿌려주는 기능 구현 (지도 api사용)
+- 나중에 빅데이터를 활용하여 대충 환자의 증상을 맞춰보는 것도 개발해 보고 싶다.
+- 문진표를 치과랑 연계시켜 병원에 방문할 환자 정보제공이 쉽도록 만들고 싶다.
+- 설문지 추가하고 싶은 기능 : 나이별로 설문지 내용을 다르게 만들어보고 싶다.
